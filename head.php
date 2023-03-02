@@ -24,6 +24,8 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
+    <link rel="stylesheet" href="assets/css/main.css">
+
 </head>
 <style>
     .logo_img {
@@ -93,7 +95,7 @@
                             }
                             ?>
                             <li class="submenu">
-                                <a href="javascript:;">Pages</a>
+                                <a href="javascript:;">Acount</a>
                                 <ul>
                                     <li><a href="esmalte.php">Uñas</a></li>
                                     <?php

@@ -1,37 +1,76 @@
 <?php
 require("head.php");
 ?>
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" >
-    <img src="assets/images/carrusel.jpg" alt="" class="d-block w-100">
+    <img src="assets/images/carrusel.jpg" alt="" class="carrusel-img d-block w-100">
     <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-    <img src="assets/images/carrusel2.jpg" class="d-block w-100" width="100%">
+    <img src="assets/images/carrusel2.jpg" class="carrusel-img d-block w-100" width="100%">
     <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-    <img src="assets/images/carrusel3.web" class="d-block w-100">
+    <img src="assets/images/carrusel3.web" class="carrusel-img d-block w-100">
     <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>
     </div>
   </div>
+</div> -->
 
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item carrusel-img active">
+            <img class="d-block w-100" src="assets/images/carrusel.jpg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Prueva 1</h5>
+                <p style="color:white">Descripcion Prueva 1</p>
+            </div>
+        </div>
+        <div class="carousel-item carrusel-img">
+            <img class="d-block w-100" src="assets/images/carrusel2.jpg" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Prueva 2</h5>
+                <p style="color:white">Descripcion Prueva 2</p>
+            </div>
+        </div>
+        <div class="carousel-item carrusel-img">
+            <img class="d-block w-100" src="assets/images/carrusel.jpg" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Prueva 3</h5>
+                <p style="color:white">Descripcion Prueva 3</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev chevron" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next chevron" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
 <section class="section" id="products">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="section-heading">
                     <h2>Lo mas destacado</h2>
                     <span>Mas detalles en la seccion de labios.</span>
@@ -41,60 +80,57 @@ require("head.php");
     </div>
     <div class="container">
         <div class="row">
-            <?php
-            require("keys/conection.php");
-            if ($conn) {
-                $SELECT = "SELECT * FROM productos WHERE categoria = 'pantalon' ORDER BY rand() ";
-                $resultado = mysqli_query($conn, $SELECT);
-                if ($resultado) {
-                    while ($com = $resultado->fetch_array()) {
-            ?>
-                        <?php $com['id_producto']; ?>
+            <div class="col-lg-12">
+                <div class="men-item-carousel">
+                    <div class="owl-men-item owl-carousel">
+                        <?php
+                        require("keys/conection.php");
+                        if ($conn) {
+                            $SELECT = "SELECT * FROM productos WHERE categoria = 'labios' or categoria = 'ojos' ORDER BY rand() LIMIT 3";
+                            $resultado = mysqli_query($conn, $SELECT);
+                            if ($resultado) {
+                                while ($com = $resultado->fetch_array()) {
+                        ?>
 
 
 
-                        <?php $com['descripcion']; ?>
-                        <div class="col-lg-3">
-                            <div class="item" >
-                                <div class="thumb">
-                                <!-- <div class="hover-content">
-                                        <div class="inner">
-                                        <img src=<?php echo $com['foto']; ?> alt="">
 
+                                    <?php $com['descripcion']; ?>
+                                    <div class="item">
+                                        <div class="thumb">
+                                            <div class="hover-content">
+                                                <ul>
+                                                    <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
+                                                    <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <img src=<?php echo $com['foto']; ?> alt="">
                                         </div>
-                                    </div> -->
-                                    
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
+                                        <div class="down-content">
+                                            <h4><?php echo $com['articulo']; ?></h4>
+                                            <span>$<?php echo $com['precio']; ?></span>
+                                            <ul class="stars">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <img src=<?php echo $com['foto']; ?> alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4><?php echo $com['articulo']; ?></h4>
-                                    <span>$<?php echo $com['precio']; ?></span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-            <?php
-                    }
-                } else {
-                    echo " se fue a la verga";
-                }
-            } else {
-                echo "la coneccion fallo";
-            }
-            ?>
+                        <?php
+                                }
+                            } else {
+                                echo " se fue a la verga";
+                            }
+                        } else {
+                            echo "la coneccion fallo";
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
