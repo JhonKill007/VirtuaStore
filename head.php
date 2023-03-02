@@ -76,17 +76,17 @@
                             <li class="submenu">
                                 <a href="javascript:;">Feature</a>
                                 <ul>
-                                    <li><a href="esmalte.php">Boy</a></li>
+                                    <li><a href="product.php">Boy</a></li>
                                    
-                                        <li><a href="signup.php">Girl</a></li>
-                                        <li><a href="agregar.php">Women</a></li>
+                                        <li><a href="product.php">Girl</a></li>
+                                        <li><a href="product.php">Women</a></li>
                                    
-                                        <li><a href="login.php">Men</a></li>
+                                        <li><a href="product.php">Men</a></li>
                                     
                                     
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="ojos.php">Product</a></li>
+                            <li class="scroll-to-section"><a href="product.php">Product</a></li>
                             <?php
                             if (isset($_SESSION['id'])) {
                             ?>
@@ -97,7 +97,7 @@
                             <li class="submenu">
                                 <a href="javascript:;">Acount</a>
                                 <ul>
-                                    <li><a href="esmalte.php">Uñas</a></li>
+                                    
                                     <?php
                                     if (isset($_SESSION['id'])) {
                                     ?>
