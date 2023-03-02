@@ -1,7 +1,7 @@
 <?php
 require("head.php");
 ?>
-<div class="page-heading men-page" id="top">
+<!-- <div class="page-heading men-page" id="top">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -12,18 +12,16 @@ require("head.php");
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- ***** Main Banner Area End ***** -->
 
-
-<!-- ***** Products Area Starts ***** -->
 <section class="section" id="products">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="section-heading">
-                    <h2>Productos</h2>
-                    <span>Todos nuestros productos.</span>
+                    <h2>Lo mas destacado</h2>
+                    <span>Mas detalles en la seccion de labios.</span>
                 </div>
             </div>
         </div>
@@ -33,7 +31,7 @@ require("head.php");
             <?php
             require("keys/conection.php");
             if ($conn) {
-                $SELECT = "SELECT * FROM productos WHERE categoria = 'rostro' ORDER BY rand() LIMIT 3";
+                $SELECT = "SELECT * FROM productos WHERE categoria = 'pantalon' ORDER BY rand() ";
                 $resultado = mysqli_query($conn, $SELECT);
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
@@ -43,9 +41,16 @@ require("head.php");
 
 
                         <?php $com['descripcion']; ?>
-                        <div class="col-lg-4">
-                            <div class="item">
+                        <div class="col-lg-3">
+                            <div class="item" >
                                 <div class="thumb">
+                                <!-- <div class="hover-content">
+                                        <div class="inner">
+                                        <img src=<?php echo $com['foto']; ?> alt="">
+
+                                        </div>
+                                    </div> -->
+                                    
                                     <div class="hover-content">
                                         <ul>
                                             <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
@@ -80,6 +85,8 @@ require("head.php");
         </div>
     </div>
 </section>
+<!-- ***** Men Area Ends ***** -->
+
 <?php
 require("footer.php");
 ?>
