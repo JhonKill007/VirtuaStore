@@ -105,7 +105,12 @@ require("head.php");
                                                     <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <img src=<?php echo $com['foto']; ?> alt="">
+                                            <div style="height: 400px;">
+                                                <img style="width: 100%;
+                                                            height: 100%;
+                                                            object-fit: cover;
+                                                            object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
+                                            </div>
                                         </div>
                                         <div class="down-content">
                                             <h4><?php echo $com['articulo']; ?></h4>
