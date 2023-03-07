@@ -50,7 +50,32 @@ require("head.php");
 
     <div class="container">
         <div class="row" style="float: right; margin-top: -50px;">
-            <div class="dropdown">
+            <div class="dropdown" style="margin-right: 20px;">
+                <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Color </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="form-check" style="margin:10px">
+                        <label class="form-check-label">
+                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
+                            <span style="margin-left:20px; font-size:16px">Blue</span>
+                        </label>
+                    </div>
+                    <div class="form-check" style="margin:10px">
+                        <label class="form-check-label">
+                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
+                            <span style="margin-left:20px; font-size:16px">Black</span>
+                        </label>
+                    </div>
+                    <div class="form-check" style="margin:10px">
+                        <label class="form-check-label">
+                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
+                            <span style="margin-left:20px; font-size:16px">White</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="dropdown" style="margin-right: 20px;">
                 <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Size </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -95,7 +120,7 @@ require("head.php");
             <?php
             require("keys/conection.php");
             if ($conn) {
-                $SELECT = "SELECT * FROM productos WHERE categoria = 'pantalon' ORDER BY rand() ";
+                $SELECT = "SELECT * FROM tiendav.productos WHERE categoria = 'mujer' ORDER BY rand() ";
                 $resultado = mysqli_query($conn, $SELECT);
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
@@ -108,12 +133,6 @@ require("head.php");
                         <div class="col-lg-3">
                             <div class="item">
                                 <div class="thumb">
-                                    <!-- <div class="hover-content">
-                                        <div class="inner">
-                                        <img src=<?php echo $com['foto']; ?> alt="">
-
-                                        </div>
-                                    </div> -->
 
                                     <div class="hover-content">
                                         <ul>

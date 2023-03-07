@@ -1,5 +1,5 @@
 <style>
-    .footer_logo{
+    .footer_logo {
         width: 250px;
     }
 </style>
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <h4>Shopping &amp; Categories</h4>
+                <h4> Paginas relacionadas</h4>
                 <ul>
                     <li><a href="rostro.php">Rostro</a></li>
                     <li><a href="ojos.php">Ojos</a></li>
@@ -22,25 +22,11 @@
                     <li><a href="esmalte.php">Uñas</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3">
-                <h4>Useful Links</h4>
-                <ul>
-                    <?php
-                    if (isset($_SESSION['id'])) {
-                    ?>
-                        <li><a href="keys/logout.php">Cerrar Sesion</a></li>
-                        <li><a href="agregar.php">Agregar Productos</a></li>
-                        <li><a href="ventas.php">Ventas</a></li>
-                    <?php
-                    } else {
-                    ?>
-                        <li><a href="login.php">Iniciar Sesion</a></li>
-                    <?php
-                    }
-                    ?>
-                    <li><a href="about.php">Acerca de</a></li>
-                </ul>
-            </div>
+            
+            <div class="col-lg-2">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30272.44678808401!2d-69.93792502318628!3d18.481129297752123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf89e4e39a2ab5%3A0x98df0764eaed40ca!2sBlueMall%20Santo%20Domingo!5e0!3m2!1ses!2sdo!4v1677787444616!5m2!1ses!2sdo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                </div>
             <div class="col-lg-12">
                 <div class="under-footer">
                     <p>Copyright © 2021 Lolet, All Rights Reserved.

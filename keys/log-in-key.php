@@ -20,7 +20,7 @@ if(!empty($email) || !empty($password)){
                 $id = $log['id_registro'];
                 session_start();
                 $_SESSION['id']=$id;
-                header("Location: ../users.php");
+                header("Location: ../index.php");
                 
             }
             else{

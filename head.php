@@ -54,16 +54,12 @@
                             <img class="logo_img" src="assets/images/logo.png">
                         </a>
                         <ul class="nav">
-                            <!-- <li class="scroll-to-section d-flex" >
-                                <input type="text" style="width:300px; height:30px" class="form-control">
-                                <i style="color:black" class="fa-solid fa-chevron-right"></i>
-                                <i style="color:black" class="fa-sharp fa-solid fa-magnifying-glass"></i>
-                            </li> -->
+
                             <?php
                             session_start();
                             if (isset($_SESSION['id'])) {
                             ?>
-                                <li class="scroll-to-section"><a href="users.php" class="active">Home</a></li>
+                                <li class="scroll-to-section"><a href="index.php" class="active">Home</a></li>
                             <?php
                             } else {
                             ?>
@@ -72,38 +68,33 @@
                             }
                             ?>
 
-                            <li class="scroll-to-section"><a href="onfire.php">On Fire</a></li>
+                            <li class="scroll-to-section"><a href="onfire.php">Offert</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Feature</a>
                                 <ul>
                                     <li><a href="product.php">Boy</a></li>
-                                   
-                                        <li><a href="product.php">Girl</a></li>
-                                        <li><a href="product.php">Women</a></li>
-                                   
-                                        <li><a href="product.php">Men</a></li>
-                                    
-                                    
+
+                                    <li><a href="product.php">Girl</a></li>
+                                    <li><a href="product.php">Women</a></li>
+
+                                    <li><a href="product.php">Men</a></li>
+
+
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="product.php">Product</a></li>
-                            <?php
-                            if (isset($_SESSION['id'])) {
-                            ?>
-                                <li><a href="keys/logout.php">Cerrar Sesion</a></li>
-                            <?php
-                            }
-                            ?>
+                            
                             <li class="submenu">
                                 <a href="javascript:;">Acount</a>
                                 <ul>
-                                    
+
                                     <?php
                                     if (isset($_SESSION['id'])) {
                                     ?>
                                         <li><a href="signup.php">Agregar Usuario</a></li>
                                         <li><a href="agregar.php">Agregar Productos</a></li>
                                         <li><a href="selling.php">Ventas</a></li>
+                                        <li><a href="keys/logout.php">Cerrar Sesion</a></li>
                                     <?php
                                     } else {
                                     ?>
@@ -114,11 +105,30 @@
                                     <li><a href="about.php">Acerca de</a></li>
                                 </ul>
                             </li>
+
+                            <li class="scroll-to-section">
+                                <a href="">
+                                    <i class="fa fa-facebook" style="height:20px"></i>
+                                </a>
+                            </li>
+                            <li class="scroll-to-section">
+                                <a href="">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+
+                            
+
+
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
+
                     </nav>
+
+
                 </div>
             </div>
         </div>

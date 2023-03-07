@@ -39,10 +39,10 @@ if ($conn) {
                                 </ul>
 
                                 <!-- The slideshow -->
-                                <div class="carousel-inner" >
+                                <div class="carousel-inner">
                                     <div class="carousel-item active ">
-                                        <img style="    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-" src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
+                                        <img style="box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);"
+                                         src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
                                     </div>
                                     <div class="carousel-item">
                                         <img src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
@@ -128,7 +128,7 @@ if ($conn) {
                             </div>
                             <div class="total">
                                 <div style="width: 100%; text-align: center;" class="main-border-button">
-                                    <a style="width: 100%; text-align: center;" href="bay.php?id_art=<?php echo $com['id_producto']; ?>">Add to bag</a>
+                                    <a style="width: 100%; text-align: center;" href="car.php?id_art=<?php echo $com['id_producto']; ?>">Add to bag</a>
                                 </div>
                             </div>
                         </div>

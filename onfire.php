@@ -16,12 +16,12 @@ require("head.php");
 <!-- ***** Main Banner Area End ***** -->
 
 <section class="section" id="products">
-    <div class="container">
+    <div class="container" style="margin-top: 20px;">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="section-heading">
                     <h2>Lo mas destacado</h2>
-                    <span>Mas detalles en la seccion de labios.</span>
+                    <span>Las Ofertas de temporada</span>
                 </div>
             </div>
         </div>

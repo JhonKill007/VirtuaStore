@@ -36,7 +36,7 @@ if(!empty($nombre) || !empty($apellido) || !empty($id) || !empty($numero) || !em
 else{
     echo "<script>
             alert('todos los campos son obligatorios');
-            window.location='../bay.php?".$id."';
+            window.location='../car.php?".$id."';
             </script>";
 }
 ?>
