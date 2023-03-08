@@ -86,7 +86,7 @@ require("head.php");
                         <?php
                         require("keys/conection.php");
                         if ($conn) {
-                            $SELECT = "SELECT * FROM productos WHERE categoria = 'pantalon' ORDER BY rand() LIMIT 3";
+                            $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() LIMIT 3";
                             $resultado = mysqli_query($conn, $SELECT);
                             if ($resultado) {
                                 while ($com = $resultado->fetch_array()) {
