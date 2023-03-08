@@ -41,8 +41,7 @@ if ($conn) {
                                 <!-- The slideshow -->
                                 <div class="carousel-inner">
                                     <div class="carousel-item active ">
-                                        <img style="box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);"
-                                         src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
+                                        <img style="box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);" src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
                                     </div>
                                     <div class="carousel-item">
                                         <img src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
@@ -84,7 +83,28 @@ if ($conn) {
                                 <span>Size</span>
                                 <div class="container">
                                     <div class="row">
-                                        <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
+                                        <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                            <label class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option1" autocomplete="off"> 11/12
+                                            </label>
+                                            <label class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option2" autocomplete="off"> 13/14
+                                            </label>
+                                            <label class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option3" autocomplete="off"> 15/16
+                                            </label>
+                                            <label class="btn btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option4" autocomplete="off"> Boots
+                                            </label>
+                                            <label class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option5" autocomplete="off"> Boots
+                                            </label>
+
+
+
+                                        </div>
+
+                                        <!-- <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
                                             <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">S</span>
                                         </div>
                                         <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
@@ -104,7 +124,7 @@ if ($conn) {
                                         </div>
                                         <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
                                             <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">XXS</span>
-                                        </div>
+                                        </div> -->
 
                                     </div>
                                 </div>
@@ -136,6 +156,78 @@ if ($conn) {
                 </div>
             </section>
 
+            <section class="section" id="products">
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="section-heading">
+                    <h2>Lo mas destacado</h2>
+                    <span>Las Ofertas de temporada</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <?php
+            require("keys/conection.php");
+            if ($conn) {
+                $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() ";
+                $resultado = mysqli_query($conn, $SELECT);
+                if ($resultado) {
+                    while ($com = $resultado->fetch_array()) {
+            ?>
+                        <?php $com['id_producto']; ?>
+
+
+
+                        <?php $com['descripcion']; ?>
+                        <div class="col-lg-3">
+                            <div class="item" >
+                                <div class="thumb">
+                                <!-- <div class="hover-content">
+                                        <div class="inner">
+                                        <img src=<?php echo $com['foto']; ?> alt="">
+
+                                        </div>
+                                    </div> -->
+                                    
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img src=<?php echo $com['foto']; ?> alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4><?php echo $com['articulo']; ?></h4>
+                                    <span>$<?php echo $com['precio']; ?></span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    }
+                } else {
+                    echo " se fue a la verga";
+                }
+            } else {
+                echo "la coneccion fallo";
+            }
+            ?>
+        </div>
+    </div>
+</section>
+<!-- ***** Men Area Ends ***** -->
+
 
 
 <?php
@@ -147,7 +239,6 @@ if ($conn) {
     echo "la coneccion fallo";
 }
 ?>
-
 <?php
 require("footer.php");
 ?>

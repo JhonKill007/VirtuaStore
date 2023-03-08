@@ -83,9 +83,9 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="product.php">Product</a></li>
-                            
+
                             <li class="submenu">
-                                <a href="javascript:;">Acount</a>
+                                <a href="javascript:;"><i class="fa-solid fa-user"></i></a>
                                 <ul>
 
                                     <?php
@@ -102,11 +102,17 @@
                                     <?php
                                     }
                                     ?>
-                                    <li><a href="about.php">Acerca de</a></li>
+
                                 </ul>
                             </li>
+                            <li>
+                                <a href="car.php">
+                                    <i class="fa-solid fa-cart-shopping" style="height:20px"></i>
+                                </a>
+                                
+                            </li>
 
-                            <li class="scroll-to-section">
+                            <!-- <li class="scroll-to-section">
                                 <a href="">
                                     <i class="fa fa-facebook" style="height:20px"></i>
                                 </a>
@@ -115,9 +121,9 @@
                                 <a href="">
                                     <i class="fa fa-instagram"></i>
                                 </a>
-                            </li>
+                            </li> -->
 
-                            
+
 
 
 
