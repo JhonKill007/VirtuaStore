@@ -52,9 +52,7 @@ require("head.php");
                                       
 
                                         <form id="contact" action="keys/removeFromCar.php" method="post">
-                                            <!-- <input type="hidden" name="product_id" value="<?php echo $com['ProductId']; ?>"> -->
-                                            <input type="hidden" name="product_id" value="<?php echo $com['ProductId']; ?>">
-                                            <input type="hidden" name="car_id" value="<?php echo $com['Id']; ?>">
+                                            <input type="hidden" name="car_id" value="<?php echo $com['id_car']; ?>">
                                             <button type="submit" style="width: 100%; text-align: center;">Remove</button>
 
                                         </form>
