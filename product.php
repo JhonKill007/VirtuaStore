@@ -14,7 +14,9 @@ require("head.php");
     </div>
 </div> -->
 <!-- ***** Main Banner Area End ***** -->
-
+<br>
+<br>
+<br>
 
 <section class="section" id="products">
     <div class="container">
@@ -120,7 +122,7 @@ require("head.php");
             <?php
             require("keys/conection.php");
             if ($conn) {
-                $SELECT = "SELECT * FROM tiendav.productos WHERE categoria = 'mujer' ORDER BY rand() ";
+                $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() ";
                 $resultado = mysqli_query($conn, $SELECT);
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
