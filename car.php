@@ -18,7 +18,7 @@ require("head.php");
                 require("keys/conection.php");
                 if ($conn) {
                     // = $id_articulo
-                    $SELECT = "SELECT * FROM tiendav.car c left join tiendav.productos p on c.ProductId = p.id_producto where c.userId=1 ";
+                    $SELECT = "SELECT * FROM car c left join productos p on c.producto_id = p.id_producto where c.user_id = 1";
                     $resultado = mysqli_query($conn, $SELECT);
                     if ($resultado) {
                         while ($com = $resultado->fetch_array()) {

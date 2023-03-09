@@ -8,12 +8,25 @@ $day = $_POST['day'];
 $month = $_POST['month'];
 $year = $_POST['year'];
 $genero = $_POST['genero'];
+$role = $_POST['role'];
 $birthday = $year."/".$month."/".$day;
+
+// echo $nombre;
+// echo $apellido;
+// echo $numero;
+// echo $email;
+// echo $password;
+// echo $day;
+// echo $month;
+// echo $year;
+// echo $genero;
+// echo $role;
+// echo $birthday;
 
 
 $script_password = password_hash($password, PASSWORD_DEFAULT);
 
-if(!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) || !empty($password) || !empty($day) || !empty($month) || !empty($year) || !empty($genero)){
+if(!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) || !empty($password) || !empty($day) || !empty($month) || !empty($year) || !empty($genero) || !empty($role)){
     $eso =  require('conection.php');
     if($eso){
         $SELECT = "SELECT * FROM registro WHERE email = '$email'";
@@ -21,7 +34,7 @@ if(!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) || 
         if($resultado->num_rows == 0){
 
 
-            $INSERT = "INSERT INTO registro (nombre,apellido,numero,email,password,birthday,genero)values('$nombre','$apellido','$numero','$email','$script_password','$birthday','$genero')";
+            $INSERT = "INSERT INTO registro (nombre,apellido,numero,email,password,birthday,genero,role)values('$nombre','$apellido','$numero','$email','$script_password','$birthday','$genero','$role')";
             $resultado = mysqli_query($conn,$INSERT);
             if($resultado){
                 echo "REGISTRADO";
@@ -30,11 +43,16 @@ if(!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) || 
                 if($resultado){
                    
                     while($row = $resultado->fetch_array()){
-                        $id = $row['id_registro'];
-                        if(1==1){
+                        if ($log['role'] == "ADMIN") {
+                            $id = $log['id_registro'];
                             session_start();
-                            $_SESSION['id']=$id;
-                            header("Location:../users.php");
+                            $_SESSION['ID_ADMIN'] = $id;
+                            header("Location: ../index.php");
+                        } else {
+                            $id = $log['id_registro'];
+                            session_start();
+                            $_SESSION['id'] = $id;
+                            header("Location: ../index.php");
                         }
                     }
                         

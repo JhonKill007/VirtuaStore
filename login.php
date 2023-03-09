@@ -8,7 +8,7 @@ require("head.php");
             <div class="col-lg-8">
                 <div class="section-heading">
                     <h2>Iniciar Sesion</h2>
-                    <span>Nota: Solo los empleados deben llenar este formulario.</span>
+                    <span>Aun no tienes cuenta, registrate <a href="./signup.php">aqui</a>.</span>
                 </div>
                 <form id="subscribe" action="keys/log-in-key.php" method="post">
                     <div class="row">
