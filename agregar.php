@@ -41,7 +41,7 @@ if (isset($_SESSION['id'])) {
                                 <fieldset>
                                     <select class="form-control" id="categoria" name="categoria" required>
                                         <option>Categoria</option>
-                                        <option value="labios">Labios</option>
+                                        <option value="mujer">women</option>
                                         <option value="rostro">Rostro</option>
                                         <option value="uñas">Uñas</option>
                                         <option value="ojos">Ojos</option>
