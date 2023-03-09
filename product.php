@@ -20,7 +20,7 @@ require("head.php");
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div class="section-heading">
+                <div class="section-heading ">
                     <h2>Lo mas destacado</h2>
                     <span>Mas detalles en la seccion de labios.</span>
                 </div>
@@ -137,11 +137,22 @@ require("head.php");
                                     <div class="hover-content">
                                         <ul>
                                             <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <!-- <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li> -->
+                                            <li>
+                                                <!-- <a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a> -->
+                                                <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </a>
+
+                                            </li>
                                         </ul>
                                     </div>
-                                    <img src=<?php echo $com['foto']; ?> alt="">
+                                    <div style="height: 400px;">
+                                                <img style="width: 100%;
+                                                            height: 100%;
+                                                            object-fit: cover;
+                                                            object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
+                                            </div>
                                 </div>
                                 <div class="down-content">
                                     <h4><?php echo $com['articulo']; ?></h4>
@@ -168,6 +179,67 @@ require("head.php");
         </div>
     </div>
 </section>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Select Size and Color</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> 11/12
+                            </label>
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> 13/14
+                            </label>
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> 15/16
+                            </label>
+                            <label class="btn btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option4" autocomplete="off"> Boots
+                            </label>
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option5" autocomplete="off"> Boots
+                            </label>
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> 11/12
+                            </label>
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> 13/14
+                            </label>
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> 15/16
+                            </label>
+                            <label class="btn btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option4" autocomplete="off"> Boots
+                            </label>
+                            <label class="btn btn-outline-secondary col-sm active mr-1">
+                                <input type="radio" name="options" id="option5" autocomplete="off"> Boots
+                            </label>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add to Bag</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 require("footer.php");
 ?>

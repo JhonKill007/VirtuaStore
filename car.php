@@ -15,6 +15,7 @@ require("head.php");
                     <h6>Enviar a: <span>Santo Domingo, Rep Dom</span></h6>
                 </div>
                 <?php
+                $total = 0;
                 require("keys/conection.php");
                 if ($conn) {
                     // = $id_articulo
@@ -23,6 +24,7 @@ require("head.php");
                     if ($resultado) {
                         while ($com = $resultado->fetch_array()) {
                 ?>
+                            <?php $total += $com['precio']; ?>
                             <div class="d-flex flex-row justify-content-between" style="border:1px solid grey; border-radius:10px;  margin-bottom:15px; padding:15px">
 
 
@@ -47,7 +49,15 @@ require("head.php");
                                 <div class="col-sm align-self-end">
                                     <span>Total : $<?php echo $com['precio']; ?></span>
                                     <div style="margin-top: 25px;">
-                                        <a class="">Remove</a>
+                                      
+
+                                        <form id="contact" action="keys/removeFromCar.php" method="post">
+                                            <!-- <input type="hidden" name="product_id" value="<?php echo $com['ProductId']; ?>"> -->
+                                            <input type="hidden" name="product_id" value="<?php echo $com['ProductId']; ?>">
+                                            <input type="hidden" name="car_id" value="<?php echo $com['Id']; ?>">
+                                            <button type="submit" style="width: 100%; text-align: center;">Remove</button>
+
+                                        </form>
                                     </div>
 
                                 </div>
@@ -76,7 +86,7 @@ require("head.php");
                                 <span>Subtotal:</span>
                             </div>
                             <div class="col-sm-6">
-                                <span style="font-size: 25px;">$60.00</span>
+                                <span style="font-size: 25px;">$ <?php echo $total;  ?> </span>
                             </div>
 
                         </div>

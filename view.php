@@ -22,7 +22,7 @@ if ($conn) {
         while ($com = $resultado->fetch_array()) {
 ?>
             <?php $com['id_producto']; ?>
-            <section class="section" id="product">
+            <section class="contact" id="product">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -148,7 +148,12 @@ if ($conn) {
                             </div>
                             <div class="total">
                                 <div style="width: 100%; text-align: center;" class="main-border-button">
-                                    <a style="width: 100%; text-align: center;" href="car.php?id_art=<?php echo $com['id_producto']; ?>">Add to bag</a>
+                                    <form id="contact" action="keys/addToCar.php" method="post">
+                                        <input type="hidden" name="product_id" value="<?php echo $com['id_producto']; ?>">
+                                        <button type="submit" style="width: 100%; text-align: center;">Add to bag</button>
+
+                                        <!-- href="car.php?id_art=<?php echo $com['id_producto']; ?> -->
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -157,76 +162,76 @@ if ($conn) {
             </section>
 
             <section class="section" id="products">
-    <div class="container" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="section-heading">
-                    <h2>Lo mas destacado</h2>
-                    <span>Las Ofertas de temporada</span>
+                <div class="container" style="margin-top: 20px;">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="section-heading">
+                                <h2>Lo mas destacado</h2>
+                                <span>Las Ofertas de temporada</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <?php
-            require("keys/conection.php");
-            if ($conn) {
-                $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() ";
-                $resultado = mysqli_query($conn, $SELECT);
-                if ($resultado) {
-                    while ($com = $resultado->fetch_array()) {
-            ?>
-                        <?php $com['id_producto']; ?>
+                <div class="container">
+                    <div class="row">
+                        <?php
+                        require("keys/conection.php");
+                        if ($conn) {
+                            $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() ";
+                            $resultado = mysqli_query($conn, $SELECT);
+                            if ($resultado) {
+                                while ($com = $resultado->fetch_array()) {
+                        ?>
+                                    <?php $com['id_producto']; ?>
 
 
 
-                        <?php $com['descripcion']; ?>
-                        <div class="col-lg-3">
-                            <div class="item" >
-                                <div class="thumb">
-                                <!-- <div class="hover-content">
+                                    <?php $com['descripcion']; ?>
+                                    <div class="col-lg-3">
+                                        <div class="item">
+                                            <div class="thumb">
+                                                <!-- <div class="hover-content">
                                         <div class="inner">
                                         <img src=<?php echo $com['foto']; ?> alt="">
 
                                         </div>
                                     </div> -->
-                                    
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
+
+                                                <div class="hover-content">
+                                                    <ul>
+                                                        <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
+                                                        <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <img src=<?php echo $com['foto']; ?> alt="">
+                                            </div>
+                                            <div class="down-content">
+                                                <h4><?php echo $com['articulo']; ?></h4>
+                                                <span>$<?php echo $com['precio']; ?></span>
+                                                <ul class="stars">
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <img src=<?php echo $com['foto']; ?> alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4><?php echo $com['articulo']; ?></h4>
-                                    <span>$<?php echo $com['precio']; ?></span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-            <?php
-                    }
-                } else {
-                    echo " se fue a la verga";
-                }
-            } else {
-                echo "la coneccion fallo";
-            }
-            ?>
-        </div>
-    </div>
-</section>
-<!-- ***** Men Area Ends ***** -->
+                        <?php
+                                }
+                            } else {
+                                echo " se fue a la verga";
+                            }
+                        } else {
+                            echo "la coneccion fallo";
+                        }
+                        ?>
+                    </div>
+                </div>
+            </section>
+            <!-- ***** Men Area Ends ***** -->
 
 
 
