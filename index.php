@@ -72,7 +72,7 @@ require("head.php");
         <div class="row">
             <div class="col-lg-4">
                 <div class="section-heading">
-                    <h2>Lo mas destacado</h2>
+                    <h2>Most outstanding</h2>
                     <span>Mas detalles en la seccion de labios.</span>
                 </div>
             </div>
@@ -101,27 +101,24 @@ require("head.php");
                                             <div class="hover-content">
                                                 <ul>
                                                     <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
                                                     <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div style="height: 400px;">
-                                                <img style="width: 100%;
+                                                <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
+                                                    <img style="width: 100%;
                                                             height: 100%;
                                                             object-fit: cover;
                                                             object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
+
+                                                </a>
+
                                             </div>
                                         </div>
                                         <div class="down-content">
                                             <h4><?php echo $com['articulo']; ?></h4>
                                             <span>$<?php echo $com['precio']; ?></span>
-                                            <ul class="stars">
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
+
                                         </div>
                                     </div>
                         <?php
@@ -149,11 +146,11 @@ require("head.php");
         <div class="row">
             <div class="col-lg-6">
                 <div class="left-content">
-                    <h2>Explora Nuestros Catalogos</h2>
-                    <span>Nuestra coleccion de pantalones estan entre las Mejores del pais.</span>
+                    <h2>Explore Our Catalogs</h2>
+                    <span>Our collection of pants are among the best in the country.</span>
                     <div class="quote">
                         <i class="fa fa-quote-left"></i>
-                        <p>No te puedes perder lo oportunidad de verlos.</p>
+                        <p>You cannot miss the opportunity to see them.</p>
                     </div>
                     <div class="main-border-button">
                         <a href="product.php">Discover More</a>
@@ -165,7 +162,7 @@ require("head.php");
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="leather">
-                                <h4>Brilla</h4>
+                                <h4>Shine</h4>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -180,7 +177,7 @@ require("head.php");
                         </div>
                         <div class="col-lg-6">
                             <div class="types">
-                                <h4>Mas!!</h4>
+                                <h4>More</h4>
                             </div>
                         </div>
                     </div>
@@ -188,7 +185,7 @@ require("head.php");
             </div>
         </div>
     </div>
-</section> -->
+</section>
 <section class="section" id="social">
     <div class="container">
         <div class="row">

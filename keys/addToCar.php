@@ -12,11 +12,11 @@ if( !empty($idProduct)){
     require("conection.php");
 
     if($conn){
-        $INSERT = "INSERT INTO tiendav.car (UserId,productId,CreateDate,Active)values($Iduser,'$idProduct',NOW(),$active)";
+        $INSERT = "INSERT INTO car (user_id,producto_id,createdate,active)values($Iduser,'$idProduct',NOW(),$active)";
         $resultado = mysqli_query($conn,$INSERT);
         if($resultado){
             echo "<script>
-                alert('Agregado');
+                
                 window.location='../car.php';
                 </script>";
         }
@@ -33,6 +33,6 @@ if( !empty($idProduct)){
 }
 else{
     echo "todos los datos son OBLIGATORIOS";
-    header("Location: ../agregar.php");
+    header("Location: ../product.php");
 }
 ?>

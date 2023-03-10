@@ -45,7 +45,6 @@ require("head.php");
                                     <div class="hover-content">
                                         <ul>
                                             <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
                                             <li><a href="car.php.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
@@ -54,13 +53,7 @@ require("head.php");
                                 <div class="down-content">
                                     <h4><?php echo $com['articulo']; ?></h4>
                                     <span>$<?php echo $com['precio']; ?></span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
+                                   
                                 </div>
                             </div>
                         </div>
