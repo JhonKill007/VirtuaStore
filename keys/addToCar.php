@@ -1,38 +1,35 @@
 <?php
 
 session_start();
-$Iduser= $_SESSION['id'];
-
+$Iduser = $_SESSION['id'];
 $idProduct = $_POST['product_id'];
 $active = 1;
 
 
-
-if( !empty($idProduct)){
-    require("conection.php");
-
-    if($conn){
-        $INSERT = "INSERT INTO tiendav.car (UserId,productId,CreateDate,Active)values($Iduser,'$idProduct',NOW(),$active)";
-        $resultado = mysqli_query($conn,$INSERT);
-        if($resultado){
-            echo "<script>
-                alert('Agregado');
-                window.location='../car.php';
-                </script>";
+if (isset($_SESSION['id'])) {
+    if( !empty($idProduct) || !empty($Iduser)){
+        require("conection.php");
+        if($conn){
+            $INSERT = "INSERT INTO car (user_id, producto_id, createdate, active)values($Iduser,'$idProduct',NOW(),$active)";
+            $resultado = mysqli_query($conn,$INSERT);
+            if($resultado){
+                header("Location: ../car.php");
+            }
+            else{
+                echo "<script>
+                    alert('No se Guardo');
+                   
+                    </script>";
+            }
         }
         else{
-            echo "<script>
-                alert('No se Guardo');
-               
-                </script>";
+            echo "la connecion fallo";
         }
     }
     else{
-        echo "la connecion fallo";
+        echo "todos los datos son OBLIGATORIOS";
+        header("Location: ../product.php");
     }
+} else {
+    header("Location:../login.php");
 }
-else{
-    echo "todos los datos son OBLIGATORIOS";
-    header("Location: ../agregar.php");
-}
-?>

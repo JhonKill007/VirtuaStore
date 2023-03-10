@@ -13,16 +13,18 @@ if (!empty($email) || !empty($password)) {
 
         if ($resultado->num_rows == 1) {
             $log = $resultado->fetch_array();
-            echo "Log In Correcto";
+            // echo "Log In Correcto";
 
             if (password_verify($password, $log['password'])) {
                 // echo "true";
-                if ($log['roll'] == "ADMIN") {
+                // echo $log['role'];
+                if ($log['role'] == "ADMIN") {
                     $id = $log['id_registro'];
                     session_start();
                     $_SESSION['ID_ADMIN'] = $id;
                     header("Location: ../index.php");
-                } else {
+                } 
+                if ($log['role'] == "USER") {
                     $id = $log['id_registro'];
                     session_start();
                     $_SESSION['id'] = $id;

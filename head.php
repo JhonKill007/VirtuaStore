@@ -82,59 +82,97 @@
 
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="product.php">Product</a></li>
+                            <li class="scroll-to-section"><a href="product.php">Products</a></li>
 
                             <li class="submenu">
-                                <a href="javascript:;"><i class="fa-solid fa-user"></i></a>
+                                <a href="javascript:;">
+                                    <i class="fa-solid fa-user"></i>
+                                    <?php
+                                    if (isset($_SESSION['id'])) {
+                                        $idUser = $_SESSION['id'];
+                                    ?>
+                                        <?php
+                                        $eso =  require('./keys/conection.php');
+                                        if ($eso) {
+                                            $SELECT = "SELECT * from registro where id_registro ='$idUser'";
+                                            $resultado = mysqli_query($conn, $SELECT);
+                                            $U = $resultado->fetch_array();
+                                        ?>
+                                            <span><?php echo $U['nombre']; ?></span>
+                                        <?php
+                                        }
+                                        ?>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <?php
+                                    if (isset($_SESSION['ID_ADMIN'])) {
+                                        $idUser = $_SESSION['ID_ADMIN'];
+                                    ?>
+                                        <?php
+                                        $eso =  require('./keys/conection.php');
+                                        if ($eso) {
+                                            $SELECT = "SELECT * from registro where id_registro ='$idUser'";
+                                            $resultado = mysqli_query($conn, $SELECT);
+                                            $U = $resultado->fetch_array();
+                                        ?>
+                                            <span><?php echo $U['nombre']; ?></span>
+                                        <?php
+                                        }
+                                        ?>
+                                    <?php
+                                    }
+                                    ?>
+                                </a>
                                 <ul>
 
                                     <?php
-                                    if (isset($_SESSION['id'])) {
+                                    if (isset($_SESSION['ID_ADMIN']) || isset($_SESSION['id'])) {
+                                        if (isset($_SESSION['ID_ADMIN'])) {
                                     ?>
-                                        <li><a href="signup.php">Agregar Usuario</a></li>
-                                        <li><a href="agregar.php">Agregar Productos</a></li>
-                                        <li><a href="selling.php">Ventas</a></li>
-                                        <li><a href="keys/logout.php">Cerrar Sesion</a></li>
-                                    <?php
+                                            <li><a href="signup.php">Add Users</a></li>
+                                            <li><a href="agregar.php">Add Products</a></li>
+                                            <li><a href="users.php">Users</a></li>
+                                            <li><a href="address.php">Address</a></li>
+                                            <li><a href="selling.php">Sales History</a></li>
+                                            <li><a href="keys/logout.php">Logout</a></li>
+                                        <?php
+                                        }
+                                        if (isset($_SESSION['id'])) {
+                                        ?>
+                                            <li><a href="selling.php">Purchase History</a></li>
+                                            <li><a href="selling.php">Settins</a></li>
+                                            <li><a href="keys/logout.php">Logout</a></li>
+                                        <?php
+                                        }
                                     } else {
-                                    ?>
-                                        <li><a href="login.php">Iniciar Sesion</a></li>
+                                        ?>
+                                        <li><a href="login.php">Login</a></li>
                                     <?php
                                     }
                                     ?>
 
                                 </ul>
                             </li>
-                            <li>
-                                <a href="car.php">
-                                    <i class="fa-solid fa-cart-shopping" style="height:20px"></i>
-                                </a>
-                                
-                            </li>
 
-                            <!-- <li class="scroll-to-section">
-                                <a href="">
-                                    <i class="fa fa-facebook" style="height:20px"></i>
-                                </a>
-                            </li>
-                            <li class="scroll-to-section">
-                                <a href="">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li> -->
-
-
-
-
+                            <?php
+                            if (!isset($_SESSION['ID_ADMIN'])) {
+                            ?>
+                                <li>
+                                    <a href="car.php">
+                                        <i class="fa-solid fa-cart-shopping" style="height:20px"></i>
+                                    </a>
+                                </li>
+                            <?php
+                            }
+                            ?>
 
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-
                     </nav>
-
-
                 </div>
             </div>
         </div>

@@ -53,15 +53,15 @@ if ($conn) {
 
                                 <!-- Left and right controls -->
                                 <a style="width: 30px;
-    margin: auto;
-    border: 3px solid black;
-    height: 50px;" class="carousel-control-prev" href="#demo" data-slide="prev">
+                                          margin: auto;
+                                          border: 3px solid black;
+                                          height: 50px;" class="carousel-control-prev" href="#demo" data-slide="prev">
                                     <i style="color:black" class="fa-solid fa-chevron-left"></i>
                                 </a>
                                 <a style="width: 30px;
-    margin: auto;
-    border: 3px solid black;
-    height: 50px;" class="carousel-control-next" href="#demo" data-slide="next">
+                                        margin: auto;
+                                        border: 3px solid black;
+                                        height: 50px;" class="carousel-control-next" href="#demo" data-slide="next">
 
                                     <i style="color:black" class="fa-solid fa-chevron-right"></i>
 
