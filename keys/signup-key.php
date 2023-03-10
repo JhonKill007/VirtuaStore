@@ -44,16 +44,13 @@ if (!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) ||
 
                     while ($row = $resultado->fetch_array()) {
                         if ($row['role'] == "ADMIN") {
-                            // $id = $log['id_registro'];
-                            // session_start();
-                            // $_SESSION['ID_ADMIN'] = $id;
-                            header("Location: ../users.php");
+                            header("Location: ../users");
                         }
                         if ($row['role'] == "USER") {
                             $id = $row['id_registro'];
                             session_start();
                             $_SESSION['id'] = $id;
-                            header("Location: ../index.php");
+                            header("Location: ../index");
                         }
                     }
                 } else {
@@ -65,7 +62,7 @@ if (!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) ||
         } else {
             echo "<script>
                 alert('El email ya esta registrado');
-                window.location='../signup.php';
+                window.location='../signup';
                 </script>";
         }
     } else {
@@ -74,6 +71,6 @@ if (!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) ||
 } else {
     echo "<script>
     alert('Debe llenar todos los campos');
-    window.location='../login.php';
+    window.location='../login';
     </script>";
 }

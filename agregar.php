@@ -1,7 +1,7 @@
 <?php
 require("head.php");
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['ID_ADMIN'])) {
 ?>
     <br>
     <br>
@@ -67,6 +67,6 @@ if (isset($_SESSION['id'])) {
 <?php
     require("footer.php");
 } else {
-    header("Location:login.php");
+    header("Location:login");
 }
 ?>

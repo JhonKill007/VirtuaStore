@@ -16,12 +16,12 @@ if (isset($_SESSION['id'])) {
             $INSERT = "INSERT INTO car (user_id, producto_id, createdate, active,size,color)values($Iduser,'$idProduct',NOW(),$active,'$sizeS','$colorS')";
             $resultado = mysqli_query($conn,$INSERT);
             if($resultado){
-                header("Location: ../car.php");
+                header("Location: ../car");
             }
             else{
                 echo "<script>
                     alert('No se Guardo');
-                   
+                    window.location='../car';
                     </script>";
             }
         }
@@ -31,9 +31,9 @@ if (isset($_SESSION['id'])) {
     }
     else{
         echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../product.php");
+        header("Location: ../product");
     }
 } else {
-    header("Location:../login.php");
+    header("Location:../login");
 }
 ?>

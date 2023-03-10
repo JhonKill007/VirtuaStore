@@ -9,11 +9,11 @@ if (isset($_SESSION['ID_ADMIN'])) {
             $DELETE = "DELETE FROM registro WHERE id_registro = $IdUser";
             $resultado = mysqli_query($conn, $DELETE);
             if ($resultado) {
-                header("Location: ../users.php");
+                header("Location: ../users");
             } else {
                 echo "<script>
                     alert('No se Elimino');
-                   
+                    window.location='../users';
                     </script>";
             }
         } else {
@@ -24,5 +24,5 @@ if (isset($_SESSION['ID_ADMIN'])) {
         header("Location: ../users.php");
     }
 } else {
-    header("Location:../login.php");
+    header("Location:../login");
 }

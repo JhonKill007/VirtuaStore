@@ -22,39 +22,6 @@ require("head.php");
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
             ?>
-                        <?php $com['id_registro']; ?>
-
-
-
-                        <?php $com['email']; ?>
-                        <!-- <div class="col-lg-3">
-                            <div class="item">
-                                <div class="thumb">
-
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_registro']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_registro']; ?>"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="car.php?id_articulo=<?php echo $com['id_registro']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="./img/men-03.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4><?php echo $com['nombre']; ?></h4>
-                                    <span>$<?php echo $com['apellido']; ?></span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> -->
-
-
                         <div style="border:1px solid grey; border-radius:10px;  margin-bottom:15px; padding:15px; margin-left:10px;">
                             <div class="col-sm-12">
                                 <b>Email:</b>

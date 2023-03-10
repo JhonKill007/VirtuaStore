@@ -14,10 +14,10 @@ if (isset($_SESSION['ID_ADMIN'])) {
     if (!empty($pais) || !empty($nombre) || !empty($apellido) || !empty($calle) || !empty($numero) || !empty($cp) || !empty($city) || !empty($estado) || !empty($telefono)) {
         require("conection.php");
         if ($conn) {
-            $UPDATE = "UPDATE registro SET pais = $pais, nombre = '$nombre', apellido = $apellido, calle = $calle, numero=$numero, codigo_postal = $cp, ciudad = $city, estado = $estado, telefono = $telefono WHERE id_registro = 3";
+            $UPDATE = "UPDATE configuracion SET pais = '$pais', nombre = '$nombre', apellido = '$apellido', calle = '$calle', numero = '$numero', codigo_postal = '$cp', ciudad = '$city', estado = '$estado', telefono = '$telefono' WHERE id_registro = 3";
             $resultado = mysqli_query($conn, $UPDATE);
             if ($resultado) {
-                header("Location: ../index.php");
+                header("Location: ../index");
             } else {
                 echo "<script>
                     alert('No se Elimino');
@@ -29,8 +29,8 @@ if (isset($_SESSION['ID_ADMIN'])) {
         }
     } else {
         echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../users.php");
+        header("Location: ../users");
     }
 } else {
-    header("Location:../login.php");
+    header("Location:../login");
 }

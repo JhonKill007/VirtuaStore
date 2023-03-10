@@ -166,8 +166,8 @@ if (isset($_SESSION['id'])) {
 
 
 <?php
-} else {
-    header("Location:login.php");
+}else{
+    header("Location:login");
 }
 require("footer.php");
 ?>
