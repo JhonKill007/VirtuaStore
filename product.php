@@ -24,24 +24,32 @@ require("head.php");
                 <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Color </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <div class="form-check" style="margin:10px">
-                        <label class="form-check-label">
-                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                            <span style="margin-left:20px; font-size:16px">Blue</span>
-                        </label>
-                    </div>
-                    <div class="form-check" style="margin:10px">
-                        <label class="form-check-label">
-                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                            <span style="margin-left:20px; font-size:16px">Black</span>
-                        </label>
-                    </div>
-                    <div class="form-check" style="margin:10px">
-                        <label class="form-check-label">
-                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                            <span style="margin-left:20px; font-size:16px">White</span>
-                        </label>
-                    </div>
+
+                    <?php
+                    require("keys/conection.php");
+                    if ($conn) {
+                        $SELECT = "SELECT * FROM color ";
+                        $resultado = mysqli_query($conn, $SELECT);
+                        if ($resultado) {
+                            while ($com = $resultado->fetch_array()) {
+                    ?>
+                                <div class="form-check" style="margin:10px">
+                                    <label class="form-check-label">
+                                        <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
+                                        <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
+                                    </label>
+                                </div>
+
+                    <?php
+                            }
+                        } else {
+                            echo " se fue a la verga";
+                        }
+                    } else {
+                        echo "la coneccion fallo";
+                    }
+                    ?>
+
                 </div>
 
             </div>
@@ -49,37 +57,44 @@ require("head.php");
                 <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Size </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <div class="form-check" style="margin:10px">
-                        <label class="form-check-label">
-                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                            <span style="margin-left:20px; font-size:16px">Small</span>
-                        </label>
-                    </div>
-                    <div class="form-check" style="margin:10px">
-                        <label class="form-check-label">
-                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                            <span style="margin-left:20px; font-size:16px">Midium</span>
-                        </label>
-                    </div>
-                    <div class="form-check" style="margin:10px">
-                        <label class="form-check-label">
-                            <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                            <span style="margin-left:20px; font-size:16px">Large</span>
-                        </label>
-                    </div>
+
+                    <?php
+                    require("keys/conection.php");
+                    if ($conn) {
+                        $SELECT = "SELECT * FROM size ";
+                        $resultado = mysqli_query($conn, $SELECT);
+                        if ($resultado) {
+                            while ($com = $resultado->fetch_array()) {
+                    ?>
+                                <div class="form-check" style="margin:10px">
+                                    <label class="form-check-label">
+                                        <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
+                                        <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
+                                    </label>
+                                </div>
+
+                    <?php
+                            }
+                        } else {
+                            echo " se fue a la verga";
+                        }
+                    } else {
+                        echo "la coneccion fallo";
+                    }
+                    ?>
+
                 </div>
 
             </div>
             <div class="dropdown">
                 <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ORDENAR POR
+                    Sort
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Recomendado</a>
-                    <a class="dropdown-item" href="#">Precio: Del más Bajo al más Alto</a>
-                    <a class="dropdown-item" href="#">Precio: Del más Alto al más Bajo</a>
-                    <a class="dropdown-item" href="#">Nombre: A a la Z</a>
-                    <a class="dropdown-item" href="#">Nombre: z a la A</a>
+                    <a class="dropdown-item" href="#">Best March</a>
+                    <a class="dropdown-item" href="#">Prece: Lowest first </a>
+                    <a class="dropdown-item" href="#">Precio: Highest first</a>
+
                 </div>
 
             </div>
@@ -106,8 +121,9 @@ require("head.php");
 
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
                                             <li>
+                                                <?php $productoSelect= $com['id_producto']; ?>
                                                 <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
@@ -116,22 +132,19 @@ require("head.php");
                                         </ul>
                                     </div>
                                     <div style="height: 400px;">
-                                                <img style="width: 100%;
+                                        <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
+                                            <img style="width: 100%;
                                                             height: 100%;
                                                             object-fit: cover;
                                                             object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
-                                            </div>
+                                        </a>
+
+                                    </div>
                                 </div>
                                 <div class="down-content">
                                     <h4><?php echo $com['articulo']; ?></h4>
                                     <span>$<?php echo $com['precio']; ?></span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
+
                                 </div>
                             </div>
                         </div>
@@ -161,49 +174,60 @@ require("head.php");
                 </button>
             </div>
             <div class="modal-body">
+
+                <span>Size</span>
                 <div class="container">
                     <div class="row">
-                        <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option1" autocomplete="off"> 11/12
+                        <div class="btn-group btn-group-toggle overflow-auto" data-toggle="buttons">
+                            <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                <input style="font-size:14px;" type="radio" name="options" id="option1" autocomplete="off"> 11
                             </label>
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> 13/14
+                            <label style="border-radius:20%;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> 13
                             </label>
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option3" autocomplete="off"> 15/16
+                            <label style="border-radius:20%; height: 50px;width:50px ;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> 15
                             </label>
-                            <label class="btn btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option4" autocomplete="off"> Boots
-                            </label>
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option5" autocomplete="off"> Boots
-                            </label>
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option1" autocomplete="off"> 11/12
-                            </label>
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> 13/14
-                            </label>
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option3" autocomplete="off"> 15/16
-                            </label>
-                            <label class="btn btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option4" autocomplete="off"> Boots
-                            </label>
-                            <label class="btn btn-outline-secondary col-sm active mr-1">
-                                <input type="radio" name="options" id="option5" autocomplete="off"> Boots
-                            </label>
-
 
 
                         </div>
                     </div>
                 </div>
+
+                <hr>
+
+                <span>Colors</span>
+                <div class="container">
+                    <div class="row">
+                        <div class="btn-group btn-group-toggle overflow-auto" data-toggle="buttons">
+                            <label style="border-radius:50%; background-color:aqua; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
+                                <input type="radio" name="options" id="option1" checked>
+                            </label>
+                            <label style="border-radius:50% ;background-color:red;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                <input type="radio" name="options" id="option2" autocomplete="off">
+                            </label>
+                            <label style="border-radius:50%; background-color:black;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                <input type="radio" name="options" id="option3" autocomplete="off">
+                            </label>
+                            <label style="border-radius:50%; background-color:white;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                <input type="radio" name="options" id="option3" autocomplete="off">
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add to Bag</button>
+                <form id="contact" action="keys/addToCar.php" method="post">
+                    <input type="hidden" name="product_id" value="<?php echo $productoSelect; ?>">
+                    <button type="submit" class="btn btn-dark">Add to Bagh</button>
+                  
+                </form>
+                
             </div>
         </div>
     </div>

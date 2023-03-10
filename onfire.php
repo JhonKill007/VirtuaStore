@@ -7,8 +7,8 @@ require("head.php");
         <div class="row">
             <div class="col-lg-4">
                 <div class="section-heading">
-                    <h2>Lo mas destacado</h2>
-                    <span>Las Ofertas de temporada</span>
+                    <h2>Most outstanding</h2>
+                    <label >Seasonal Offers</label>
                 </div>
             </div>
         </div>
@@ -40,23 +40,24 @@ require("head.php");
                                     
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="car?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
-                                    <img src=<?php echo $com['foto']; ?> alt="">
+                                    <div style="height: 400px;">
+                                        <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
+                                            <img style="width: 100%;
+                                                            height: 100%;
+                                                            object-fit: cover;
+                                                            object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
+                                        </a>
+
+                                    </div>
                                 </div>
                                 <div class="down-content">
                                     <h4><?php echo $com['articulo']; ?></h4>
                                     <span>$<?php echo $com['precio']; ?></span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
+                                   
                                 </div>
                             </div>
                         </div>

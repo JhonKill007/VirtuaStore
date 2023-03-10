@@ -22,7 +22,7 @@ if ($conn) {
         while ($com = $resultado->fetch_array()) {
 ?>
             <?php $com['id_producto']; ?>
-            <section class="contact" id="product">
+            <section class="contact-us" id="product">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -72,60 +72,44 @@ if ($conn) {
                             <div class="right-content">
                                 <h4><?php echo $com['articulo']; ?></h4>
                                 <span class="price">$<?php echo $com['precio']; ?></span>
-                                <ul class="stars">
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
+
 
                                 <span>Size</span>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
-                                            <label class="btn btn-outline-secondary active mr-1">
-                                                <input type="radio" name="options" id="option1" autocomplete="off"> 11/12
+                                        <div class="btn-group btn-group-toggle overflow-auto" data-toggle="buttons">
+                                            <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                                <input style="font-size:14px;" type="radio" name="options" id="option1" autocomplete="off"> 11
                                             </label>
-                                            <label class="btn btn-outline-secondary active mr-1">
-                                                <input type="radio" name="options" id="option2" autocomplete="off"> 13/14
+                                            <label style="border-radius:20%;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option2" autocomplete="off"> 13
                                             </label>
-                                            <label class="btn btn-outline-secondary active mr-1">
-                                                <input type="radio" name="options" id="option3" autocomplete="off"> 15/16
+                                            <label style="border-radius:20%; height: 50px;width:50px ;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option3" autocomplete="off"> 15
                                             </label>
-                                            <label class="btn btn btn-outline-secondary active mr-1">
-                                                <input type="radio" name="options" id="option4" autocomplete="off"> Boots
+                                            
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                              
+                                <span>Colors</span>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="btn-group btn-group-toggle overflow-auto" data-toggle="buttons">
+                                            <label style="border-radius:50%; background-color:aqua; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
+                                                <input type="radio" name="options" id="option1" checked> 
                                             </label>
-                                            <label class="btn btn-outline-secondary active mr-1">
-                                                <input type="radio" name="options" id="option5" autocomplete="off"> Boots
+                                            <label style="border-radius:50% ;background-color:red;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option2" autocomplete="off"> 
+                                            </label>
+                                            <label style="border-radius:50%; background-color:black;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                                <input type="radio" name="options" id="option3" autocomplete="off"> 
                                             </label>
 
-
-
                                         </div>
-
-                                        <!-- <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
-                                            <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">S</span>
-                                        </div>
-                                        <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
-                                            <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">M</span>
-                                        </div>
-                                        <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
-                                            <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">L</span>
-                                        </div>
-                                        <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
-                                            <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">XL</span>
-                                        </div>
-                                        <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
-                                            <span style="text-align: center;margin: auto;font-size: 24px;padding:2px">XXL</span>
-                                        </div>
-                                        <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
-                                            <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">XS</span>
-                                        </div>
-                                        <div style="border:1px solid black; height:40px;width:50px; border-radius:20%; margin:0 5px 5px 0 ">
-                                            <span style="text-align: center;margin: auto;font-size: 24px; padding:2px">XXS</span>
-                                        </div> -->
-
                                     </div>
                                 </div>
 
@@ -146,8 +130,8 @@ if ($conn) {
 
 
                             </div>
-                            <div class="total">
-                                <div style="width: 100%; text-align: center;" class="main-border-button">
+                            <div class="contact">
+                                <div style="width: 100%; text-align: center;" class="contact">
                                     <form id="contact" action="keys/addToCar.php" method="post">
                                         <input type="hidden" name="product_id" value="<?php echo $com['id_producto']; ?>">
                                         <button type="submit" style="width: 100%; text-align: center;">Add to bag</button>
@@ -158,6 +142,7 @@ if ($conn) {
                     </div>
                 </div>
             </section>
+
 
             <section class="section" id="products">
                 <div class="container" style="margin-top: 20px;">
@@ -197,9 +182,8 @@ if ($conn) {
 
                                                 <div class="hover-content">
                                                     <ul>
-                                                        <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                                        <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                                        <li><a href="car?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                        <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                     </ul>
                                                 </div>
                                                 <img src=<?php echo $com['foto']; ?> alt="">
@@ -207,13 +191,7 @@ if ($conn) {
                                             <div class="down-content">
                                                 <h4><?php echo $com['articulo']; ?></h4>
                                                 <span>$<?php echo $com['precio']; ?></span>
-                                                <ul class="stars">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
+
                                             </div>
                                         </div>
                                     </div>
