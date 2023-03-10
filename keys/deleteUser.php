@@ -1,19 +1,18 @@
 <?php
-
 session_start();
-$IdCarrito = $_POST['car_id'];
+$IdUser = $_POST['user_id'];
 
-if (isset($_SESSION['id'])) {
-    if (!empty($IdCarrito)) {
+if (isset($_SESSION['ID_ADMIN'])) {
+    if (!empty($IdUser)) {
         require("conection.php");
         if ($conn) {
-            $DELETE = "DELETE FROM car WHERE id_car = $IdCarrito";
+            $DELETE = "DELETE FROM registro WHERE id_registro = $IdUser";
             $resultado = mysqli_query($conn, $DELETE);
             if ($resultado) {
-                header("Location: ../car.php");
+                header("Location: ../users.php");
             } else {
                 echo "<script>
-                    alert('No se Guardo');
+                    alert('No se Elimino');
                    
                     </script>";
             }
@@ -22,7 +21,7 @@ if (isset($_SESSION['id'])) {
         }
     } else {
         echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../agregar.php");
+        header("Location: ../users.php");
     }
 } else {
     header("Location:../login.php");
