@@ -75,9 +75,9 @@ require("head.php");
                                         <div class="thumb">
                                             <div class="hover-content">
                                                 <ul>
-                                                    <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
+                                                    <li><a href="car?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div style="height: 400px;">
@@ -131,7 +131,7 @@ require("head.php");
                         <p>No te puedes perder lo oportunidad de verlos.</p>
                     </div>
                     <div class="main-border-button">
-                        <a href="product.php">Discover More</a>
+                        <a href="product">Discover More</a>
                     </div>
                 </div>
             </div>

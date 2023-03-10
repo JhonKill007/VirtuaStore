@@ -151,8 +151,6 @@ if ($conn) {
                                     <form id="contact" action="keys/addToCar.php" method="post">
                                         <input type="hidden" name="product_id" value="<?php echo $com['id_producto']; ?>">
                                         <button type="submit" style="width: 100%; text-align: center;">Add to bag</button>
-
-                                        <!-- href="car.php?id_art=<?php echo $com['id_producto']; ?> -->
                                     </form>
                                 </div>
                             </div>
@@ -199,9 +197,9 @@ if ($conn) {
 
                                                 <div class="hover-content">
                                                     <ul>
-                                                        <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                                        <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                                        <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                        <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
+                                                        <li><a href="car?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                     </ul>
                                                 </div>
                                                 <img src=<?php echo $com['foto']; ?> alt="">

@@ -1,19 +1,6 @@
 <?php
 require("head.php");
 ?>
-<!-- <div class="page-heading men-page" id="top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="inner-content">
-                    <h2>Rostro</h2>
-                    <span>Has que tu rostro se ilumine.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- ***** Main Banner Area End ***** -->
 
 <section class="section" id="products">
     <div class="container" style="margin-top: 20px;">
@@ -53,9 +40,9 @@ require("head.php");
                                     
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="car?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src=<?php echo $com['foto']; ?> alt="">

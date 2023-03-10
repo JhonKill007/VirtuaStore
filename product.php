@@ -1,19 +1,7 @@
 <?php
 require("head.php");
 ?>
-<!-- <div class="page-heading kids-page" id="top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="inner-content">
-                    <h2>Ojos</h2>
-                    <span>Deslumbra con tus ojos.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- ***** Main Banner Area End ***** -->
+
 <br>
 <br>
 <br>
@@ -29,26 +17,6 @@ require("head.php");
             </div>
         </div>
     </div>
-
-    <!-- <ul class="nav">
-    <li class="scroll-to-section"><a href="onfire.php">On Fire</a></li>
-    <li class="submenu">
-        <a href="javascript:;">ORDENAR POR</a>
-        <ul>
-            <li><a href="esmalte.php">Recomendado</a></li>
-
-            <li><a href="signup.php"> Precio: Del más Bajo almás Alto</a></li>
-            <li><a href="agregar.php">Precio: Del más Alto al
-                    más Bajo</a></li>
-
-            <li><a href="login.php">Nombre: A a la Z</a></li>
-            <li><a href="login.php">Nombre: z a la A</a></li>
-
-
-        </ul>
-    </li>
-    </ul> -->
-
 
     <div class="container">
         <div class="row" style="float: right; margin-top: -50px;">
@@ -138,10 +106,8 @@ require("head.php");
 
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <!-- <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-star"></i></a></li> -->
+                                            <li><a href="view?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
                                             <li>
-                                                <!-- <a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a> -->
                                                 <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
