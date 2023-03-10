@@ -1,31 +1,6 @@
 <?php
 require("head.php");
 ?>
-<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" >
-    <img src="assets/images/carrusel.jpg" alt="" class="carrusel-img d-block w-100">
-    <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-    <img src="assets/images/carrusel2.jpg" class="carrusel-img d-block w-100" width="100%">
-    <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-    <img src="assets/images/carrusel3.web" class="carrusel-img d-block w-100">
-    <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
