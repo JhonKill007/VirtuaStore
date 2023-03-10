@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <a href="index.php" class="logo">
+                        <a href="index" class="logo">
                             <img class="logo_img" src="assets/images/logo.png">
                         </a>
                         <ul class="nav">
@@ -59,30 +59,30 @@
                             session_start();
                             if (isset($_SESSION['id'])) {
                             ?>
-                                <li class="scroll-to-section"><a href="index.php" class="active">Home</a></li>
+                                <li class="scroll-to-section"><a href="index" class="active">Home</a></li>
                             <?php
                             } else {
                             ?>
-                                <li class="scroll-to-section"><a href="index.php" class="active">Home</a></li>
+                                <li class="scroll-to-section"><a href="index" class="active">Home</a></li>
                             <?php
                             }
                             ?>
 
-                            <li class="scroll-to-section"><a href="onfire.php">Offert</a></li>
+                            <li class="scroll-to-section"><a href="onfire">Offert</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Feature</a>
                                 <ul>
-                                    <li><a href="product.php">Boy</a></li>
+                                    <li><a href="product">Boy</a></li>
 
-                                    <li><a href="product.php">Girl</a></li>
-                                    <li><a href="product.php">Women</a></li>
+                                    <li><a href="product">Girl</a></li>
+                                    <li><a href="product">Women</a></li>
 
-                                    <li><a href="product.php">Men</a></li>
+                                    <li><a href="product">Men</a></li>
 
 
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="product.php">Products</a></li>
+                            <li class="scroll-to-section"><a href="product">Products</a></li>
 
                             <li class="submenu">
                                 <a href="javascript:;">
@@ -131,24 +131,24 @@
                                     if (isset($_SESSION['ID_ADMIN']) || isset($_SESSION['id'])) {
                                         if (isset($_SESSION['ID_ADMIN'])) {
                                     ?>
-                                            <li><a href="signup.php">Add Users</a></li>
-                                            <li><a href="agregar.php">Add Products</a></li>
-                                            <li><a href="users.php">Users</a></li>
-                                            <li><a href="address.php">Address</a></li>
-                                            <li><a href="selling.php">Sales History</a></li>
+                                            <li><a href="signup">Add Users</a></li>
+                                            <li><a href="agregar">Add Products</a></li>
+                                            <li><a href="users">Users</a></li>
+                                            <li><a href="address">Address</a></li>
+                                            <li><a href="selling">Sales History</a></li>
                                             <li><a href="keys/logout.php">Logout</a></li>
                                         <?php
                                         }
                                         if (isset($_SESSION['id'])) {
                                         ?>
-                                            <li><a href="selling.php">Purchase History</a></li>
-                                            <li><a href="selling.php">Settins</a></li>
+                                            <li><a href="selling">Purchase History</a></li>
+                                            <li><a href="selling">Settins</a></li>
                                             <li><a href="keys/logout.php">Logout</a></li>
                                         <?php
                                         }
                                     } else {
                                         ?>
-                                        <li><a href="login.php">Login</a></li>
+                                        <li><a href="login">Login</a></li>
                                     <?php
                                     }
                                     ?>
@@ -160,7 +160,7 @@
                             if (!isset($_SESSION['ID_ADMIN'])) {
                             ?>
                                 <li>
-                                    <a href="car.php">
+                                    <a href="car">
                                         <i class="fa-solid fa-cart-shopping" style="height:20px"></i>
                                     </a>
                                 </li>

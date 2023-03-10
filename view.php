@@ -135,8 +135,6 @@ if ($conn) {
                                     <form id="contact" action="keys/addToCar.php" method="post">
                                         <input type="hidden" name="product_id" value="<?php echo $com['id_producto']; ?>">
                                         <button type="submit" style="width: 100%; text-align: center;">Add to bag</button>
-
-                                        <!-- href="car.php?id_art=<?php echo $com['id_producto']; ?> -->
                                     </form>
                                 </div>
                             </div>

@@ -16,10 +16,10 @@
             <div class="col-lg-3">
                 <h4> Paginas relacionadas</h4>
                 <ul>
-                    <li><a href="rostro.php">Rostro</a></li>
-                    <li><a href="ojos.php">Ojos</a></li>
-                    <li><a href="labios.php">Labios</a></li>
-                    <li><a href="esmalte.php">Uñas</a></li>
+                    <li><a href="rostro">Rostro</a></li>
+                    <li><a href="ojos">Ojos</a></li>
+                    <li><a href="labios">Labios</a></li>
+                    <li><a href="esmalte">Uñas</a></li>
                 </ul>
             </div>
             

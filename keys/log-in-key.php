@@ -13,33 +13,29 @@ if (!empty($email) || !empty($password)) {
 
         if ($resultado->num_rows == 1) {
             $log = $resultado->fetch_array();
-            // echo "Log In Correcto";
-
             if (password_verify($password, $log['password'])) {
-                // echo "true";
-                // echo $log['role'];
                 if ($log['role'] == "ADMIN") {
                     $id = $log['id_registro'];
                     session_start();
                     $_SESSION['ID_ADMIN'] = $id;
-                    header("Location: ../index.php");
+                    header("Location: ../index");
                 } 
                 if ($log['role'] == "USER") {
                     $id = $log['id_registro'];
                     session_start();
                     $_SESSION['id'] = $id;
-                    header("Location: ../index.php");
+                    header("Location: ../index");
                 }
             } else {
                 echo "<script>
                 alert('La contraseña es incorrecta');
-                window.location='../login.php';
+                window.location='../login';
                 </script>";
             }
         } else {
             echo "<script>
             alert('El email es incorrecto');
-            window.location='../login.php';
+            window.location='../login';
             </script>";
         }
     } else {

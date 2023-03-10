@@ -1,6 +1,5 @@
 <?php
 require("head.php");
-// if (isset($_SESSION['id'])) {
 ?>
 <br>
 <br>
@@ -260,7 +259,7 @@ require("head.php");
                     </div>
                 </form>
                 <div class="section-heading">
-                    <span>Ya tienes cuenta, <a href="./login.php">Inicia Sesion</a>.</span>
+                    <span>Ya tienes cuenta, <a href="./login">Inicia Sesion</a>.</span>
                 </div>
             </div>
         </div>
@@ -268,7 +267,4 @@ require("head.php");
 </div>
 <?php
 require("footer.php");
-// } else {
-//     header("Location:login.php");
-// }
 ?>

@@ -1,19 +1,6 @@
 <?php
 require("head.php");
 ?>
-<!-- <div class="page-heading men-page" id="top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="inner-content">
-                    <h2>Rostro</h2>
-                    <span>Has que tu rostro se ilumine.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- ***** Main Banner Area End ***** -->
 
 <section class="section" id="products">
     <div class="container" style="margin-top: 20px;">

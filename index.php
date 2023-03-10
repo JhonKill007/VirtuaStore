@@ -128,7 +128,7 @@ require("head.php");
                         <p>You cannot miss the opportunity to see them.</p>
                     </div>
                     <div class="main-border-button">
-                        <a href="product.php">Discover More</a>
+                        <a href="product">Discover More</a>
                     </div>
                 </div>
             </div>

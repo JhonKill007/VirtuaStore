@@ -20,13 +20,13 @@ if(!empty($nombre) || !empty($ruta_send) || !empty($precio)  || !empty($descripc
         if($resultado){
             echo "<script>
                 alert('Agregado');
-                window.location='../agregar.php';
+                window.location='../agregar';
                 </script>";
         }
         else{
             echo "<script>
                 alert('No se Guardo');
-                window.location='../agregar.php';
+                window.location='../agregar';
                 </script>";
         }
     }
@@ -36,6 +36,6 @@ if(!empty($nombre) || !empty($ruta_send) || !empty($precio)  || !empty($descripc
 }
 else{
     echo "todos los datos son OBLIGATORIOS";
-    header("Location: ../agregar.php");
+    header("Location: ../agregar");
 }
 ?>
