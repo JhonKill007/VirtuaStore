@@ -40,7 +40,6 @@ if (isset($_SESSION['id'])) {
                                     </div>
 
                                     <div class="col-sm-6">
-<<<<<<< HEAD
                                         <span style="color:black"><?php echo $com['articulo']; ?></span>
 
                                         <div style="margin-top: 15px;">
@@ -50,23 +49,11 @@ if (isset($_SESSION['id'])) {
 
                                         <div>
                                             <span style="color:black">Size: 49</span>
-=======
-                                        <span><?php echo $com['articulo']; ?></span>
-
-                                        <div style="margin-top: 15px;">
-
-                                            <span class="price">$<?php echo $com['precio']; ?></span>
-                                        </div>
-
-                                        <div>
-                                            <span>Size: 49</span>
->>>>>>> master
                                         </div>
 
                                     </div>
 
                                     <div class="col-sm align-self-end">
-<<<<<<< HEAD
                                         <span style="color:black">Total : $<?php echo $com['precio']; ?></span>
                                         <div style="margin-top: 25px;">
                                             <form id="contact" action="keys/removeFromCar.php" method="post">
@@ -82,34 +69,10 @@ if (isset($_SESSION['id'])) {
                             </a>
 
                 <?php
-=======
-                                        <span>Total : $<?php echo $com['precio']; ?></span>
-                                        <div style="margin-top: 25px;">
-
-
-                                            <form id="contact" action="keys/removeFromCar.php" method="post">
-                                                <input type="hidden" name="car_id" value="<?php echo $com['id_car']; ?>">
-                                                <button type="submit" style="width: 100%; text-align: center;">Remove</button>
-
-                                            </form>
-                                        </div>
-
-                                    </div>
-
-
-
-
-                                </div>
-                    <?php
-                            }
-                        } else {
-                            echo " se fue a la verga";
->>>>>>> master
                         }
                     } else {
                         echo "la coneccion fallo";
                     }
-<<<<<<< HEAD
                 } else {
                     echo "la coneccion fallo";
                 }
@@ -183,9 +146,6 @@ if (isset($_SESSION['id'])) {
                         }
                         initPayPalButton();
                     </script>
-=======
-                    ?>
->>>>>>> master
                 </div>
 
                 <div class="col-lg-4">
