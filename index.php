@@ -73,12 +73,12 @@ require("head.php");
                                     <?php $com['descripcion']; ?>
                                     <div class="item">
                                         <div class="thumb">
-                                            <div class="hover-content">
+                                            <!-- <div class="hover-content">
                                                 <ul>
                                                     <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
                                                     <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                 </ul>
-                                            </div>
+                                            </div> -->
                                             <div style="height: 400px;">
                                                 <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
                                                     <img style="width: 100%;
@@ -173,8 +173,8 @@ require("head.php");
         </div>
     </div>
     <div class="container">
-        <div class="row images">
-            <div class="col-4">
+        <div class="row images d-flex justify-content-between ">
+            <div class="col-ms-5">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/ClwUwkKJl3q/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                     <div style="padding:16px;"> <a href="https://www.instagram.com/p/ClwUwkKJl3q/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
                             <div style=" display: flex; flex-direction: row; align-items: center;">
@@ -225,7 +225,8 @@ require("head.php");
                 <script async src="//www.instagram.com/embed.js"></script>
 
             </div>
-            <div class="col-4">
+            
+            <div class="col-ms-5">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/ClYuaj_ggGC/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                     <div style="padding:16px;"> <a href="https://www.instagram.com/reel/ClYuaj_ggGC/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
                             <div style=" display: flex; flex-direction: row; align-items: center;">
@@ -275,7 +276,7 @@ require("head.php");
                 </blockquote>
                 <script async src="//www.instagram.com/embed.js"></script>
             </div>
-            <div class="col-4">
+            <div class="col-ms">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Ck8X475AWOY/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                     <div style="padding:16px;"> <a href="https://www.instagram.com/reel/Ck8X475AWOY/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
                             <div style=" display: flex; flex-direction: row; align-items: center;">

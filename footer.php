@@ -14,12 +14,12 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <h4> Paginas relacionadas</h4>
+                <h4> My pages</h4>
                 <ul>
-                    <li><a href="rostro">Rostro</a></li>
-                    <li><a href="ojos">Ojos</a></li>
-                    <li><a href="labios">Labios</a></li>
-                    <li><a href="esmalte">Uñas</a></li>
+                <li><a href="#"><i class="fa fa-facebook"></i>  facebook</a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i>  twitter</a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i>  instagram</a></li>
+                   
                 </ul>
             </div>
             
@@ -31,12 +31,7 @@
                 <div class="under-footer">
                     <p>Copyright © 2021 Lolet, All Rights Reserved.
                     </p>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
+                   
                 </div>
             </div>
         </div>
