@@ -18,7 +18,7 @@ if (isset($_SESSION['id'])) {
                         <div class="row">
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <input class="form-control" type="file" name="foto" required="">
+                                    <input class="form-control" type="file" name="foto"multiple required="">
                                 </fieldset>
                             </div>
                             <br>

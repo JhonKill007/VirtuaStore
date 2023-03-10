@@ -21,10 +21,10 @@ require("head.php");
 <section class="section" id="products">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="section-heading ">
-                    <h2>Lo mas destacado</h2>
-                    <span>Mas detalles en la seccion de labios.</span>
+                    <!-- <h2>Lo mas destacado</h2>
+                    <span>Mas detalles en la seccion de labios.</span> -->
                 </div>
             </div>
         </div>
@@ -137,12 +137,12 @@ require("head.php");
             <?php
             require("keys/conection.php");
             if ($conn) {
-                $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() ";
+                $SELECT = "SELECT * FROM productos  ORDER BY rand() ";
                 $resultado = mysqli_query($conn, $SELECT);
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
             ?>
-                        <?php $com['id_producto']; ?>
+                        <?php $id_articulo = $com['id_producto']; ?>
 
 
 
@@ -155,7 +155,7 @@ require("head.php");
                                         <ul>
                                             <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
                                             <li>
-                                                <?php $productoSelect= $com['id_producto']; ?>
+                                                <?php $productoSelect = $com['id_producto']; ?>
                                                 <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
@@ -205,62 +205,91 @@ require("head.php");
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <form id="" action="keys/addToCar.php" method="post">
+                <div class="modal-body">
 
-                <span>Size</span>
-                <div class="container">
-                    <div class="row">
-                        <div class="btn-group btn-group-toggle overflow-auto" data-toggle="buttons">
-                            <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                <input style="font-size:14px;" type="radio" name="options" id="option1" autocomplete="off"> 11
-                            </label>
-                            <label style="border-radius:20%;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> 13
-                            </label>
-                            <label style="border-radius:20%; height: 50px;width:50px ;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                <input type="radio" name="options" id="option3" autocomplete="off"> 15
-                            </label>
+                    <div class="right-content">
+
+                        <span>Size</span>
+                        <div class="container">
+                            <div class="row">
+                                <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                                    <?php
+                                    require("keys/conection.php");
+                                    if ($conn) {
+                                        $SELECT = "select s.valor from sizeporproducto sp inner join size s on sp.id_size= s.id where sp.id_producto=$id_articulo";
+                                        $resultado = mysqli_query($conn, $SELECT);
+                                        if ($resultado) {
+                                            while ($com = $resultado->fetch_array()) {
+                                    ?>
+
+                                                <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                                    <input style="font-size:14px;" required type="radio" name="size" id="option1" autocomplete="off" value="<?php echo $com['valor']; ?>"> <?php echo $com['valor']; ?>
+                                                </label>
+
+                                    <?php
+                                            }
+                                        } else {
+                                            echo " se fue a la verga";
+                                        }
+                                    } else {
+                                        echo "la coneccion fallo";
+                                    }
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <span>Colors</span>
+                        <div class="container">
+                            <div class="row">
+                                <div class="btn-group btn-group-toggle " data-toggle="buttons">
+
+                                    <?php
+                                    require("keys/conection.php");
+                                    if ($conn) {
+                                        $SELECT = "select c.valor from colorporproducto cp inner join color c on cp.id_color= c.id where cp.id_producto=$id_articulo";
+                                        $resultado = mysqli_query($conn, $SELECT);
+                                        if ($resultado) {
+                                            while ($com = $resultado->fetch_array()) {
+                                    ?>
+
+                                                <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
+                                                             height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
+                                                    <input type="radio" name="color" value="<?php echo $com['valor']; ?>" required>
+                                                </label>
 
 
+
+                                    <?php
+                                            }
+                                        } else {
+                                            echo " se fue a la verga";
+                                        }
+                                    } else {
+                                        echo "la coneccion fallo";
+                                    }
+                                    ?>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
+
                 </div>
-
-                <hr>
-
-                <span>Colors</span>
-                <div class="container">
-                    <div class="row">
-                        <div class="btn-group btn-group-toggle overflow-auto" data-toggle="buttons">
-                            <label style="border-radius:50%; background-color:aqua; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
-                                <input type="radio" name="options" id="option1" checked>
-                            </label>
-                            <label style="border-radius:50% ;background-color:red;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                <input type="radio" name="options" id="option2" autocomplete="off">
-                            </label>
-                            <label style="border-radius:50%; background-color:black;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                <input type="radio" name="options" id="option3" autocomplete="off">
-                            </label>
-                            <label style="border-radius:50%; background-color:white;height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                <input type="radio" name="options" id="option3" autocomplete="off">
-                            </label>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form id="contact" action="keys/addToCar.php" method="post">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="hidden" name="product_id" value="<?php echo $productoSelect; ?>">
-                    <button type="submit" class="btn btn-dark">Add to Bagh</button>
-                  
-                </form>
-                
-            </div>
+                    <button type="submit" class="btn btn-dark">Add to Bag</button>
+
+
+                </div>
+            </form>
         </div>
     </div>
 </div>
