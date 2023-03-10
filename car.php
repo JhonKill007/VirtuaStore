@@ -6,7 +6,6 @@ if (isset($_SESSION['id'])) {
     <br>
     <br>
 
-<<<<<<< HEAD
 <div class="contact-us">
     <div class="container">
         <div style="margin-bottom: 15px;">
@@ -33,29 +32,6 @@ if (isset($_SESSION['id'])) {
                 ?>
                             <?php $total += $com['precio']; ?>
                             <a href="view.php?id_articulo=<?php echo $com['producto_id']; ?>">
-=======
-    <div class="contact-us">
-        <div class="container">
-            <div class="row justify-content-between ">
-                <div class="col-lg-6">
-
-
-                    <div style="margin-bottom: 15px;">
-                        <h6>Enviar a: <span>Santo Domingo, Rep Dom</span></h6>
-                    </div>
-                    <?php
-                    $total = 0;
-                    require("keys/conection.php");
-                    $idUser = $_SESSION['id'];
-                    if ($conn) {
-                        // = $id_articulo
-                        $SELECT = "SELECT * FROM car c left join productos p on c.producto_id = p.id_producto where c.user_id = '$idUser'";
-                        $resultado = mysqli_query($conn, $SELECT);
-                        if ($resultado) {
-                            while ($com = $resultado->fetch_array()) {
-                    ?>
-                                <?php $total += $com['precio']; ?>
->>>>>>> master
                                 <div class="d-flex flex-row justify-content-between" style="border:1px solid grey; border-radius:10px;  margin-bottom:15px; padding:15px">
 
 
