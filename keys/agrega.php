@@ -12,6 +12,7 @@ $categoria = $_POST['categoria'];
 $descripcion = $_POST['descripcion'];
 $colorSelect = $_POST['color'];
 $sizeSelect = $_POST['size'];
+$cantidadS = $_POST['cantidad'];
 
 
 
@@ -22,7 +23,7 @@ if (!empty($nombre) || !empty($ruta_send) || !empty($precio)  || !empty($descrip
     require("conection.php");
 
     if ($conn) {
-        $INSERT = "INSERT INTO productos (foto,articulo,categoria,precio,descripcion)values('$ruta_send','$nombre','$categoria','$precio','$descripcion')";
+        $INSERT = "INSERT INTO productos (foto,articulo,categoria,precio,descripcion,cantidad)values('$ruta_send','$nombre','$categoria','$precio','$descripcion','$cantidadS')";
         $resultado = mysqli_query($conn, $INSERT);
         if ($resultado) {
 
