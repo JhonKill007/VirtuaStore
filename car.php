@@ -52,6 +52,9 @@ if (isset($_SESSION['id'])) {
 
                                             <div>
                                                 <span style="color:black">Size: <?php echo $com['size']; ?></span>
+                                            </div>
+                                            <div>
+                                                <span style="color:black">Color:</span>
                                                 <label style="border-radius:50%; background-color:<?php echo $com['color']; ?>; height: 20px;width:20px;margin:auto" class=" ml-4 ">
                                                 </label>
                                             </div>
@@ -166,7 +169,7 @@ if (isset($_SESSION['id'])) {
 
 
 <?php
-}else{
+} else {
     header("Location:login");
 }
 require("footer.php");
