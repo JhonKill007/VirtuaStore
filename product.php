@@ -11,8 +11,7 @@ require("head.php");
         <div class="row">
             <div class="col-lg-4">
                 <div class="section-heading ">
-                    <!-- <h2>Lo mas destacado</h2>
-                    <span>Mas detalles en la seccion de labios.</span> -->
+                  
                 </div>
             </div>
         </div>
@@ -105,7 +104,7 @@ require("head.php");
             <?php
             require("keys/conection.php");
             if ($conn) {
-                $SELECT = "SELECT * FROM productos  ORDER BY rand() ";
+                $SELECT = "SELECT * FROM productos  ORDER BY id_producto desc ";
                 $resultado = mysqli_query($conn, $SELECT);
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
@@ -148,6 +147,9 @@ require("head.php");
                                 </div>
                             </div>
                         </div>
+
+
+
             <?php
                     }
                 } else {
@@ -185,7 +187,7 @@ require("head.php");
                                     <?php
                                     require("keys/conection.php");
                                     if ($conn) {
-                                        $SELECT = "select s.valor from sizeporproducto sp inner join size s on sp.id_size= s.id where sp.id_producto=$id_articulo";
+                                        $SELECT = "select s.valor from sizeporproducto sp inner join size s on sp.id_size= s.id where sp.id_producto=$id_articulo ";
                                         $resultado = mysqli_query($conn, $SELECT);
                                         if ($resultado) {
                                             while ($com = $resultado->fetch_array()) {
@@ -261,6 +263,7 @@ require("head.php");
         </div>
     </div>
 </div>
+
 <?php
 require("footer.php");
 ?>

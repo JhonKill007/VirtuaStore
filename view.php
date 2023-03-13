@@ -23,35 +23,60 @@ if ($conn) {
 ?>
             <?php $descripcion = $com['descripcion']; ?>
 
-            <?php $idProducto=$com['id_producto']; ?>
+            <?php $idProducto = $com['id_producto']; ?>
             <section class="contact-us" id="product">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <!-- <div class="left-images">
-                                <img src=<?php echo $com['foto']; ?> alt="">
-                            </div> -->
+
                             <div id="demo" class="carousel slide" data-ride="carousel">
+                                <?php
+                                require("keys/conection.php");
+                                if ($conn) {
+                                    $SELECT = "select * from fotoporproducto where id_producto=$id_articulo";
+                                    $resultado = mysqli_query($conn, $SELECT);
+                                    if ($resultado) {
+                                        $nums_slides = mysqli_num_rows($resultado);
 
-                                <!-- Indicators -->
-                                <ul class="carousel-indicators">
-                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                                    <li data-target="#demo" data-slide-to="1"></li>
-                                    <li data-target="#demo" data-slide-to="2"></li>
-                                </ul>
 
-                                <!-- The slideshow -->
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active ">
-                                        <img style="box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);" src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src=<?php echo $com['foto']; ?> alt="" width="1100" height="500">
-                                    </div>
-                                </div>
+
+                                ?>
+                                        <ol class="carousel-indicators">
+                                            <?php
+                                            for ($i = 0; $i < $nums_slides; $i++) {
+                                                $active = "active";
+                                            ?>
+                                                <li data-target="#demo" data-slide-to="<?php echo $i; ?>" class="<?php echo $active; ?>"></li>
+                                            <?php
+                                                $active = "";
+                                            }
+                                            ?>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <?php
+                                            $active = "active";
+                                            while ($rw_slider = mysqli_fetch_array($resultado)) {
+                                            ?>
+                                                <div class="carousel-item carrusel-img <?php echo $active; ?>">
+                                                    <img data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="<?php echo $rw_slider['directorio']; ?>" data-holder-rendered="true">
+
+                                                </div>
+                                            <?php
+                                                $active = "";
+                                            }
+                                            ?>
+
+                                        </div>
+                                <?php
+
+                                    } else {
+                                        echo " se fue a la verga";
+                                    }
+                                } else {
+                                    echo "la coneccion fallo";
+                                }
+                                ?>
+
 
                                 <!-- Left and right controls -->
                                 <a style="width: 30px;
@@ -125,7 +150,7 @@ if ($conn) {
                                                         while ($com = $resultado->fetch_array()) {
                                                 ?>
 
-                                                            <label  style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
+                                                            <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
                                                              height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
                                                                 <input type="radio" name="color" value="<?php echo $com['valor']; ?>" required>
                                                             </label>
