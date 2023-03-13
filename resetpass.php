@@ -7,10 +7,13 @@ if (!isset($_SESSION['ID_ADMIN']) && !isset($_SESSION['id'])) {
             <div class="row">
                 <div class="col-lg-8">
                     <div class="section-heading">
-                        <h2>Login</h2>
-                        <span>Do not have account, signup <a href="signup">here</a>.</span>
+                        <h2>Recover account</h2>
+                        <span>
+                            It's ok, you can recover your account, <br>
+                            We will send a recovery link to the email that you have linked to your account.
+                        </span>
                     </div>
-                    <form id="subscribe" action="keys/log-in-key.php" method="post">
+                    <form id="subscribe" action="keys/identity-key.php" method="post">
                         <div class="row">
                             <div class="col-lg-5">
                                 <fieldset>
@@ -22,22 +25,11 @@ if (!isset($_SESSION['ID_ADMIN']) && !isset($_SESSION['id'])) {
                         <div class="row">
                             <div class="col-lg-5">
                                 <fieldset>
-                                    <input name="password" type="password" id="name" placeholder="Contraseña" required="">
-                                </fieldset>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <fieldset>
-                                    <input class="main-dark-button" type="submit" value="Login" placeholder="Login">
+                                    <input class="main-dark-button" type="submit" value="Send" placeholder="Send">
                                 </fieldset>
                             </div>
                         </div>
                     </form>
-                    <div class="section-heading">
-                        <span>Do you forgot the password? click <a href="resetpass">here</a>.</span>
-                    </div>
                 </div>
             </div>
         </div>
