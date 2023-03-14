@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/1528b45c37.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/1528b45c37.css" crossorigin="anonymous">
     <title>Lolet</title>
-
+   
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
