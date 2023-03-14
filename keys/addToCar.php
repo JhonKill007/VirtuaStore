@@ -6,6 +6,9 @@ $idProduct = $_POST['product_id'];
 $active = 1;
 $sizeS= $_POST['size'];
 $colorS= $_POST['color'];
+$cantidadS= $_POST['cantidad'];
+
+
 
 
 
@@ -13,7 +16,7 @@ if (isset($_SESSION['id'])) {
     if( !empty($idProduct) || !empty($Iduser)){
         require("conection.php");
         if($conn){
-            $INSERT = "INSERT INTO car (user_id, producto_id, createdate, active,size,color)values($Iduser,'$idProduct',NOW(),$active,'$sizeS','$colorS')";
+            $INSERT = "INSERT INTO car (user_id, producto_id, createdate, active,size,color,cantidadSelected,comprado)values($Iduser,'$idProduct',NOW(),$active,'$sizeS','$colorS',$cantidadS,false)";
             $resultado = mysqli_query($conn,$INSERT);
             if($resultado){
                 header("Location: ../car");

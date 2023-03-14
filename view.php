@@ -8,6 +8,79 @@ $id_articulo = $_GET['id_articulo']
         width: 100%;
         height: 100%;
     }
+
+    .quantity {
+        position: relative;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .quantity input {
+        width: 45px;
+        height: 42px;
+        line-height: 1.65;
+        float: left;
+        display: block;
+        padding: 0;
+        margin: 0;
+        padding-left: 20px;
+        border: 1px solid #eee;
+    }
+
+    .quantity input:focus {
+        outline: 0;
+    }
+
+    .quantity-nav {
+        float: left;
+        position: relative;
+        height: 42px;
+    }
+
+    .quantity-button {
+        position: relative;
+        cursor: pointer;
+        border-left: 1px solid #eee;
+        width: 20px;
+        text-align: center;
+        color: #333;
+        font-size: 13px;
+        font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+        line-height: 1.7;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+
+    .quantity-button.quantity-up {
+        position: absolute;
+        height: 50%;
+        top: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .quantity-button.quantity-down {
+        position: absolute;
+        bottom: -1px;
+        height: 50%;
+    }
+
+    .checkboxSelected input:checked {
+        border: 1px solid red !important;
+
+    }
 </style>
 <br>
 <br>
@@ -24,6 +97,9 @@ if ($conn) {
             <?php $descripcion = $com['descripcion']; ?>
 
             <?php $idProducto = $com['id_producto']; ?>
+            <?php $cantidad = $com['cantidad']; ?>
+
+
             <section class="contact-us" id="product">
                 <div class="container">
                     <div class="row">
@@ -103,7 +179,7 @@ if ($conn) {
                                     <span class="price">$<?php echo $com['precio']; ?></span>
 
 
-                                    <span>Size</span>
+                                    <span style="color:black"> <b> Size</b></span>
                                     <div class="container">
                                         <div class="row">
                                             <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -129,14 +205,11 @@ if ($conn) {
                                                     echo "la coneccion fallo";
                                                 }
                                                 ?>
-
                                             </div>
                                         </div>
                                     </div>
-
                                     <hr>
-
-                                    <span>Colors</span>
+                                    <span style="color:black"> <b>Colors</b> </span>
                                     <div class="container">
                                         <div class="row">
                                             <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -151,8 +224,8 @@ if ($conn) {
                                                 ?>
 
                                                             <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
-                                                             height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
-                                                                <input type="radio" name="color" value="<?php echo $com['valor']; ?>" required>
+                                                             height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 checkboxSelected">
+                                                                <input type="radio" name="color" id="option1" value="<?php echo $com['valor']; ?>" required>
                                                             </label>
 
 
@@ -171,7 +244,24 @@ if ($conn) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="quantity-content">
+                                <hr>
+                                <div class="">
+
+                                    <span><b>Quantity</b></span>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="quantity">
+                                                <div class="right-content">
+                                                    <input style="width: 80px;" name="cantidad" type="number" min="1" max="<?php echo $cantidad; ?>" step="1" value="1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+                                </div>
+                                <div class="">
                                     <div class="left-content">
                                     </div>
                                     <span><b>Descripcion</b><br><?php echo $descripcion ?></span>
@@ -181,7 +271,7 @@ if ($conn) {
                                         </div>
                                     </div>
 
-
+                                    <hr>
                                 </div>
                                 <div class="contact">
                                     <div style="width: 100%; text-align: center;" class="contact">
@@ -217,12 +307,12 @@ if ($conn) {
                         <?php
                         require("keys/conection.php");
                         if ($conn) {
-                            $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() ";
+                            $SELECT = "SELECT * FROM productos  ORDER BY rand() LIMIT 8 ";
                             $resultado = mysqli_query($conn, $SELECT);
                             if ($resultado) {
                                 while ($com = $resultado->fetch_array()) {
                         ?>
-                                    <?php $com['id_producto']; ?>
+                                    <?php $id_articulo = $com['id_producto']; ?>
 
 
 
@@ -230,20 +320,28 @@ if ($conn) {
                                     <div class="col-lg-3">
                                         <div class="item">
                                             <div class="thumb">
-                                                <!-- <div class="hover-content">
-                                        <div class="inner">
-                                        <img src=<?php echo $com['foto']; ?> alt="">
-
-                                        </div>
-                                    </div> -->
 
                                                 <div class="hover-content">
                                                     <ul>
                                                         <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                                        <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                        <li>
+                                                            <?php $productoSelect = $com['id_producto']; ?>
+                                                            <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal">
+                                                                <i class="fa fa-shopping-cart"></i>
+                                                            </a>
+
+                                                        </li>
                                                     </ul>
                                                 </div>
-                                                <img src=<?php echo $com['foto']; ?> alt="">
+                                                <div style="height: 400px;">
+                                                    <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
+                                                        <img style="width: 100%;
+                                                            height: 100%;
+                                                            object-fit: cover;
+                                                            object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
+                                                    </a>
+
+                                                </div>
                                             </div>
                                             <div class="down-content">
                                                 <h4><?php echo $com['articulo']; ?></h4>
@@ -252,6 +350,9 @@ if ($conn) {
                                             </div>
                                         </div>
                                     </div>
+
+
+
                         <?php
                                 }
                             } else {
@@ -280,3 +381,39 @@ if ($conn) {
 <?php
 require("footer.php");
 ?>
+
+
+<script>
+    jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+    jQuery('.quantity').each(function() {
+        var spinner = jQuery(this),
+            input = spinner.find('input[type="number"]'),
+            btnUp = spinner.find('.quantity-up'),
+            btnDown = spinner.find('.quantity-down'),
+            min = input.attr('min'),
+            max = input.attr('max');
+
+        btnUp.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue >= max) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue + 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+        btnDown.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue <= min) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue - 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+    });
+</script>
