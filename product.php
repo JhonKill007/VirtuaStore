@@ -240,7 +240,7 @@ $sort = '';
                                     </div>
                                 </div>
                                 <div class="down-content" style="text-align: center">
-                                    <span style="font-size: 15px; color:grey"><?php echo $com['articulo']; ?></span>
+                                    <span style="font-size: 15px; color:black"><?php echo $com['articulo']; ?></span>
                                     <span style="font-size: 15px;color:grey">$<?php echo $com['precio']; ?></span>
 
                                     <?php
