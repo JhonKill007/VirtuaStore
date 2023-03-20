@@ -1,10 +1,17 @@
 <?php
 require("head.php");
+require("keys/conection.php");
+$filtro = '';
+$sort = '';
 ?>
 
 <br>
 <br>
 <br>
+
+
+
+
 
 <section class="section" id="products">
     <div class="container">
@@ -17,94 +24,184 @@ require("head.php");
         </div>
     </div>
 
+
+
+
     <div class="container">
-        <div class="row" style="float: right; margin-top: -50px;">
-            <div class="dropdown" style="margin-right: 20px;">
-                <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Color </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form id="contact" action="product" method="POST">
+            
+            <div class="row" style="float: right; margin-top: -50px;">
+                <div class="dropdown" style="margin-right: 15px;">
+                    <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Color </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                    <?php
-                    require("keys/conection.php");
-                    if ($conn) {
-                        $SELECT = "SELECT * FROM color ";
-                        $resultado = mysqli_query($conn, $SELECT);
-                        if ($resultado) {
-                            while ($com = $resultado->fetch_array()) {
-                    ?>
-                                <div class="form-check" style="margin:10px">
-                                    <label class="form-check-label">
-                                        <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                                        <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
-                                    </label>
-                                </div>
+                        <?php
+                        if ($conn) {
+                            $SELECT = "SELECT * FROM color ";
+                            $resultado = mysqli_query($conn, $SELECT);
+                            if ($resultado) {
+                                while ($com = $resultado->fetch_array()) {
+                        ?>
+                                    <div class="form-check" style="margin:10px">
+                                        <label class="form-check-label">
+                                            <input style="height: 20px;width: 20px;" name="buscarC[]" type="checkbox" class="form-check-input" value="<?php echo $com['valor']; ?>">
+                                            <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
+                                        </label>
+                                    </div>
 
-                    <?php
+                        <?php
+                                }
+                            } else {
+                                echo " se fue a la verga";
                             }
                         } else {
-                            echo " se fue a la verga";
+                            echo "la coneccion fallo";
                         }
-                    } else {
-                        echo "la coneccion fallo";
-                    }
-                    ?>
+                        ?>
+
+                    </div>
 
                 </div>
+                <div class="dropdown" style="margin-right: 15px;">
+                    <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Size </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-            </div>
-            <div class="dropdown" style="margin-right: 20px;">
-                <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Size </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <?php
+                        if ($conn) {
+                            $SELECT = "SELECT * FROM size ";
+                            $resultado = mysqli_query($conn, $SELECT);
+                            if ($resultado) {
+                                while ($com = $resultado->fetch_array()) {
+                        ?>
+                                    <div class="form-check" style="margin:10px">
+                                        <label class="form-check-label">
+                                            <input style="height: 20px;width: 20px;" type="checkbox" name="buscarS[]" class="form-check-input" value="<?php echo $com['valor']; ?>">
+                                            <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
+                                        </label>
+                                    </div>
 
-                    <?php
-                    require("keys/conection.php");
-                    if ($conn) {
-                        $SELECT = "SELECT * FROM size ";
-                        $resultado = mysqli_query($conn, $SELECT);
-                        if ($resultado) {
-                            while ($com = $resultado->fetch_array()) {
-                    ?>
-                                <div class="form-check" style="margin:10px">
-                                    <label class="form-check-label">
-                                        <input style="height: 20px;width: 20px;" type="checkbox" class="form-check-input" value="">
-                                        <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
-                                    </label>
-                                </div>
-
-                    <?php
+                        <?php
+                                }
+                            } else {
+                                echo " se fue a la verga";
                             }
                         } else {
-                            echo " se fue a la verga";
+                            echo "la coneccion fallo";
                         }
-                    } else {
-                        echo "la coneccion fallo";
+                        ?>
+
+                    </div>
+
+                </div>
+                <div class="dropdown" style="margin-right: 15px;">
+                    <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sort
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        <!-- <option class="dropdown-item" name="sort" value="">Best March</option>
+                        <option class="dropdown-item" name="sort" value="desc">Price: Lowest first</option>
+                        <option class="dropdown-item" name="sort" value="asc">Price: Highest first</option> -->
+                        <div class="form-check" style="margin:10px">
+                            <label class="form-check-label">
+                                <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="">
+                                <span style="margin-left:20px; font-size:16px">Best March</span>
+                            </label>
+                        </div>
+                        <div class="form-check" style="margin:10px">
+                            <label class="form-check-label">
+                                <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="asc">
+                                <span style="margin-left:20px; font-size:16px">Price: Lowest first</span>
+                            </label>
+                        </div>
+                        <div class="form-check" style="margin:10px">
+                            <label class="form-check-label">
+                                <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="desc">
+                                <span style="margin-left:20px; font-size:16px">Price: Highest first</span>
+                            </label>
+                        </div>
+                        <!-- <option  class="dropdown-item" value="ojos">Ojos</option> -->
+
+                    </div>
+
+                </div>
+                <button style="margin-right: 10px;"  type="submit" class="btn btn-light">Apply</button>
+
+            </div>
+
+
+        </form>
+
+        <?php
+
+        if (isset($_POST['sort'])) {
+
+            $valuesort = $_POST['sort'];
+            $sort = "order by p.precio $valuesort";
+            echo "<script>console.log($sort)</script>";
+        }
+
+        if (isset($_POST['buscarS'])) {
+            $sizes = $_POST['buscarS'];
+
+            $count = count($_POST['buscarS']);
+
+            $filtro = "where s.valor= ";
+            for ($i = 0; $i < $count; $i++) {
+
+                $filtro .= "'$sizes[$i]'";
+
+                if ($count - 1 > $i) {
+                    $filtro .= ' or s.valor= ';
+                }
+            }
+        } else if (isset($_POST['buscarC'])) {
+            $colors = $_POST['buscarC'];
+
+            $countC = count($_POST['buscarC']);
+
+
+            if (isset($_POST['buscarS'])) {
+                $filtro .= "and c.valor=";
+
+                for ($j = 0; $j < $countC; $j++) {
+
+                    $filtro .= "'$colors[$j]'";
+
+                    if ($countC - 1 > $j) {
+                        $filtro .= ' or c.valor= ';
                     }
-                    ?>
+                }
+            } else {
 
-                </div>
+                $filtro = "where c.valor= ";
 
-            </div>
-            <div class="dropdown">
-                <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sort
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Best March</a>
-                    <a class="dropdown-item" href="#">Prece: Lowest first </a>
-                    <a class="dropdown-item" href="#">Precio: Highest first</a>
+                for ($j = 0; $j < $countC; $j++) {
 
-                </div>
+                    $filtro .= "'$colors[$j]'";
 
-            </div>
-        </div>
-
+                    if ($countC - 1 > $j) {
+                        $filtro .= ' or c.valor= ';
+                    }
+                }
+            }
+        }
+        ?>
 
         <div class="row">
+
+
             <?php
-            require("keys/conection.php");
             if ($conn) {
-                $SELECT = "SELECT * FROM productos  ORDER BY id_producto desc ";
+                $SELECT = "SELECT distinct p.id_producto, p.precio,p.foto,p.articulo,p.descripcion from productos p
+                join colorporproducto cp on cp.id_producto= p.id_producto
+                join color c on c.id = cp.id_color
+                join sizeporproducto sp on p.id_producto = sp.id_producto
+                join size s on sp.id_size = s.id $filtro  $sort";
+
+
                 $resultado = mysqli_query($conn, $SELECT);
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
@@ -123,7 +220,7 @@ require("head.php");
                                             <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
                                             <li>
                                                 <?php $productoSelect = $com['id_producto']; ?>
-                                                <a style="cursor: pointer;" class="" data-toggle="modal"  data-target="#exampleModal-<?php echo $com['id_producto']; ?>">
+                                                <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal-<?php echo $com['id_producto']; ?>">
                                                     <i class="fa fa-shopping-cart"></i>
 
                                                 </a>
@@ -142,16 +239,42 @@ require("head.php");
 
                                     </div>
                                 </div>
-                                <div class="down-content">
-                                    <h4><?php echo $com['articulo']; ?></h4>
-                                    <span>$<?php echo $com['precio']; ?></span>
+                                <div class="down-content" style="text-align: center">
+                                    <span style="font-size: 15px; color:black"><?php echo $com['articulo']; ?></span>
+                                    <span style="font-size: 15px;color:grey">$<?php echo $com['precio']; ?></span>
+
+                                    <?php
+
+                                    if ($conn) {
+                                        $SELECT = "select c.valor from color c inner join  colorporproducto cp on c.id = cp.id_color where cp.id_producto=$id_articulo ";
+                                        $resultadoColor = mysqli_query($conn, $SELECT);
+                                        if ($resultadoColor) {
+                                            while ($com = $resultadoColor->fetch_array()) {
+                                    ?>
+
+                                                <div style="display: inline-block;">
+                                                    <span style="border-radius:50%; border:1px solid black;  background-color:<?php echo $com['valor']; ?>;
+                                                             height: 20px;width:20px;margin:auto" class="  ">
+                                                    </span>
+                                                </div>
+
+                                    <?php
+                                            }
+                                        } else {
+                                            echo " se fue a la verga";
+                                        }
+                                    } else {
+                                        echo "la coneccion fallo";
+                                    }
+                                    ?>
+
 
                                 </div>
                             </div>
                         </div>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal-<?php echo $com['id_producto']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal-<?php echo $id_articulo ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -197,13 +320,16 @@ require("head.php");
 
                                                 <hr>
 
-                                                <span>Colors</span>
+                                                <span>Colors </span>
+
                                                 <div class="container">
+
                                                     <div class="row">
                                                         <div class="btn-group btn-group-toggle " data-toggle="buttons">
 
+
+
                                                             <?php
-                                                            require("keys/conection.php");
                                                             if ($conn) {
                                                                 $SELECT = "select c.valor from colorporproducto cp inner join color c on cp.id_color= c.id where cp.id_producto=$productoSelect";
                                                                 $resultadoC = mysqli_query($conn, $SELECT);
@@ -213,7 +339,7 @@ require("head.php");
 
                                                                         <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
                                                              height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
-                                                                            <input type="radio" name="color" value="<?php echo $com['valor']; ?>" required>
+                                                                            <input type="radio" onclick="handleClick(this);" name="color" value="<?php echo $com['valor']; ?>" required>
                                                                         </label>
 
 
@@ -262,6 +388,8 @@ require("head.php");
             ?>
         </div>
     </div>
+
+
 </section>
 <!-- Button trigger modal -->
 
@@ -272,5 +400,12 @@ require("footer.php");
 ?>
 
 
+<script>
+    var currentValue = 0;
 
+    function handleClick(myRadio) {
+
+
+        document.getElementById('colorSelected').innerHTML = myRadio.value + '';
+    }
 </script>

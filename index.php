@@ -11,24 +11,21 @@ require("head.php");
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item carrusel-img active">
-            <img class="d-block w-100" src="assets/images/moda.jpg" alt="First slide">
+            <img class="d-block w-100" src="img/kancanP5.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Prueva 1</h5>
-                <p style="color:white">Descripcion Prueva 1</p>
+             
             </div>
         </div>
         <div class="carousel-item carrusel-img">
-            <img class="d-block w-100" src="assets/images/carrusel2.jpg" alt="Second slide">
+            <img class="d-block w-100" src="img/kancanP3.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Prueva 2</h5>
-                <p style="color:white">Descripcion Prueva 2</p>
+              
             </div>
         </div>
         <div class="carousel-item carrusel-img">
-            <img class="d-block w-100" src="assets/images/moda2.jpg" alt="Third slide">
+            <img class="d-block w-100" src="img/kancanP6.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Prueva 3</h5>
-                <p style="color:white">Descripcion Prueva 3</p>
+             
             </div>
         </div>
     </div>
@@ -90,9 +87,9 @@ require("head.php");
 
                                             </div>
                                         </div>
-                                        <div class="down-content">
-                                            <h4><?php echo $com['articulo']; ?></h4>
-                                            <span>$<?php echo $com['precio']; ?></span>
+                                        <div class="down-content"  style="text-align: center">
+                                        <span style="font-size: 15px; color:black"><?php echo $com['articulo']; ?></span>
+                                    <span style="font-size: 15px;color:grey">$<?php echo $com['precio']; ?></span>
 
                                         </div>
                                     </div>
@@ -111,11 +108,7 @@ require("head.php");
         </div>
     </div>
 </section>
-<!-- ***** Men Area Ends ***** -->
 
-<!-- ***** Kids Area Ends ***** -->
-
-<!-- ***** Explore Area Starts ***** -->
 <section class="section" id="explore">
     <div class="container">
         <div class="row">
