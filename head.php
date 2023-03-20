@@ -48,7 +48,7 @@
     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" >
                     <nav class="main-nav">
                         <a href="index" class="logo">
                             <img class="logo_img" src="assets/images/logo.png">
@@ -142,7 +142,7 @@
                                         if (isset($_SESSION['id'])) {
                                         ?>
                                             <li><a href="selling">Purchase History</a></li>
-                                            <li><a href="selling">Settins</a></li>
+                                            <li><a href="settings">Settins</a></li>
                                             <li><a href="keys/logout.php">Logout</a></li>
                                         <?php
                                         }

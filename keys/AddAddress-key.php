@@ -1,7 +1,6 @@
 <?php
 session_start();
-$origen = $_POST['_origen'];
-$_id_configuracion = $_POST['id_configuracion'];
+$id = $_SESSION['id'];
 $pais = $_POST['pais'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
@@ -16,18 +15,14 @@ if (isset($_SESSION['id'])) {
     if (!empty($pais) || !empty($nombre) || !empty($apellido) || !empty($calle) || !empty($numero) || !empty($cp) || !empty($city) || !empty($estado) || !empty($telefono)) {
         require("conection.php");
         if ($conn) {
-            $UPDATE = "UPDATE configuracion SET pais = '$pais', nombre = '$nombre', apellido = '$apellido', calle = '$calle', numero = '$numero', codigo_postal = '$cp', ciudad = '$city', estado = '$estado', telefono = '$telefono' WHERE id_configuracion = '$_id_configuracion'";
-            $resultado = mysqli_query($conn, $UPDATE);
+            $INSERT = "INSERT INTO configuracion (pais,nombre,apellido,calle,numero,codigo_postal,ciudad,estado,telefono,id_registro)values('$pais','$nombre','$apellido','$calle','$numero','$cp','$city','$estado','$telefono','$id')";
+            $resultado = mysqli_query($conn, $INSERT);
             if ($resultado) {
-                if($origen == 1){
-                    header("Location: ../settings");
-                }
-                if($origen == 2){
-                    header("Location: ../address");
-                }
+                header("Location: ../settings");
             } else {
                 echo "<script>
-                    alert('No se Guardo');
+                    alert('No se agrego el registro');
+                   
                     </script>";
             }
         } else {

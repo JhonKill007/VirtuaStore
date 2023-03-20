@@ -48,9 +48,13 @@ if (!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) ||
                         }
                         if ($row['role'] == "USER") {
                             $id = $row['id_registro'];
-                            session_start();
-                            $_SESSION['id'] = $id;
-                            header("Location: ../index");
+                            $INSERT = "INSERT INTO registro (nombre,apellido,numero,email,password,birthday,genero,role)values('$nombre','$apellido','$numero','$email','$script_password','$birthday','$genero','$role')";
+                            $resultado = mysqli_query($conn, $INSERT);
+                            if ($resultado) {
+                                session_start();
+                                $_SESSION['id'] = $id;
+                                header("Location: ../index");
+                            }
                         }
                     }
                 } else {

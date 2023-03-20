@@ -25,7 +25,10 @@ if (isset($_SESSION['ID_ADMIN'])) {
                             if ($resultado) {
                                 while ($com = $resultado->fetch_array()) {
                         ?>
+                                    <input type="hidden" name="id_configuracion" value="<?php echo $com['id_configuracion']; ?>">
                                     <input type="hidden" name="pais" value="United States">
+                                    <input type="hidden" name="_origen" value="2">
+
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <fieldset>
