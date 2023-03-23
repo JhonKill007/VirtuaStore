@@ -15,7 +15,6 @@ if (isset($_SESSION['id'])) {
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Title</th>
                         <th scope="col">Color</th>
                         <th scope="col">Quantity</th>
@@ -43,7 +42,6 @@ if (isset($_SESSION['id'])) {
                     ?>
 
                                 <tr>
-                                    <th scope="row"><?php echo $com['id_car']; ?></th>
                                    
                                     <td><?php echo $com['articulo']; ?></td>
                                     <td><?php echo $com['color']; ?></td>
