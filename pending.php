@@ -48,7 +48,10 @@ if (isset($_SESSION['ID_ADMIN'])) {
                                     <td><?php echo $com['color']; ?></td>
                                     <td><?php echo $com['cantidadSelected']; ?></td>
                                     <td><i class="fa-solid fa-eye"></i></td>
-                                    <td> <i class="fa-solid fa-paper-plane"></i></td>
+                                    <form action="keys/orden-sent-key.php" method="post">
+                                        <input type="hidden" name="email" value="<?php echo $com['email']; ?>">
+                                        <td type="submit"><button><i class="fa-solid fa-paper-plane"></i></button></td>
+                                    </form>
                                    
                                     
                                 </tr>
