@@ -53,7 +53,10 @@ if (isset($_SESSION['ID_ADMIN'])) {
                                             <i class="fa-solid fa-eye"></i>
                                         </div>
                                     </td>
-                                    <td> <i class="fa-solid fa-paper-plane"></i></td>
+                                    <form action="keys/orden-sent-key.php" method="post">
+                                        <input type="hidden" name="email" value="<?php echo $com['email']; ?>">
+                                        <td type="submit"><button><i class="fa-solid fa-paper-plane"></i></button></td>
+                                    </form>
 
                                     <div class="modal fade" id="exampleModal_<?php echo $idUser ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
