@@ -92,7 +92,6 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
         VALUES($mc_gross,'$mc_currency','$payer_id','$payment_date',$mc_fee,'$payer_email','$txn_id',$shipping,'$payment_status',$Iduser)";
 
         $resultado = mysqli_query($conn, $INSERT);
-        
     } else {
         echo "la connecion fallo";
     }
@@ -102,10 +101,30 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
 
         require("keys/conection.php");
         if ($conn) {
-            $UPDATE = "UPDATE car set comprado =true where user_id= $Iduser";
-            $resultado = mysqli_query($conn, $UPDATE);
-           
-            echo "la connecion fallo";
+            $SelectCar = "SELECT* FROM car where user_id= $Iduser and comprado=0";
+            $resultado = mysqli_query($conn, $SelectCar);
+            while ($com = $resultado->fetch_array()) {
+                $productoId = $com['producto_id'];
+                $size = $com['size'];
+                $color = $com['color'];
+                $cantidadS = $com['cantidadSelected'];
+                $idCar = $com['id_car'];
+
+
+                $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0)";
+                mysqli_query($conn, $insertToVentas);
+
+                $selectProducto = "SELECT cantidad from productos  where id_producto= $productoId";
+                $cantidad = mysqli_query($conn, $insertToVentas);
+
+                $nuevoStock = $cantidad - $cantidadS;
+
+                $updateProduct = "UPDATE productos set cantidad =$nuevoStock where id_producto= $productoId";
+                mysqli_query($conn, $insertToVentas);
+
+                $deleteFromCar = "DELETE FROM car where user_id= $idCar";
+                mysqli_query($conn, $deleteFromCar);
+            }
         }
         echo "<h1>¡Hemos procesado tu pago exitosamente!</h1> 
         Recibimos $mc_gross Euros en concepto de: $quantity $item_name.<hr>
@@ -117,11 +136,7 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
         currency $mc_currency <br>
         shipping cost $shipping<br>
        
-        Vuelve a comprar dando clic <a href='VirtuaStore/car'>aquí</a>";
-
-
-
-
+        Vuelve a comprar dando clic <a href='car'>aquí</a>";
     } else {
         echo "<h1>¡El pago no fue completado</h1>";
     }

@@ -444,7 +444,7 @@ if ($conn) {
 
                                                                                     <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
                                                              height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
-                                                                                        <input type="radio" onclick="handleClick(this);" name="color" value="<?php echo $com['valor']; ?>" required>
+                                                                                        <input type="radio" class="color" name="color" value="<?php echo $com['valor']; ?>" required>
                                                                                     </label>
 
 
@@ -513,6 +513,24 @@ if ($conn) {
 require("footer.php");
 ?>
 
+<script>
+    // const color = document.querySelector();
+    if (document.querySelectorAll('input[name="color"]')) {
+        document.querySelectorAll('input[name="color"]').forEach((elem) => {
+            elem.addEventListener("change", function(event) {
+                var item = event.target.value;
+                console.log(item);
+            });
+        });
+    }
+
+    // color.addEventListener('onclick', setColor);
+
+    // function setColor() {
+    //     const curColor = color.val;
+    //     alert(curColor);
+    // }
+</script>
 
 <script>
     jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');

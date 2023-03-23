@@ -11,15 +11,14 @@ $city = $_POST['city'];
 $estado = $_POST['estado'];
 $telefono = $_POST['telefono'];
 
-
 if (isset($_SESSION['id'])) {
     if (!empty($pais) || !empty($nombre) || !empty($apellido) || !empty($calle) || !empty($numero) || !empty($cp) || !empty($city) || !empty($estado) || !empty($telefono)) {
         require("conection.php");
         if ($conn) {
-            $INSERT = "INSERT INTO configuracion (pais,nombre,apellido,calle,numero,codigo_postal,ciudad,estado,telefono,id_registro,predeterminada)values('$pais','$nombre','$apellido','$calle','$numero','$cp','$city','$estado','$telefono','$id',0)";
+            $INSERT = "INSERT INTO configuracion (pais,nombre,apellido,calle,numero,codigo_postal,ciudad,estado,telefono,id_registro)values('$pais','$nombre','$apellido','$calle','$numero','$cp','$city','$estado','$telefono','$id')";
             $resultado = mysqli_query($conn, $INSERT);
             if ($resultado) {
-                header("Location: ../settings");
+                header("Location: ../car");
             } else {
                 echo "<script>
                     alert('No se agrego el registro');

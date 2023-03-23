@@ -8,6 +8,7 @@ move_uploaded_file($_FILES['foto']['tmp_name'][0], $fotoP);
 
 $nombre = $_POST['nombre'];
 $precio = $_POST['precio'];
+
 $categoria = $_POST['categoria'];
 $descripcion = $_POST['descripcion'];
 $colorSelect = $_POST['color'];
@@ -23,7 +24,7 @@ if (!empty($nombre) || !empty($ruta_send) || !empty($precio)  || !empty($descrip
     require("conection.php");
 
     if ($conn) {
-        $INSERT = "INSERT INTO productos (foto,articulo,categoria,precio,descripcion,cantidad)values('$ruta_send','$nombre','$categoria','$precio','$descripcion','$cantidadS')";
+        $INSERT = "INSERT INTO productos (foto,articulo,categoria,precio,descripcion,cantidad)values('$ruta_send','$nombre','$categoria',$precio,'$descripcion','$cantidadS')";
         $resultado = mysqli_query($conn, $INSERT);
         if ($resultado) {
 

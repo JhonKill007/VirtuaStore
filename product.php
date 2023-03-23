@@ -8,6 +8,80 @@ $sort = '';
 <br>
 <br>
 <br>
+<style>
+     .quantity {
+        position: relative;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .quantity input {
+        width: 45px;
+        height: 42px;
+        line-height: 1.65;
+        float: left;
+        display: block;
+        padding: 0;
+        margin: 0;
+        padding-left: 20px;
+        border: 1px solid #eee;
+    }
+
+    .quantity input:focus {
+        outline: 0;
+    }
+
+    .quantity-nav {
+        float: left;
+        position: relative;
+        height: 42px;
+    }
+
+    .quantity-button {
+        position: relative;
+        cursor: pointer;
+        border-left: 1px solid #eee;
+        width: 20px;
+        text-align: center;
+        color: #333;
+        font-size: 13px;
+        font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+        line-height: 1.7;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+
+    .quantity-button.quantity-up {
+        position: absolute;
+        height: 50%;
+        top: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .quantity-button.quantity-down {
+        position: absolute;
+        bottom: -1px;
+        height: 50%;
+    }
+
+    .checkboxSelected input:checked {
+        border: 1px solid red !important;
+
+    }
+</style>
 
 
 
@@ -29,7 +103,7 @@ $sort = '';
 
     <div class="container">
         <form id="contact" action="product" method="POST">
-            
+
             <div class="row" style="float: right; margin-top: -50px;">
                 <div class="dropdown" style="margin-right: 15px;">
                     <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -127,7 +201,7 @@ $sort = '';
                     </div>
 
                 </div>
-                <button style="margin-right: 10px;"  type="submit" class="btn btn-light">Apply</button>
+                <button style="margin-right: 10px;" type="submit" class="btn btn-light">Apply</button>
 
             </div>
 
@@ -195,7 +269,7 @@ $sort = '';
 
             <?php
             if ($conn) {
-                $SELECT = "SELECT distinct p.id_producto, p.precio,p.foto,p.articulo,p.descripcion from productos p
+                $SELECT = "SELECT distinct p.id_producto, p.precio,p.foto,p.articulo,p.descripcion,p.cantidad from productos p
                 join colorporproducto cp on cp.id_producto= p.id_producto
                 join color c on c.id = cp.id_color
                 join sizeporproducto sp on p.id_producto = sp.id_producto
@@ -206,7 +280,10 @@ $sort = '';
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {
             ?>
-                        <?php $id_articulo = $com['id_producto']; ?>
+                        <?php $id_articulo = $com['id_producto'];
+                                $cantidad =$com['cantidad'];
+                        ?>
+
 
 
 
@@ -287,7 +364,7 @@ $sort = '';
                                         <div class="modal-body">
 
                                             <div class="right-content">
-                                                <span>Size</span>
+                                                <span> <b>Size</b> </span>
                                                 <div class="container">
                                                     <div class="row">
                                                         <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -320,7 +397,7 @@ $sort = '';
 
                                                 <hr>
 
-                                                <span>Colors </span>
+                                                <span> <b> Color</b> </span>
 
                                                 <div class="container">
 
@@ -357,6 +434,22 @@ $sort = '';
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <hr>
+                                                <div class="">
+
+                                                    <span><b>Quantity</b></span>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="quantity">
+                                                                <div class="right-content">
+                                                                    <input style="width: 80px;" name="cantidad" type="number" min="1" max="<?php echo $cantidad; ?>" step="1" value="1">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
                                             </div>
 
 
@@ -391,7 +484,6 @@ $sort = '';
 
 
 </section>
-<!-- Button trigger modal -->
 
 
 
@@ -405,7 +497,41 @@ require("footer.php");
 
     function handleClick(myRadio) {
 
-
         document.getElementById('colorSelected').innerHTML = myRadio.value + '';
     }
+</script>
+
+<script>
+    jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+    jQuery('.quantity').each(function() {
+        var spinner = jQuery(this),
+            input = spinner.find('input[type="number"]'),
+            btnUp = spinner.find('.quantity-up'),
+            btnDown = spinner.find('.quantity-down'),
+            min = input.attr('min'),
+            max = input.attr('max');
+
+        btnUp.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue >= max) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue + 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+        btnDown.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue <= min) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue - 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+    });
 </script>
