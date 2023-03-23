@@ -442,48 +442,22 @@ if (isset($_SESSION['id'])) {
                         while ($com = $resultado->fetch_array()) {
                             $idconfig = $com['id_configuracion'];
                 ?>
-                            <div class="col-md-10" style="border:1px solid grey; border-radius:10px;  margin-bottom:15px; padding:15px; margin-left:10px;">
+                            <div class="col-md-10" >
                                 <div class="d-flex">
-                                    <div class="col-md-4">
-                                        <div class="col-md-12" style="margin-bottom:15px;">
-                                            <b>First Name:</b>
-                                            <span><?php echo $com['nombre']; ?></span>
-                                        </div>
+                                    <div class="col-md-4" style="border:1px solid grey; border-radius:10px;  margin-bottom:15px; padding:15px; margin-left:10px;">
                                         <div class="col-md-12" style="margin-bottom:15px;">
                                             <b>Street:</b>
-                                            <span><?php echo $com['calle']; ?></span>
+                                            <span><?php echo $com['calle']; ?>, <?php echo $com['codigo_postal']; ?></span>
                                         </div>
                                         <div class="col-md-12" style="margin-bottom:15px;">
-                                            <b>Zip Code:</b>
-                                            <span><?php echo $com['codigo_postal']; ?></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="col-md-12" style="margin-bottom:15px;">
-                                            <b>Last Name:</b>
-                                            <span><?php echo $com['apellido']; ?></span>
+                                            <b>City:</b>
+                                            <span><?php echo $com['ciudad']; ?></span>
                                         </div>
                                         <div class="col-md-12" style="margin-bottom:15px;">
-                                            <b>Aparment:</b>
-                                            <span><?php echo $com['numero']; ?></span>
+                                            <b>State:</b>
+                                            <span><?php echo $com['estado']; ?></span>
                                         </div>
-                                    </div>
-                                    <div class="col-dm-5 d-flex">
-                                        <div class="col-md-8">
-                                            <div class="col-md-12" style="margin-bottom:15px;">
-                                                <b>City:</b>
-                                                <span><?php echo $com['ciudad']; ?></span>
-                                            </div>
-                                            <div class="col-md-12" style="margin-bottom:15px;">
-                                                <b>State:</b>
-                                                <span><?php echo $com['estado']; ?></span>
-                                            </div>
-                                            <div class="col-md-12" style="margin-bottom:15px;">
-                                                <b>Phone:</b>
-                                                <span><?php echo $com['telefono']; ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-dm-4 d-flex">
+                                        <div class="col-dm-4 d-flex" style="justify-content: center;">
                                             <div class="Ag_Address" data-toggle="modal" data-target="#exampleModal_<?php echo $com['id_configuracion']; ?>" style="margin-right: 20px;">
                                                 <i class="fa-solid fa-pencil" style="height:20px;"></i>
                                             </div>
@@ -495,7 +469,11 @@ if (isset($_SESSION['id'])) {
                                             </form>
 
                                         </div>
+
+
                                     </div>
+
+                                    
                                 </div>
                             </div>
 
@@ -640,6 +618,18 @@ if (isset($_SESSION['id'])) {
                                                                     </div>
                                                                     <br>
                                                                     <br>
+
+                                                                    <div class="col-lg-12">
+                                                                        <fieldset>
+                                                                            <span>Set as default address</span>
+                                                                            <input style="width: 20px; align-items: center; display: inherit" name="default" type="checkbox" <?php $checked = "checked";
+                                                                                                                                                                                if ($com['predeterminada']) {
+                                                                                                                                                                                    echo $checked;
+                                                                                                                                                                                }  ?> value="1">
+
+
+                                                                        </fieldset>
+                                                                    </div>
                                                                     <br>
                                                                     <br>
                                                                     <div class="col-lg-12">
