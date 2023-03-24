@@ -15,7 +15,7 @@ if (isset($_SESSION['id'])) {
     if (!empty($pais) || !empty($nombre) || !empty($apellido) || !empty($calle) || !empty($numero) || !empty($cp) || !empty($city) || !empty($estado) || !empty($telefono)) {
         require("conection.php");
         if ($conn) {
-            $INSERT = "INSERT INTO configuracion (pais,nombre,apellido,calle,numero,codigo_postal,ciudad,estado,telefono,id_registro)values('$pais','$nombre','$apellido','$calle','$numero','$cp','$city','$estado','$telefono','$id')";
+            $INSERT = "INSERT INTO configuracion (pais,nombre,apellido,calle,numero,codigo_postal,ciudad,estado,telefono,id_registro,predeterminada)values('$pais','$nombre','$apellido','$calle','$numero','$cp','$city','$estado','$telefono','$id',1)";
             $resultado = mysqli_query($conn, $INSERT);
             if ($resultado) {
                 header("Location: ../car");

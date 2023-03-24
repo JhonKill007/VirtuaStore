@@ -57,7 +57,7 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
     // En el siguiente enlace puedes encontrar una lista completa de Variables IPN y PDT.
     // https://developer.paypal.com/docs/api-basics/notifications/ipn/IPNandPDTVariables/
 
-    var_dump($keyarray);
+    
 
     $mc_gross = $keyarray['mc_gross'];
     $payment_status = $keyarray['payment_status'];
@@ -103,40 +103,50 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
         if ($conn) {
             $SelectCar = "SELECT* FROM car where user_id= $Iduser and comprado=0";
             $resultado = mysqli_query($conn, $SelectCar);
-            while ($com = $resultado->fetch_array()) {
-                $productoId = $com['producto_id'];
-                $size = $com['size'];
-                $color = $com['color'];
-                $cantidadS = $com['cantidadSelected'];
-                $idCar = $com['id_car'];
+
+            if ($resultado) {
+                while ($com = $resultado->fetch_array()) {
+                    $productoId = $com['producto_id'];
+                    $size = $com['size'];
+                    $color = $com['color'];
+                    $cantidadS = $com['cantidadSelected'];
+                    $idCar = $com['id_car'];
+                    
+
+                    $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0)";
+                    $resultado2 = mysqli_query($conn, $insertToVentas);
+                    if ($resultado2) {
+                       
+
+                        $selectProducto = "SELECT cantidad from productos  where id_producto= $productoId";
+                        $cantidad = mysqli_query($conn, $selectProducto);
+                        $cantidadV = $cantidad->fetch_array();
+                        $cantidavenidadelabd = $cantidadV['cantidad'];
+
+                        if ($cantidad) {
+
+                           
+                            $nuevoStock = $cantidavenidadelabd - $cantidadS;
 
 
-                $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0)";
-                mysqli_query($conn, $insertToVentas);
 
-                $selectProducto = "SELECT cantidad from productos  where id_producto= $productoId";
-                $cantidad = mysqli_query($conn, $insertToVentas);
+                            $updateProduct = "UPDATE productos set cantidad =$nuevoStock where id_producto= $productoId";
+                            $resultUpdate = mysqli_query($conn, $updateProduct);
+                            if ($resultUpdate) {
+                                
 
-                $nuevoStock = $cantidad - $cantidadS;
-
-                $updateProduct = "UPDATE productos set cantidad =$nuevoStock where id_producto= $productoId";
-                mysqli_query($conn, $insertToVentas);
-
-                $deleteFromCar = "DELETE FROM car where user_id= $idCar";
-                mysqli_query($conn, $deleteFromCar);
+                                $deleteFromCar = "DELETE FROM car where id_car= $idCar";
+                                $resultDelete = mysqli_query($conn, $deleteFromCar);
+                                if ($resultDelete) {
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
-        echo "<h1>¡Hemos procesado tu pago exitosamente!</h1> 
-        Recibimos $mc_gross Euros en concepto de: $quantity $item_name.<hr>
-        payerId= $payer_id <br>
-        payment date =$payment_date <br>
-        impuestos =$mc_fee <br>
-        email comprador =$payer_email <br>
-        transaccion Id =$txn_id<br>
-        currency $mc_currency <br>
-        shipping cost $shipping<br>
-       
-        Vuelve a comprar dando clic <a href='car'>aquí</a>";
+        header("Location: car?rtn=processed");
     } else {
         echo "<h1>¡El pago no fue completado</h1>";
     }
