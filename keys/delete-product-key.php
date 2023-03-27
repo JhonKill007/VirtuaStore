@@ -1,19 +1,19 @@
 <?php
 session_start();
-$_id_configuracion = $_POST['id_configuracion'];
+$_id_product = $_GET['id_product'];
 
-if (isset($_SESSION['id'])) {
-    if (!empty($_id_configuracion)) {
+if (isset($_SESSION['ID_ADMIN'])) {
+    if (!empty($_id_product)) {
         require("conection.php");
         if ($conn) {
-            $DELETE = "DELETE FROM configuracion WHERE id_configuracion = $_id_configuracion";
+            $DELETE = "DELETE FROM productos WHERE id_producto = $_id_product";
             $resultado = mysqli_query($conn, $DELETE);
             if ($resultado) {
-                header("Location: ../settings");
+                header("Location: ../products");
             } else {
                 echo "<script>
                     alert('No se Elimino');
-                    window.location='../settings';
+                    window.location='../products';
                     </script>";
             }
         } else {
@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {
         }
     } else {
         echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../settings.php");
+        header("Location: ../products");
     }
 } else {
     header("Location:../login");

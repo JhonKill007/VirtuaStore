@@ -79,52 +79,48 @@
                             <img class="logo_img" src="img/logohead.png">
                         </a>
                         <ul class="nav">
-
+                            <li class="scroll-to-section"><a href="index" class=" home">Home</a></li>
                             <?php
                             session_start();
                             if (isset($_SESSION['id'])) {
                             ?>
-                                <li class="scroll-to-section"><a href="index" class=" home">Home</a></li>
-                            <?php
-                            } else {
-                            ?>
-                                <li class="scroll-to-section"><a href="index" class="home">Home</a></li>
+                                <li class="scroll-to-section"><a href="onfire" class="offert">Offert</a></li>
+                                <li class="submenu">
+                                    <a href="javascript:;">Feature</a>
+                                    <ul>
+                                        <?php
+                                        require("keys/conection.php");
+                                        if ($conn) {
+                                            $SELECT = "SELECT * FROM categoria ";
+                                            $resultado = mysqli_query($conn, $SELECT);
+                                            if ($resultado) {
+                                                while ($com = $resultado->fetch_array()) {
+                                        ?>
+                                                    <li><a href="product"><?php echo $com['valor']; ?></a></li>
+
+
+                                        <?php
+                                                }
+                                            } else {
+                                                echo " se fue a la verga";
+                                            }
+                                        } else {
+                                            echo "la coneccion fallo";
+                                        }
+                                        ?>
+
+
+
+
+
+                                    </ul>
+                                </li>
                             <?php
                             }
                             ?>
 
-                            <li class="scroll-to-section"><a href="onfire" class="offert">Offert</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Feature</a>
-                                <ul>
-                                    <?php
-                                    require("keys/conection.php");
-                                    if ($conn) {
-                                        $SELECT = "SELECT * FROM categoria ";
-                                        $resultado = mysqli_query($conn, $SELECT);
-                                        if ($resultado) {
-                                            while ($com = $resultado->fetch_array()) {
-                                    ?>
-                                                <li><a href="product"><?php echo $com['valor']; ?></a></li>
 
-
-                                    <?php
-                                            }
-                                        } else {
-                                            echo " se fue a la verga";
-                                        }
-                                    } else {
-                                        echo "la coneccion fallo";
-                                    }
-                                    ?>
-
-
-
-
-
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="product" class="product">Products</a></li>
+                            <li class="scroll-to-section"><a href="products" class="product">Products</a></li>
 
                             <li class="submenu">
                                 <a href="javascript:;">
@@ -231,7 +227,7 @@
             var url = window.location.pathname
             var path = url.split('/')
 
-            if (path[2] == 'index'|| path[2]=='') {
+            if (path[2] == 'index' || path[2] == '') {
                 home.style = "border-bottom: 1px solid;";
 
             } else if (path[2] == 'product') {

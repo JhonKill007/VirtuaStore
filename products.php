@@ -9,7 +9,7 @@ $sort = '';
 <br>
 <br>
 <style>
-     .quantity {
+    .quantity {
         position: relative;
     }
 
@@ -214,7 +214,6 @@ $sort = '';
 
             $valuesort = $_POST['sort'];
             $sort = "order by p.precio $valuesort";
-            echo "<script>console.log($sort)</script>";
         }
 
         if (isset($_POST['buscarS'])) {
@@ -281,7 +280,7 @@ $sort = '';
                     while ($com = $resultado->fetch_array()) {
             ?>
                         <?php $id_articulo = $com['id_producto'];
-                                $cantidad =$com['cantidad'];
+                        $cantidad = $com['cantidad'];
                         ?>
 
 
@@ -291,21 +290,45 @@ $sort = '';
                         <div class="col-lg-3">
                             <div class="item">
                                 <div class="thumb">
+                                    <?php
+                                    if (isset($_SESSION['ID_ADMIN'])) {
+                                    ?>
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="update?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa-solid fa-pen"></i></a></li>
+                                                <li>
+                                                    <?php $productoSelect = $com['id_producto']; ?>
+                                                    <a style="cursor: pointer;" href="./keys/delete-product-key?id_product=<?php echo $com['id_producto']; ?>">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </a>
+                                                </li>
 
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                            <li>
-                                                <?php $productoSelect = $com['id_producto']; ?>
-                                                <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal-<?php echo $com['id_producto']; ?>">
-                                                    <i class="fa fa-shopping-cart"></i>
-
-                                                </a>
+                                            </ul>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
 
 
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <?php
+                                    if (isset($_SESSION['id'])) {
+                                    ?>
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                                <li>
+                                                    <?php $productoSelect = $com['id_producto']; ?>
+                                                    <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal-<?php echo $com['id_producto']; ?>">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+
                                     <div style="height: 400px;">
                                         <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
                                             <img style="width: 100%;
