@@ -9,7 +9,7 @@ if (isset($_SESSION['id'])) {
 
     <div class="subscribe">
         <div class="container" style="overflow-x: scroll">
-            <h1>Purchase History</h1>
+            <h3>Purchase History</h3>
             <br>
             <br>
             <table class="table">
@@ -20,6 +20,7 @@ if (isset($_SESSION['id'])) {
                         <th scope="col">Quantity</th>
                         <th scope="col">P/P</th>
                         <th scope="col">Total</th>
+                        <th scope="col">See</th>
                      
 
                     </tr>
@@ -28,7 +29,7 @@ if (isset($_SESSION['id'])) {
                     <?php
                     require("keys/conection.php");
                     if ($conn) {
-                        $SELECT = "SELECT c.id_car,r.nombre,r.email,p.articulo,c.color,c.cantidadSelected,p.precio
+                        $SELECT = "SELECT c.id_car,r.nombre,r.email,p.articulo,c.color,c.cantidadSelected,p.precio, p.id_producto
                         from car c 
                         inner join 
                         registro r on r.id_registro = c.user_id
@@ -48,6 +49,7 @@ if (isset($_SESSION['id'])) {
                                     <td><?php echo $com['cantidadSelected']; ?></td>
                                     <td><?php echo $com['precio']; ?></td>
                                     <td><?php echo $total ?></td>
+                                    <td><a style="color: black;" href="/VirtuaStore/view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa-solid fa-eye"></i></a></td>
 
                                   
                                    

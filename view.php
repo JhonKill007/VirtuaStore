@@ -100,7 +100,7 @@ if ($conn) {
             <?php $cantidad = $com['cantidad']; ?>
 
 
-            <section class="contact-us" id="product">
+            <section class="contact-us" id="product" style="margin-top: 15px;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
