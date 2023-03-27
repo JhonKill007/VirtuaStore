@@ -64,7 +64,7 @@ if (isset($_SESSION['id'])) {
             <div class="container">
                 <div class="row d-flex setting_nav">
                     <div class="item">
-                        <b>Personal Infomation</b>
+                        <b>Personal Info</b>
                     </div>
                     <div class="item modal_1_button_2">
                         <b>Password</b>
@@ -83,7 +83,7 @@ if (isset($_SESSION['id'])) {
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="section-heading">
-                            <h2>Personal Data Setting</h2>
+                            <h3>Personal Data Setting</h3>
                             <span>You can update your personal information</span>
                         </div>
                         <form id="contact" action="keys/updateData.php" method="post">
@@ -146,7 +146,7 @@ if (isset($_SESSION['id'])) {
             <div class="container">
                 <div class="row d-flex setting_nav">
                     <div class="item modal_2_button_1">
-                        <b>Personal Infomation</b>
+                        <b>Personal Info</b>
                     </div>
                     <div class="item">
                         <b>Password</b>
@@ -165,7 +165,7 @@ if (isset($_SESSION['id'])) {
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="section-heading">
-                            <h2>Change Password</h2>
+                            <h3>Change Password</h3>
                             <span>You should use uppercase numbers and characters to make your password more secure.</span>
                         </div>
                         <form id="subscribe" action="keys/change-password-key.php" method="post">
@@ -214,7 +214,7 @@ if (isset($_SESSION['id'])) {
             <div class="container">
                 <div class="row d-flex setting_nav">
                     <div class="item modal_3_button_1">
-                        <b>Personal Infomation</b>
+                        <b>Personal Info</b>
                     </div>
                     <div class="item modal_3_button_2">
                         <b>Password</b>
@@ -261,7 +261,7 @@ if (isset($_SESSION['id'])) {
                     <div class="col-lg-8">
                         <div class="section-heading d-flex">
                             <div id="Address_H1">
-                                <h2>Address Settings</h2>
+                                <h3>Address Settings</h3>
                             </div>
                             <div class="Ag_Address" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fa-solid fa-plus" style="height:20px"></i>
@@ -283,7 +283,7 @@ if (isset($_SESSION['id'])) {
                                     <div class="col-lg-12">
                                         <div class="section-heading d-flex">
                                             <div id="Address_H1">
-                                                <h2>Add New Address</h2>
+                                                <h4>Add New Address</h4>
                                                 <span>All inputs are required, pleace complete it.</span>
                                             </div>
                                         </div>
@@ -312,7 +312,7 @@ if (isset($_SESSION['id'])) {
                                                 </div>
                                                 <br>
                                                 <br>
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-6">
                                                     <fieldset>
                                                         <span>Aparment</span>
                                                         <input type="text" placeholder="Aparment" name="numero" required>
@@ -320,7 +320,7 @@ if (isset($_SESSION['id'])) {
                                                 </div>
                                                 <br>
                                                 <br>
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-6">
                                                     <fieldset>
                                                         <span>Zip Code</span>
                                                         <input type="text" placeholder="Zip Code" name="cp" required>
@@ -433,18 +433,19 @@ if (isset($_SESSION['id'])) {
 
         <div class="container">
             <div class="row">
-                <?php
-                require("keys/conection.php");
-                if ($conn) {
-                    $SELECT = "SELECT * FROM configuracion WHERE id_registro = '$idRegistro'";
-                    $resultado = mysqli_query($conn, $SELECT);
-                    if ($resultado) {
-                        while ($com = $resultado->fetch_array()) {
-                            $idconfig = $com['id_configuracion'];
-                ?>
-                            <div class="col-md-10" >
-                                <div class="d-flex">
-                                    <div class="col-md-4" style="border:1px solid grey; border-radius:10px;  margin-bottom:15px; padding:15px; margin-left:10px;">
+                <div class="col-md-12">
+                    <div class="row" style="display: flex;">
+                        <?php
+                        require("keys/conection.php");
+                        if ($conn) {
+                            $SELECT = "SELECT * FROM configuracion WHERE id_registro = '$idRegistro'";
+                            $resultado = mysqli_query($conn, $SELECT);
+                            if ($resultado) {
+                                while ($com = $resultado->fetch_array()) {
+                                    $idconfig = $com['id_configuracion'];
+                        ?>
+
+                                    <div class="col-md-3" style="border:1px solid grey; border-radius:10px; padding:15px; margin:10px;">
                                         <div class="col-md-12" style="margin-bottom:15px;">
                                             <b>Street:</b>
                                             <span><?php echo $com['calle']; ?>, <?php echo $com['codigo_postal']; ?></span>
@@ -463,7 +464,7 @@ if (isset($_SESSION['id'])) {
                                             </div>
                                             <form action="keys/deleteAddress-key.php" method="post">
                                                 <input type="hidden" name="id_configuracion" value="<?php echo $com['id_configuracion']; ?>">
-                                                <button class="Ag_Address" type="submit" style="margin-right: 20px;">
+                                                <button class="Ag_Address btn btn-light" type="submit" style="margin-right: 20px;">
                                                     <i class="fa-solid fa-trash" style="height:20px;"></i>
                                                 </button>
                                             </form>
@@ -473,76 +474,75 @@ if (isset($_SESSION['id'])) {
 
                                     </div>
 
-                                    
-                                </div>
-                            </div>
 
-                            <div class="modal fade" id="exampleModal_<?php echo $com['id_configuracion']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <div class="subscribe" style="margin-top: 0 !important;">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="section-heading d-flex">
-                                                                <div id="Address_H1">
-                                                                    <h2>Update Your Address</h2>
-                                                                </div>
-                                                            </div>
-                                                            <form id="contact" action="keys/updateAddress" method="post">
-                                                                <input type="hidden" name="pais" value="United States">
-                                                                <input type="hidden" name="_origen" value="1">
-                                                                <input type="hidden" name="id_configuracion" value="<?php echo $com['id_configuracion']; ?>">
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <fieldset>
-                                                                            <span>First Name</span>
-                                                                            <input type="text" placeholder="First Name" value="<?php echo $com['nombre']; ?>" name="nombre" required>
-                                                                        </fieldset>
+
+
+                                    <div class="modal fade" id="exampleModal_<?php echo $com['id_configuracion']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="subscribe" style="margin-top: 0 !important;">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="section-heading d-flex">
+                                                                        <div id="Address_H1">
+                                                                            <h4>Update Your Address</h4>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-lg-6">
-                                                                        <fieldset>
-                                                                            <span>Last Name</span>
-                                                                            <input type="text" placeholder="Last Name" value="<?php echo $com['apellido']; ?>" name="apellido" required>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <div class="col-lg-12">
-                                                                        <fieldset>
-                                                                            <span>Street</span>
-                                                                            <input type="text" placeholder="Street" value="<?php echo $com['calle']; ?>" name="calle" required>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <div class="col-lg-12">
-                                                                        <fieldset>
-                                                                            <span>Aparment</span>
-                                                                            <input type="text" placeholder="Aparment" value="<?php echo $com['numero']; ?>" name="numero" required>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <div class="col-lg-12">
-                                                                        <fieldset>
-                                                                            <span>Zip Code</span>
-                                                                            <input type="text" placeholder="Zip Code" value="<?php echo $com['codigo_postal']; ?>" name="cp" required>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <div class="col-lg-6">
-                                                                        <fieldset>
-                                                                            <span>City</span>
-                                                                            <input name="city" type="text" placeholder="City" value="<?php echo $com['ciudad']; ?>" required>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <fieldset>
-                                                                            <span>State</span>
-                                                                            <select style="width: 100%;
+                                                                    <form id="contact" action="keys/updateAddress" method="post">
+                                                                        <input type="hidden" name="pais" value="United States">
+                                                                        <input type="hidden" name="_origen" value="1">
+                                                                        <input type="hidden" name="id_configuracion" value="<?php echo $com['id_configuracion']; ?>">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <span>First Name</span>
+                                                                                    <input type="text" placeholder="First Name" value="<?php echo $com['nombre']; ?>" name="nombre" required>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <span>Last Name</span>
+                                                                                    <input type="text" placeholder="Last Name" value="<?php echo $com['apellido']; ?>" name="apellido" required>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <span>Street</span>
+                                                                                    <input type="text" placeholder="Street" value="<?php echo $com['calle']; ?>" name="calle" required>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <span>Aparment</span>
+                                                                                    <input type="text" placeholder="Aparment" value="<?php echo $com['numero']; ?>" name="numero" required>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <span>Zip Code</span>
+                                                                                    <input type="text" placeholder="Zip Code" value="<?php echo $com['codigo_postal']; ?>" name="cp" required>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <span>City</span>
+                                                                                    <input name="city" type="text" placeholder="City" value="<?php echo $com['ciudad']; ?>" required>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <span>State</span>
+                                                                                    <select style="width: 100%;
                                                                                                        height: 44px;
                                                                                                        line-height: 44px;
                                                                                                        padding: 0px 15px;
@@ -553,109 +553,111 @@ if (isset($_SESSION['id'])) {
                                                                                                        border-radius: 0px;
                                                                                                        border: 1px solid #7a7a7a;
                                                                                                        box-shadow: none;" name="estado" required>
-                                                                                <option value="<?php echo $com['estado']; ?>"><?php echo $com['estado']; ?></option>
-                                                                                <option value="Alabama">Alabama</option>
-                                                                                <option value="Alaska">Alaska</option>
-                                                                                <option value="Arizona">Arizona</option>
-                                                                                <option value="Arkansas">Arkansas</option>
-                                                                                <option value="California">California</option>
-                                                                                <option value="Colorado">Colorado</option>
-                                                                                <option value="Connecticut">Connecticut</option>
-                                                                                <option value="Delaware">Delaware</option>
-                                                                                <option value="District Of Columbia">District Of Columbia</option>
-                                                                                <option value="Florida">Florida</option>
-                                                                                <option value="Georgia">Georgia</option>
-                                                                                <option value="Hawaii">Hawaii</option>
-                                                                                <option value="Idaho">Idaho</option>
-                                                                                <option value="Illinois">Illinois</option>
-                                                                                <option value="Indiana">Indiana</option>
-                                                                                <option value="Iowa">Iowa</option>
-                                                                                <option value="Kansas">Kansas</option>
-                                                                                <option value="Kentucky">Kentucky</option>
-                                                                                <option value="Louisiana">Louisiana</option>
-                                                                                <option value="Maine">Maine</option>
-                                                                                <option value="Maryland">Maryland</option>
-                                                                                <option value="Massachusetts">Massachusetts</option>
-                                                                                <option value="Michigan">Michigan</option>
-                                                                                <option value="Minnesota">Minnesota</option>
-                                                                                <option value="Mississippi">Mississippi</option>
-                                                                                <option value="Missouri">Missouri</option>
-                                                                                <option value="Montana">Montana</option>
-                                                                                <option value="Nebraska">Nebraska</option>
-                                                                                <option value="Nevada">Nevada</option>
-                                                                                <option value="New Hampshire">New Hampshire</option>
-                                                                                <option value="New Jersey">New Jersey</option>
-                                                                                <option value="New Mexico">New Mexico</option>
-                                                                                <option value="New York">New York</option>
-                                                                                <option value="North Carolina">North Carolina</option>
-                                                                                <option value="North Dakota">North Dakota</option>
-                                                                                <option value="Ohio">Ohio</option>
-                                                                                <option value="Oklahoma">Oklahoma</option>
-                                                                                <option value="Oregon">Oregon</option>
-                                                                                <option value="Pennsylvania">Pennsylvania</option>
-                                                                                <option value="Rhode Island">Rhode Island</option>
-                                                                                <option value="South Carolina">South Carolina</option>
-                                                                                <option value="South Dakota">South Dakota</option>
-                                                                                <option value="Tennessee">Tennessee</option>
-                                                                                <option value="Texas">Texas</option>
-                                                                                <option value="Utah">Utah</option>
-                                                                                <option value="Vermont">Vermont</option>
-                                                                                <option value="Virginia">Virginia</option>
-                                                                                <option value="Washington">Washington</option>
-                                                                                <option value="West Virginia">West Virginia</option>
-                                                                                <option value="Wisconsin">Wisconsin</option>
-                                                                                <option value="Wyoming">Wyoming</option>
-                                                                            </select>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <div class="col-lg-12">
-                                                                        <fieldset>
-                                                                            <span>Phone</span>
-                                                                            <input name="telefono" type="text" value="<?php echo $com['telefono']; ?>" placeholder="Phone" required>
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
+                                                                                        <option value="<?php echo $com['estado']; ?>"><?php echo $com['estado']; ?></option>
+                                                                                        <option value="Alabama">Alabama</option>
+                                                                                        <option value="Alaska">Alaska</option>
+                                                                                        <option value="Arizona">Arizona</option>
+                                                                                        <option value="Arkansas">Arkansas</option>
+                                                                                        <option value="California">California</option>
+                                                                                        <option value="Colorado">Colorado</option>
+                                                                                        <option value="Connecticut">Connecticut</option>
+                                                                                        <option value="Delaware">Delaware</option>
+                                                                                        <option value="District Of Columbia">District Of Columbia</option>
+                                                                                        <option value="Florida">Florida</option>
+                                                                                        <option value="Georgia">Georgia</option>
+                                                                                        <option value="Hawaii">Hawaii</option>
+                                                                                        <option value="Idaho">Idaho</option>
+                                                                                        <option value="Illinois">Illinois</option>
+                                                                                        <option value="Indiana">Indiana</option>
+                                                                                        <option value="Iowa">Iowa</option>
+                                                                                        <option value="Kansas">Kansas</option>
+                                                                                        <option value="Kentucky">Kentucky</option>
+                                                                                        <option value="Louisiana">Louisiana</option>
+                                                                                        <option value="Maine">Maine</option>
+                                                                                        <option value="Maryland">Maryland</option>
+                                                                                        <option value="Massachusetts">Massachusetts</option>
+                                                                                        <option value="Michigan">Michigan</option>
+                                                                                        <option value="Minnesota">Minnesota</option>
+                                                                                        <option value="Mississippi">Mississippi</option>
+                                                                                        <option value="Missouri">Missouri</option>
+                                                                                        <option value="Montana">Montana</option>
+                                                                                        <option value="Nebraska">Nebraska</option>
+                                                                                        <option value="Nevada">Nevada</option>
+                                                                                        <option value="New Hampshire">New Hampshire</option>
+                                                                                        <option value="New Jersey">New Jersey</option>
+                                                                                        <option value="New Mexico">New Mexico</option>
+                                                                                        <option value="New York">New York</option>
+                                                                                        <option value="North Carolina">North Carolina</option>
+                                                                                        <option value="North Dakota">North Dakota</option>
+                                                                                        <option value="Ohio">Ohio</option>
+                                                                                        <option value="Oklahoma">Oklahoma</option>
+                                                                                        <option value="Oregon">Oregon</option>
+                                                                                        <option value="Pennsylvania">Pennsylvania</option>
+                                                                                        <option value="Rhode Island">Rhode Island</option>
+                                                                                        <option value="South Carolina">South Carolina</option>
+                                                                                        <option value="South Dakota">South Dakota</option>
+                                                                                        <option value="Tennessee">Tennessee</option>
+                                                                                        <option value="Texas">Texas</option>
+                                                                                        <option value="Utah">Utah</option>
+                                                                                        <option value="Vermont">Vermont</option>
+                                                                                        <option value="Virginia">Virginia</option>
+                                                                                        <option value="Washington">Washington</option>
+                                                                                        <option value="West Virginia">West Virginia</option>
+                                                                                        <option value="Wisconsin">Wisconsin</option>
+                                                                                        <option value="Wyoming">Wyoming</option>
+                                                                                    </select>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <span>Phone</span>
+                                                                                    <input name="telefono" type="text" value="<?php echo $com['telefono']; ?>" placeholder="Phone" required>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
 
-                                                                    <div class="col-lg-12">
-                                                                        <fieldset>
-                                                                            <span>Set as default address</span>
-                                                                            <input style="width: 20px; align-items: center; display: inherit" name="default" type="checkbox" <?php $checked = "checked";
-                                                                                                                                                                                if ($com['predeterminada']) {
-                                                                                                                                                                                    echo $checked;
-                                                                                                                                                                                }  ?> value="1">
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <span>Set as default address</span>
+                                                                                    <input style="width: 20px; align-items: center; display: inherit" name="default" type="checkbox" <?php $checked = "checked";
+                                                                                                                                                                                        if ($com['predeterminada']) {
+                                                                                                                                                                                            echo $checked;
+                                                                                                                                                                                        }  ?> value="1">
 
 
-                                                                        </fieldset>
-                                                                    </div>
-                                                                    <br>
-                                                                    <br>
-                                                                    <div class="col-lg-12">
-                                                                        <fieldset>
-                                                                            <input class="main-dark-button" type="submit" value="Save">
-                                                                        </fieldset>
-                                                                    </div>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <button style="width: 100%;" type="submit" value="Save">Save</button>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
-                                                            </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                <?php
+                        <?php
+                                }
+                            } else {
+                                echo " se fue a la verga";
+                            }
+                        } else {
+                            echo "la coneccion fallo";
                         }
-                    } else {
-                        echo " se fue a la verga";
-                    }
-                } else {
-                    echo "la coneccion fallo";
-                }
-                ?>
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

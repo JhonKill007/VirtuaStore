@@ -100,7 +100,7 @@ if ($conn) {
             <?php $cantidad = $com['cantidad']; ?>
 
 
-            <section class="contact-us" id="product">
+            <section class="contact-us" id="product" style="margin-top: 15px;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -179,7 +179,8 @@ if ($conn) {
                                     <span class="price">$<?php echo $com['precio']; ?></span>
 
 
-                                    <span style="color:black"> <b> Size</b></span>
+                                    <span id="size" style="color:black; margin-bottom: 10px;font-weight: bold"> Sizes
+                                    </span>
                                     <div class="container">
                                         <div class="row">
                                             <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -193,7 +194,7 @@ if ($conn) {
                                                 ?>
 
                                                             <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                                                <input style="font-size:14px;" required type="radio" name="size" id="option1" autocomplete="off" value="<?php echo $com['valor']; ?>"> <?php echo $com['valor']; ?>
+                                                                <input style="font-size:14px;" class="size" required type="radio" name="size" id="option1" autocomplete="off" value="<?php echo $com['valor']; ?>"> <?php echo $com['valor']; ?>
                                                             </label>
 
                                                 <?php
@@ -209,7 +210,9 @@ if ($conn) {
                                         </div>
                                     </div>
                                     <hr>
-                                    <span style="color:black"> <b>Colors</b> </span>
+                                    <span id="color" style="color:black; margin-bottom: -20px;font-weight: bold"> Colors</span>
+                                    <span> </span>
+
                                     <div class="container">
                                         <div class="row">
                                             <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -225,7 +228,7 @@ if ($conn) {
 
                                                             <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
                                                              height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 checkboxSelected">
-                                                                <input type="radio" name="color" id="option1" value="<?php echo $com['valor']; ?>" required>
+                                                                <input type="radio" name="color" class="color" id="option1" value="<?php echo $com['valor']; ?>" required>
                                                             </label>
 
 
@@ -396,7 +399,7 @@ if ($conn) {
                                                         <div class="modal-body">
 
                                                             <div class="right-content">
-                                                                <span>Size</span>
+                                                            <span id="sizeM" style="color:black; margin-bottom: 10px;font-weight: bold"> Sizes</span>
                                                                 <div class="container">
                                                                     <div class="row">
                                                                         <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -410,7 +413,7 @@ if ($conn) {
                                                                             ?>
 
                                                                                         <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                                                                            <input style="font-size:14px;" required type="radio" name="size" id="option1" autocomplete="off" value="<?php echo $com['valor']; ?>"> <?php echo $com['valor']; ?>
+                                                                                            <input style="font-size:14px;" class="sizeM" required type="radio" name="size" id="option1" autocomplete="off" value="<?php echo $com['valor']; ?>"> <?php echo $com['valor']; ?>
                                                                                         </label>
 
                                                                             <?php
@@ -429,7 +432,7 @@ if ($conn) {
 
                                                                 <hr>
 
-                                                                <span>Colors </span>
+                                                                <span id="colorM" style="color:black; margin-bottom: -20px;font-weight: bold"> Colors</span>
 
                                                                 <div class="container">
 
@@ -448,7 +451,7 @@ if ($conn) {
 
                                                                                         <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
                                                              height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
-                                                                                            <input type="radio" class="color" name="color" value="<?php echo $com['valor']; ?>" required>
+                                                                                            <input type="radio"  class="colorM" name="color" value="<?php echo $com['valor']; ?>" required>
                                                                                         </label>
 
 
@@ -471,6 +474,7 @@ if ($conn) {
 
 
                                                         </div>
+
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                             <input type="hidden" name="product_id" value="<?php echo $productoSelect; ?>">
@@ -521,22 +525,21 @@ require("footer.php");
 ?>
 
 <script>
-    // const color = document.querySelector();
-    if (document.querySelectorAll('input[name="color"]')) {
-        document.querySelectorAll('input[name="color"]').forEach((elem) => {
-            elem.addEventListener("change", function(event) {
-                var item = event.target.value;
-                console.log(item);
-            });
+    $(document).ready(function() {
+        $('.color').click(function() {
+            document.getElementById('color').innerHTML = "Color: " + $(this).val();
         });
-    }
-
-    // color.addEventListener('onclick', setColor);
-
-    // function setColor() {
-    //     const curColor = color.val;
-    //     alert(curColor);
-    // }
+        $('.size').click(function() {
+            document.getElementById('size').innerHTML = "Size: " + $(this).val();
+        });
+        $('.colorM').click(function() {
+            document.getElementById('colorM').innerHTML = "Color: " + $(this).val();
+        });
+        $('.sizeM').click(function() {
+            document.getElementById('sizeM').innerHTML = "Size: " + $(this).val();
+        });
+    });
+   
 </script>
 
 <script>

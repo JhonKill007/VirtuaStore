@@ -89,10 +89,114 @@ $sort = '';
 
 <section class="section" id="products">
     <div class="container">
-        <div class="row">
+        <div class="row" style="display: flex;    justify-content: end;margin-bottom: -25px;">
             <div class="col-lg-4">
                 <div class="section-heading ">
+                    <form id="contact" action="product" method="POST">
 
+                        <div class="row" style=" margin-top: -50px; justify-content: end; margin-right: 5px">
+                            <div class="dropdown" style="margin-right: 15px;">
+                                <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Color </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    <?php
+                                    if ($conn) {
+                                        $SELECT = "SELECT * FROM color ";
+                                        $resultado = mysqli_query($conn, $SELECT);
+                                        if ($resultado) {
+                                            while ($com = $resultado->fetch_array()) {
+                                    ?>
+                                                <div class="form-check" style="margin:10px">
+                                                    <label class="form-check-label">
+                                                        <input style="height: 20px;width: 20px;" name="buscarC[]" type="checkbox" class="form-check-input" value="<?php echo $com['valor']; ?>">
+                                                        <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
+                                                    </label>
+                                                </div>
+
+                                    <?php
+                                            }
+                                        } else {
+                                            echo " se fue a la verga";
+                                        }
+                                    } else {
+                                        echo "la coneccion fallo";
+                                    }
+                                    ?>
+
+                                </div>
+
+                            </div>
+                            <div class="dropdown" style="margin-right: 15px;">
+                                <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Size </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    <?php
+                                    if ($conn) {
+                                        $SELECT = "SELECT * FROM size ";
+                                        $resultado = mysqli_query($conn, $SELECT);
+                                        if ($resultado) {
+                                            while ($com = $resultado->fetch_array()) {
+                                    ?>
+                                                <div class="form-check" style="margin:10px">
+                                                    <label class="form-check-label">
+                                                        <input style="height: 20px;width: 20px;" type="checkbox" name="buscarS[]" class="form-check-input" value="<?php echo $com['valor']; ?>">
+                                                        <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
+                                                    </label>
+                                                </div>
+
+                                    <?php
+                                            }
+                                        } else {
+                                            echo " se fue a la verga";
+                                        }
+                                    } else {
+                                        echo "la coneccion fallo";
+                                    }
+                                    ?>
+
+                                </div>
+
+                            </div>
+                            <div class="dropdown" style="margin-right: 15px;">
+                                <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sort
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                    <!-- <option class="dropdown-item" name="sort" value="">Best March</option>
+            <option class="dropdown-item" name="sort" value="desc">Price: Lowest first</option>
+            <option class="dropdown-item" name="sort" value="asc">Price: Highest first</option> -->
+                                    <div class="form-check" style="margin:10px">
+                                        <label class="form-check-label">
+                                            <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="">
+                                            <span style="margin-left:20px; font-size:16px">Best March</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check" style="margin:10px">
+                                        <label class="form-check-label">
+                                            <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="asc">
+                                            <span style="margin-left:20px; font-size:16px">Price: Lowest first</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check" style="margin:10px">
+                                        <label class="form-check-label">
+                                            <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="desc">
+                                            <span style="margin-left:20px; font-size:16px">Price: Highest first</span>
+                                        </label>
+                                    </div>
+                                    <!-- <option  class="dropdown-item" value="ojos">Ojos</option> -->
+
+                                </div>
+
+                            </div>
+                            <button style="margin-right: 10px;" type="submit" class="btn btn-light"><b>Apply</b></button>
+
+                        </div>
+
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -102,111 +206,7 @@ $sort = '';
 
 
     <div class="container">
-        <form id="contact" action="product" method="POST">
 
-            <div class="row" style="float: right; margin-top: -50px;">
-                <div class="dropdown" style="margin-right: 15px;">
-                    <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Color </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                        <?php
-                        if ($conn) {
-                            $SELECT = "SELECT * FROM color ";
-                            $resultado = mysqli_query($conn, $SELECT);
-                            if ($resultado) {
-                                while ($com = $resultado->fetch_array()) {
-                        ?>
-                                    <div class="form-check" style="margin:10px">
-                                        <label class="form-check-label">
-                                            <input style="height: 20px;width: 20px;" name="buscarC[]" type="checkbox" class="form-check-input" value="<?php echo $com['valor']; ?>">
-                                            <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
-                                        </label>
-                                    </div>
-
-                        <?php
-                                }
-                            } else {
-                                echo " se fue a la verga";
-                            }
-                        } else {
-                            echo "la coneccion fallo";
-                        }
-                        ?>
-
-                    </div>
-
-                </div>
-                <div class="dropdown" style="margin-right: 15px;">
-                    <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Size </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                        <?php
-                        if ($conn) {
-                            $SELECT = "SELECT * FROM size ";
-                            $resultado = mysqli_query($conn, $SELECT);
-                            if ($resultado) {
-                                while ($com = $resultado->fetch_array()) {
-                        ?>
-                                    <div class="form-check" style="margin:10px">
-                                        <label class="form-check-label">
-                                            <input style="height: 20px;width: 20px;" type="checkbox" name="buscarS[]" class="form-check-input" value="<?php echo $com['valor']; ?>">
-                                            <span style="margin-left:20px; font-size:16px"><?php echo $com['valor']; ?></span>
-                                        </label>
-                                    </div>
-
-                        <?php
-                                }
-                            } else {
-                                echo " se fue a la verga";
-                            }
-                        } else {
-                            echo "la coneccion fallo";
-                        }
-                        ?>
-
-                    </div>
-
-                </div>
-                <div class="dropdown" style="margin-right: 15px;">
-                    <button style="color:black" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sort
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                        <!-- <option class="dropdown-item" name="sort" value="">Best March</option>
-                        <option class="dropdown-item" name="sort" value="desc">Price: Lowest first</option>
-                        <option class="dropdown-item" name="sort" value="asc">Price: Highest first</option> -->
-                        <div class="form-check" style="margin:10px">
-                            <label class="form-check-label">
-                                <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="">
-                                <span style="margin-left:20px; font-size:16px">Best March</span>
-                            </label>
-                        </div>
-                        <div class="form-check" style="margin:10px">
-                            <label class="form-check-label">
-                                <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="asc">
-                                <span style="margin-left:20px; font-size:16px">Price: Lowest first</span>
-                            </label>
-                        </div>
-                        <div class="form-check" style="margin:10px">
-                            <label class="form-check-label">
-                                <input style="height: 20px;width: 20px;" type="radio" name="sort" class="form-check-input" value="desc">
-                                <span style="margin-left:20px; font-size:16px">Price: Highest first</span>
-                            </label>
-                        </div>
-                        <!-- <option  class="dropdown-item" value="ojos">Ojos</option> -->
-
-                    </div>
-
-                </div>
-                <button style="margin-right: 10px;" type="submit" class="btn btn-light">Apply</button>
-
-            </div>
-
-
-        </form>
 
         <?php
 
