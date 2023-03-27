@@ -462,7 +462,7 @@ if (isset($_SESSION['id'])) {
                                             <div class="Ag_Address" data-toggle="modal" data-target="#exampleModal_<?php echo $com['id_configuracion']; ?>" style="margin-right: 20px;">
                                                 <i class="fa-solid fa-pencil" style="height:20px;"></i>
                                             </div>
-                                            <form action="keys/deleteUser.php" method="post">
+                                            <form action="keys/deleteAddress-key.php" method="post">
                                                 <input type="hidden" name="id_configuracion" value="<?php echo $com['id_configuracion']; ?>">
                                                 <button class="Ag_Address btn btn-light" type="submit" style="margin-right: 20px;">
                                                     <i class="fa-solid fa-trash" style="height:20px;"></i>

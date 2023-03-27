@@ -276,16 +276,18 @@ if ($conn) {
 
                                     <hr>
                                 </div>
-                                <div class="contact">
-                                    <div style="width: 100%; text-align: center;" class="contact">
-
-
-                                        <input type="hidden" name="product_id" value="<?php echo $idProducto ?>">
-                                        <button type="submit" style="width: 100%; text-align: center;">Add to bag</button>
-
-
+                                <?php
+                                if (isset($_SESSION['id'])) {
+                                ?>
+                                    <div class="contact">
+                                        <div style="width: 100%; text-align: center;" class="contact">
+                                            <input type="hidden" name="product_id" value="<?php echo $idProducto ?>">
+                                            <button type="submit" style="width: 100%; text-align: center;">Add to bag</button>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php
+                                }
+                                ?>
                             </form>
                         </div>
 
@@ -293,214 +295,219 @@ if ($conn) {
                 </div>
             </section>
 
-
-            <section class="section" id="products">
-                <div class="container" style="margin-top: 20px;">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="section-heading">
-                                <h2>Lo mas destacado</h2>
-                                <span>Las Ofertas de temporada</span>
+            <?php
+            if (isset($_SESSION['id'])) {
+            ?>
+                <section class="section" id="products">
+                    <div class="container" style="margin-top: 20px;">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="section-heading">
+                                    <h2>Lo mas destacado</h2>
+                                    <span>Las Ofertas de temporada</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <?php
-                        require("keys/conection.php");
-                        if ($conn) {
-                            $SELECT = "SELECT * FROM productos  ORDER BY rand() LIMIT 8 ";
-                            $resultado = mysqli_query($conn, $SELECT);
-                            if ($resultado) {
-                                while ($com = $resultado->fetch_array()) {
-                        ?>
-                                    <?php $id_articulo = $com['id_producto']; ?>
+                    <div class="container">
+                        <div class="row">
+                            <?php
+                            require("keys/conection.php");
+                            if ($conn) {
+                                $SELECT = "SELECT * FROM productos  ORDER BY rand() LIMIT 8 ";
+                                $resultado = mysqli_query($conn, $SELECT);
+                                if ($resultado) {
+                                    while ($com = $resultado->fetch_array()) {
+                            ?>
+                                        <?php $id_articulo = $com['id_producto']; ?>
 
 
 
-                                    <?php $com['descripcion']; ?>
-                                    <div class="col-lg-3">
-                                        <div class="item">
-                                            <div class="thumb">
+                                        <?php $com['descripcion']; ?>
+                                        <div class="col-lg-3">
+                                            <div class="item">
+                                                <div class="thumb">
 
-                                                <div class="hover-content">
-                                                    <ul>
-                                                        <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
-                                                        <li>
-                                                            <?php $productoSelect = $com['id_producto']; ?>
-                                                            <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal-<?php echo $com['id_producto']; ?>">
-                                                                <i class="fa fa-shopping-cart"></i>
+                                                    <div class="hover-content">
+                                                        <ul>
+                                                            <li><a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-eye"></i></a></li>
+                                                            <li>
+                                                                <?php $productoSelect = $com['id_producto']; ?>
+                                                                <a style="cursor: pointer;" class="" data-toggle="modal" data-target="#exampleModal-<?php echo $com['id_producto']; ?>">
+                                                                    <i class="fa fa-shopping-cart"></i>
 
-                                                            </a>
+                                                                </a>
 
 
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div style="height: 400px;">
-                                                    <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
-                                                        <img style="width: 100%;
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div style="height: 400px;">
+                                                        <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
+                                                            <img style="width: 100%;
                                                             height: 100%;
                                                             object-fit: cover;
                                                             object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
-                                                    </a>
+                                                        </a>
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="down-content" style="text-align: center">
-                                                <span style="font-size: 15px; color:grey"><?php echo $com['articulo']; ?></span>
-                                                <span style="font-size: 15px;color:grey">$<?php echo $com['precio']; ?></span>
+                                                <div class="down-content" style="text-align: center">
+                                                    <span style="font-size: 15px; color:grey"><?php echo $com['articulo']; ?></span>
+                                                    <span style="font-size: 15px;color:grey">$<?php echo $com['precio']; ?></span>
 
-                                                <?php
+                                                    <?php
 
-                                                if ($conn) {
-                                                    $SELECT = "select c.valor from color c inner join  colorporproducto cp on c.id = cp.id_color where cp.id_producto=$id_articulo ";
-                                                    $resultadoColor = mysqli_query($conn, $SELECT);
-                                                    if ($resultadoColor) {
-                                                        while ($com = $resultadoColor->fetch_array()) {
-                                                ?>
+                                                    if ($conn) {
+                                                        $SELECT = "select c.valor from color c inner join  colorporproducto cp on c.id = cp.id_color where cp.id_producto=$id_articulo ";
+                                                        $resultadoColor = mysqli_query($conn, $SELECT);
+                                                        if ($resultadoColor) {
+                                                            while ($com = $resultadoColor->fetch_array()) {
+                                                    ?>
 
-                                                            <div style="display: inline-block;">
-                                                                <span style="border-radius:50%; border:1px solid black;  background-color:<?php echo $com['valor']; ?>;
+                                                                <div style="display: inline-block;">
+                                                                    <span style="border-radius:50%; border:1px solid black;  background-color:<?php echo $com['valor']; ?>;
                                                              height: 20px;width:20px;margin:auto" class="  ">
-                                                                </span>
-                                                            </div>
+                                                                    </span>
+                                                                </div>
 
-                                                <?php
+                                                    <?php
+                                                            }
+                                                        } else {
+                                                            echo " se fue a la verga";
                                                         }
                                                     } else {
-                                                        echo " se fue a la verga";
+                                                        echo "la coneccion fallo";
                                                     }
-                                                } else {
-                                                    echo "la coneccion fallo";
-                                                }
-                                                ?>
+                                                    ?>
 
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal-<?php echo $id_articulo ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Select Size and Color</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <form id="" action="keys/addToCar.php" method="post">
-                                                    <div class="modal-body">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal-<?php echo $id_articulo ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Select Size and Color</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form id="" action="keys/addToCar.php" method="post">
+                                                        <div class="modal-body">
 
-                                                        <div class="right-content">
-                                                        <span id="sizeM" style="color:black; margin-bottom: 10px;font-weight: bold"> Sizes</span>
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="btn-group btn-group-toggle " data-toggle="buttons">
-                                                                        <?php
-                                                                        require("keys/conection.php");
-                                                                        if ($conn) {
-                                                                            $SELECT = "select s.valor from sizeporproducto sp inner join size s on sp.id_size= s.id where sp.id_producto=$id_articulo ";
-                                                                            $resultadoM = mysqli_query($conn, $SELECT);
-                                                                            if ($resultadoM) {
-                                                                                while ($com = $resultadoM->fetch_array()) {
-                                                                        ?>
+                                                            <div class="right-content">
+                                                            <span id="sizeM" style="color:black; margin-bottom: 10px;font-weight: bold"> Sizes</span>
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                                                                            <?php
+                                                                            require("keys/conection.php");
+                                                                            if ($conn) {
+                                                                                $SELECT = "select s.valor from sizeporproducto sp inner join size s on sp.id_size= s.id where sp.id_producto=$id_articulo ";
+                                                                                $resultadoM = mysqli_query($conn, $SELECT);
+                                                                                if ($resultadoM) {
+                                                                                    while ($com = $resultadoM->fetch_array()) {
+                                                                            ?>
 
-                                                                                    <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
-                                                                                        <input style="font-size:14px;" class="sizeM" required type="radio" name="size" id="option1" autocomplete="off" value="<?php echo $com['valor']; ?>"> <?php echo $com['valor']; ?>
-                                                                                    </label>
+                                                                                        <label style="border-radius:20%; height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1">
+                                                                                            <input style="font-size:14px;" class="sizeM" required type="radio" name="size" id="option1" autocomplete="off" value="<?php echo $com['valor']; ?>"> <?php echo $com['valor']; ?>
+                                                                                        </label>
 
-                                                                        <?php
+                                                                            <?php
+                                                                                    }
+                                                                                } else {
+                                                                                    echo " se fue a la verga";
                                                                                 }
                                                                             } else {
-                                                                                echo " se fue a la verga";
+                                                                                echo "la coneccion fallo";
                                                                             }
-                                                                        } else {
-                                                                            echo "la coneccion fallo";
-                                                                        }
-                                                                        ?>
+                                                                            ?>
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-                                                            <hr>
+                                                                <hr>
 
-                                                            <span id="colorM" style="color:black; margin-bottom: -20px;font-weight: bold"> Colors</span>
+                                                                <span id="colorM" style="color:black; margin-bottom: -20px;font-weight: bold"> Colors</span>
 
-                                                            <div class="container">
+                                                                <div class="container">
 
-                                                                <div class="row">
-                                                                    <div class="btn-group btn-group-toggle " data-toggle="buttons">
-
+                                                                    <div class="row">
+                                                                        <div class="btn-group btn-group-toggle " data-toggle="buttons">
 
 
-                                                                        <?php
-                                                                        if ($conn) {
-                                                                            $SELECT = "select c.valor from colorporproducto cp inner join color c on cp.id_color= c.id where cp.id_producto=$productoSelect";
-                                                                            $resultadoC = mysqli_query($conn, $SELECT);
-                                                                            if ($resultadoC) {
-                                                                                while ($com = $resultadoC->fetch_array()) {
-                                                                        ?>
 
-                                                                                    <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
+                                                                            <?php
+                                                                            if ($conn) {
+                                                                                $SELECT = "select c.valor from colorporproducto cp inner join color c on cp.id_color= c.id where cp.id_producto=$productoSelect";
+                                                                                $resultadoC = mysqli_query($conn, $SELECT);
+                                                                                if ($resultadoC) {
+                                                                                    while ($com = $resultadoC->fetch_array()) {
+                                                                            ?>
+
+                                                                                        <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
                                                              height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
-                                                                                        <input type="radio"  class="colorM" name="color" value="<?php echo $com['valor']; ?>" required>
-                                                                                    </label>
+                                                                                            <input type="radio"  class="colorM" name="color" value="<?php echo $com['valor']; ?>" required>
+                                                                                        </label>
 
 
 
-                                                                        <?php
+                                                                            <?php
+                                                                                    }
+                                                                                } else {
+                                                                                    echo " se fue a la verga";
                                                                                 }
                                                                             } else {
-                                                                                echo " se fue a la verga";
+                                                                                echo "la coneccion fallo";
                                                                             }
-                                                                        } else {
-                                                                            echo "la coneccion fallo";
-                                                                        }
-                                                                        ?>
+                                                                            ?>
 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+
+
                                                         </div>
 
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <input type="hidden" name="product_id" value="<?php echo $productoSelect; ?>">
+                                                            <button type="submit" class="btn btn-dark">Add to Bag</button>
 
 
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <input type="hidden" name="product_id" value="<?php echo $productoSelect; ?>">
-                                                        <button type="submit" class="btn btn-dark">Add to Bag</button>
-
-
-                                                    </div>
-                                                </form>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
 
 
 
 
 
-                        <?php
+                            <?php
+                                    }
+                                } else {
+                                    echo " se fue a la verga";
                                 }
                             } else {
-                                echo " se fue a la verga";
+                                echo "la coneccion fallo";
                             }
-                        } else {
-                            echo "la coneccion fallo";
-                        }
-                        ?>
+                            ?>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <!-- ***** Men Area Ends ***** -->
+                </section>
+                <!-- ***** Men Area Ends ***** -->
+            <?php
+            }
+            ?>
 
 
 
