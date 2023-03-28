@@ -1,11 +1,10 @@
 <?php
+session_start();
 $email = "sb-e64rp25230607@business.example.com";
-
-require("head.php");
 $Iduser = $_SESSION['id'];
 $total = 0;
-
 if (isset($_SESSION['id'])) {
+    require("head.php");
 ?>
     <br>
     <br>

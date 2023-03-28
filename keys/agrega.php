@@ -60,21 +60,26 @@ if (isset($_SESSION['ID_ADMIN'])) {
                 }
 
 
-                echo "<script>
-                alert('Agregado');
-                window.location='../agregar';
-                </script>";
+                // echo "<script>
+                // alert('Agregado');
+                // window.location='../agregar';
+                // </script>";
+                header("Location: ../agregar");
             } else {
-                echo "<script>
-                alert('No se Guardo');
-                window.location='../agregar';
-                </script>";
+                // echo "<script>
+                // alert('No se Guardo');
+                // window.location='../agregar';
+                // </script>";
+                header("Location: ../agregar");
+                
             }
         } else {
-            echo "la connecion fallo";
+            // echo "la connecion fallo";
+            header("Location: ../agregar");
+
         }
     } else {
-        echo "todos los datos son OBLIGATORIOS";
+        // echo "todos los datos son OBLIGATORIOS";
         header("Location: ../agregar");
     }
 } else {

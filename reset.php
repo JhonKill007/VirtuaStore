@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("head.php");
 
 $dato = $_GET['fditer'];
