@@ -92,7 +92,7 @@ $sort = '';
         <div class="row" style="display: flex;    justify-content: end;margin-bottom: -25px;">
             <div class="col-lg-4">
                 <div class="section-heading ">
-                    <form id="contact" action="product" method="POST">
+                    <form id="contact" action="products" method="POST">
 
                         <div class="row" style=" margin-top: -50px; justify-content: end; margin-right: 5px">
                             <div class="dropdown" style="margin-right: 15px;">
