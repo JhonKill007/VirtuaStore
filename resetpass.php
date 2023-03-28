@@ -1,6 +1,7 @@
 <?php
-require("head.php");
+session_start();
 if (!isset($_SESSION['ID_ADMIN']) && !isset($_SESSION['id'])) {
+    require("head.php");
 ?>
     <div class="subscribe">
         <div class="container">

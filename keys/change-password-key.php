@@ -27,23 +27,28 @@ if (isset($_SESSION['id'])) {
                             header("Location:../index");
                         }
                     } else {
-                        $datachange .= "La Contraseña nueva y la confirmacion no coinsiden.";
-                        echo $datachange;
+                        // $datachange .= "La Contraseña nueva y la confirmacion no coinsiden.";
+                        // echo $datachange;
+                        header("Location: ../settings");
                     }
                 } else {
-                    $datachange .= "La Contraseña actual es Incorrecta.";
-                    echo $datachange;
+                    // $datachange .= "La Contraseña actual es Incorrecta.";
+                    // echo $datachange;
+                    header("Location: ../settings");
                 }
             } else {
-                $datachange .= "El query esta fallando" . $id_per;
-                echo $datachange;
+                // $datachange .= "El query esta fallando" . $id_per;
+                // echo $datachange;
+                header("Location: ../settings");
             }
         } else {
-            echo "fallo la coneccion";
+            // echo "fallo la coneccion";
+            header("Location: ../settings");
         }
     } else {
-        $datachange .= "Complete todos los campos.";
-        echo $datachange;
+        // $datachange .= "Complete todos los campos.";
+        // echo $datachange;
+        header("Location: ../settings");
     }
 } else {
     header("Location:../login");

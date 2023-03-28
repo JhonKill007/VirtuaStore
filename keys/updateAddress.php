@@ -31,16 +31,14 @@ if (isset($_SESSION['id'])) {
                     header("Location: ../address");
                 }
             } else {
-                echo "<script>
-                    alert('No se Guardo');
-                    </script>";
+                header("Location: ../");
             }
         } else {
-            echo "la connecion fallo";
+            header("Location: ../");
         }
     } else {
-        echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../users");
+        // echo "todos los datos son OBLIGATORIOS";
+        header("Location: ../");
     }
 } else {
     header("Location:../login");

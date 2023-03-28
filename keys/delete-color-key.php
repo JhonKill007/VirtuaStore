@@ -12,19 +12,13 @@ if (isset($_SESSION['ID_ADMIN'])) {
             if ($resultado) {
                 header("Location: ../update?id_articulo=$_id_product");
             } else {
-                echo "<script>
-                    alert('No se Elimino');
-                    window.location='../update?id_articulo=$_id_product';
-                    </script>";
+                header("Location: ../update?id_articulo=$_id_product");
             }
         } else {
-            echo "la connecion fallo";
+            header("Location: ../update?id_articulo=$_id_product");
         }
     } else {
-        echo "<script>
-        alert('TODos los datos son obligatorios');
-        window.location='../update?id_articulo=$_id_product';
-        </script>";
+        header("Location: ../update?id_articulo=$_id_product");
     }
 } else {
     header("Location:../login");

@@ -14,8 +14,9 @@
     }
 </style>
 <?php
-require("head.php");
+session_start();
 if (isset($_SESSION['ID_ADMIN'])) {
+    require("head.php");
 ?>
     <br>
     <br>
@@ -28,7 +29,7 @@ if (isset($_SESSION['ID_ADMIN'])) {
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        
+
                         <th scope="col">First</th>
                         <th scope="col">Email</th>
                         <th scope="col">Title</th>
@@ -57,7 +58,7 @@ if (isset($_SESSION['ID_ADMIN'])) {
                     ?>
 
                                 <tr>
-                                  
+
                                     <td><?php echo $com['nombre']; ?></td>
                                     <td><?php echo $com['email']; ?></td>
                                     <td><?php echo $com['articulo']; ?></td>
@@ -70,7 +71,7 @@ if (isset($_SESSION['ID_ADMIN'])) {
                                     </td>
                                     <form action="keys/orden-sent-key.php" method="post">
                                         <input type="hidden" name="email" value="<?php echo $com['email']; ?>">
-                                        <td type="submit"><button style="background-color: transparent;border: 1px;" ><i class="fa-solid fa-paper-plane"></i></button></td>
+                                        <td type="submit"><button style="background-color: transparent;border: 1px;"><i class="fa-solid fa-paper-plane"></i></button></td>
                                     </form>
 
                                     <div class="modal fade" id="exampleModal_<?php echo $idUser ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

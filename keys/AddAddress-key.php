@@ -21,17 +21,18 @@ if (isset($_SESSION['id'])) {
             if ($resultado) {
                 header("Location: ../settings");
             } else {
-                echo "<script>
-                    alert('No se agrego el registro');
-                   
-                    </script>";
+                // echo "<script>
+                //     alert('No se agrego el registro');
+                //     </script>";
+                header("Location: ../settings");
             }
         } else {
-            echo "la connecion fallo";
+            // echo "la connecion fallo";
+            header("Location: ../settings");
         }
     } else {
-        echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../users");
+        // echo "todos los datos son OBLIGATORIOS";
+        header("Location: ../settings");
     }
 } else {
     header("Location:../login");

@@ -68,22 +68,25 @@ if (isset($_SESSION['ID_ADMIN'])) {
                         $resultado = mysqli_query($conn, $InsertFotos);
                     }
                 }
-                echo "<script>
-            alert('Product Already Update');
-            window.location='../update?id_articulo=$id_producto';
-            </script>";
+                //     echo "<script>
+                // alert('Product Already Update');
+                // window.location='../update?id_articulo=$id_producto';
+                // </script>";
+                header("Location: ../update?id_articulo=$id_producto");
             } else {
-                echo "<script>
-                alert('No se Guardo');
-                window.location='../../update?id_articulo=$id_producto';
-                </script>";
+                // echo "<script>
+                // alert('No se Guardo');
+                // window.location='../../update?id_articulo=$id_producto';
+                // </script>";
+                header("Location: ../update?id_articulo=$id_producto");
             }
         } else {
-            echo "la connecion fallo";
+            // echo "la connecion fallo";
+            header("Location: ../update?id_articulo=$id_producto");
         }
     } else {
-        echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../../update?id_articulo=$id_producto");
+        // echo "todos los datos son OBLIGATORIOS";
+        header("Location: ../update?id_articulo=$id_producto");
     }
 } else {
     header("Location:../login");

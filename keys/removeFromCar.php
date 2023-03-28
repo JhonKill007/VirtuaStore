@@ -12,16 +12,18 @@ if (isset($_SESSION['id'])) {
             if ($resultado) {
                 header("Location: ../car");
             } else {
-                echo "<script>
-                    alert('No se Guardo');
-                    window.location='../car';
-                    </script>";
+                // echo "<script>
+                //     alert('No se Guardo');
+                //     window.location='../car';
+                //     </script>";
+                header("Location: ../car");
             }
         } else {
-            echo "la connecion fallo";
+            // echo "la connecion fallo";
+            header("Location: ../car");
         }
     } else {
-        echo "todos los datos son OBLIGATORIOS";
+        // echo "todos los datos son OBLIGATORIOS";
         header("Location: ../car");
     }
 } else {

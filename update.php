@@ -1,7 +1,7 @@
 <?php
-require("head.php");
-
+session_start();
 if (isset($_SESSION['ID_ADMIN'])) {
+    require("head.php");
     $id_producto = $_GET['id_articulo'];
     $filtro_sizes = '';
     $filtro_colors = '';

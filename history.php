@@ -1,7 +1,8 @@
 <?php
-require("head.php");
+session_start();
 if (isset($_SESSION['id'])) {
-    $idUser=$_SESSION['id'];
+    require("head.php");
+    $idUser = $_SESSION['id'];
 
 ?>
     <br>
@@ -21,7 +22,7 @@ if (isset($_SESSION['id'])) {
                         <th scope="col">P/P</th>
                         <th scope="col">Total</th>
                         <th scope="col">See</th>
-                     
+
 
                     </tr>
                 </thead>
@@ -35,15 +36,15 @@ if (isset($_SESSION['id'])) {
                         registro r on r.id_registro = c.user_id
                         inner join
                         productos p on c.producto_id = p.id_producto
-                        where c.comprado=1 and c.user_id=$idUser" ;
+                        where c.comprado=1 and c.user_id=$idUser";
                         $resultado = mysqli_query($conn, $SELECT);
                         if ($resultado) {
                             while ($com = $resultado->fetch_array()) {
-                                $total=$com['cantidadSelected'] *$com['precio'];  
+                                $total = $com['cantidadSelected'] * $com['precio'];
                     ?>
 
                                 <tr>
-                                   
+
                                     <td><?php echo $com['articulo']; ?></td>
                                     <td><?php echo $com['color']; ?></td>
                                     <td><?php echo $com['cantidadSelected']; ?></td>
@@ -51,9 +52,9 @@ if (isset($_SESSION['id'])) {
                                     <td><?php echo $total ?></td>
                                     <td><a style="color: black;" href="/VirtuaStore/view.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa-solid fa-eye"></i></a></td>
 
-                                  
-                                   
-                                    
+
+
+
                                 </tr>
                     <?php
                             }
@@ -61,7 +62,7 @@ if (isset($_SESSION['id'])) {
                     }
                     ?>
 
-                  
+
                 </tbody>
             </table>
 

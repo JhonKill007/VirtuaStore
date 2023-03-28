@@ -11,16 +11,18 @@ if (isset($_SESSION['id'])) {
             if ($resultado) {
                 header("Location: ../settings");
             } else {
-                echo "<script>
-                    alert('No se Elimino');
-                    window.location='../settings';
-                    </script>";
+                // echo "<script>
+                //     alert('No se Elimino');
+                //     window.location='../settings';
+                //     </script>";
+                header("Location: ../settings");
             }
         } else {
-            echo "la connecion fallo";
+            // echo "la connecion fallo";
+            header("Location: ../settings");
         }
     } else {
-        echo "todos los datos son OBLIGATORIOS";
+        // echo "todos los datos son OBLIGATORIOS";
         header("Location: ../settings.php");
     }
 } else {
