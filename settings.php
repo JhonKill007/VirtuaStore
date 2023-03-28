@@ -65,7 +65,7 @@ if (isset($_SESSION['id'])) {
             <div class="container">
                 <div class="row d-flex setting_nav">
                     <div class="item">
-                        <b>Personal Info</b>
+                        <b style="border-bottom: 3px solid;">Personal Info</b>
                     </div>
                     <div class="item modal_1_button_2">
                         <b>Password</b>
@@ -84,7 +84,7 @@ if (isset($_SESSION['id'])) {
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="section-heading">
-                            <h3>Personal Data Setting</h3>
+                            <h3>Personal Information Setting</h3>
                             <span>You can update your personal information</span>
                         </div>
                         <form id="contact" action="keys/updateData.php" method="post">
@@ -126,7 +126,7 @@ if (isset($_SESSION['id'])) {
                                             <br>
                                             <div class="col-lg-12">
                                                 <fieldset>
-                                                    <input class="main-dark-button" type="submit" value="Save">
+                                                <button style="width: 100%;" type="submit" value="Save">Save</button>
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -150,7 +150,7 @@ if (isset($_SESSION['id'])) {
                         <b>Personal Info</b>
                     </div>
                     <div class="item">
-                        <b>Password</b>
+                        <b style="border-bottom: 3px solid;">Password</b>
                     </div>
                     <div class="item modal_2_button_3">
                         <b>Address</b>
@@ -198,7 +198,7 @@ if (isset($_SESSION['id'])) {
                             <div class="row">
                                 <div class="col-lg-10">
                                     <fieldset>
-                                        <input class="main-dark-button" type="submit" value="Save" placeholder="Save">
+                                    <button style="width: 100%;" type="submit" value="Save">Save</button>
                                     </fieldset>
                                 </div>
                             </div>
@@ -221,7 +221,7 @@ if (isset($_SESSION['id'])) {
                         <b>Password</b>
                     </div>
                     <div class="item">
-                        <b>Address</b>
+                        <b style="border-bottom: 3px solid;">Address</b>
                     </div>
                 </div>
             </div>
@@ -418,7 +418,7 @@ if (isset($_SESSION['id'])) {
                                                 <br>
                                                 <div class="col-lg-12">
                                                     <fieldset>
-                                                        <input class="main-dark-button" type="submit" value="Save">
+                                                    <button style="width: 100%;" type="submit" value="Save">Save</button>
                                                     </fieldset>
                                                 </div>
                                             </div>
