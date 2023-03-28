@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("head.php");
 $id_articulo = $_GET['id_articulo']
 ?>

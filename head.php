@@ -81,8 +81,7 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="index" class=" home">Home</a></li>
                             <?php
-                            session_start();
-                            if (isset($_SESSION['id'])) {
+                            if (isset($_SESSION['id']) || !isset($_SESSION['ID_ADMIN'])) {
                             ?>
                                 <li class="scroll-to-section"><a href="onfire" class="offert">Offert</a></li>
                                 <li class="submenu">
@@ -96,7 +95,7 @@
                                             if ($resultado) {
                                                 while ($com = $resultado->fetch_array()) {
                                         ?>
-                                                    <li><a href="product"><?php echo $com['valor']; ?></a></li>
+                                                    <li><a href="products"><?php echo $com['valor']; ?></a></li>
 
 
                                         <?php

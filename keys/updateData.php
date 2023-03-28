@@ -29,16 +29,17 @@ if (!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email)) {
         if ($resultado) {
             header("Location:../index");
         } else {
-            echo "NO SE GUARDO EL REGISTRO";
+            header("Location:../index");
         }
     } else {
-        echo "fallo la coneccion";
+        header("Location:../index");
     }
 } else {
-    echo "<script>
-    alert('Debe llenar todos los campos');
-    window.location='../login';
-    </script>";
+    // echo "<script>
+    // alert('Debe llenar todos los campos');
+    // window.location='../login';
+    // </script>";
+    header("Location:../login");
 }
 
 

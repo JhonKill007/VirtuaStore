@@ -11,16 +11,12 @@ if (isset($_SESSION['ID_ADMIN'])) {
             if ($resultado) {
                 header("Location: ../products");
             } else {
-                echo "<script>
-                    alert('No se Elimino');
-                    window.location='../products';
-                    </script>";
+                header("Location: ../products");
             }
         } else {
-            echo "la connecion fallo";
+            header("Location: ../products");
         }
     } else {
-        echo "todos los datos son OBLIGATORIOS";
         header("Location: ../products");
     }
 } else {

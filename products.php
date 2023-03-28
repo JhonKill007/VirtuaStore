@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("head.php");
 require("keys/conection.php");
 $filtro = '';
@@ -311,7 +312,7 @@ $sort = '';
 
 
                                     <?php
-                                    if (isset($_SESSION['id'])) {
+                                    if (isset($_SESSION['id']) || !isset($_SESSION['ID_ADMIN'])) {
                                     ?>
                                         <div class="hover-content">
                                             <ul>
@@ -326,8 +327,10 @@ $sort = '';
                                             </ul>
                                         </div>
                                     <?php
-                                    }
+                                    } 
                                     ?>
+
+
 
                                     <div style="height: 400px;">
                                         <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">

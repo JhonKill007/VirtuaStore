@@ -22,19 +22,21 @@ if (isset($_SESSION['id'])) {
                 header("Location: ../car");
             }
             else{
-                echo "<script>
-                    alert('No se Guardo');
-                    window.location='../car';
-                    </script>";
+                // echo "<script>
+                //     alert('No se Guardo');
+                //     window.location='../car';
+                //     </script>";
+                header("Location: ../index");
             }
         }
         else{
-            echo "la connecion fallo";
+            // echo "la connecion fallo";
+            header("Location: ../index");
         }
     }
     else{
-        echo "todos los datos son OBLIGATORIOS";
-        header("Location: ../product");
+        // echo "todos los datos son OBLIGATORIOS";
+        header("Location: ../products");
     }
 } else {
     header("Location:../login");
