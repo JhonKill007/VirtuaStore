@@ -22,7 +22,7 @@ if (!isset($_SESSION['ID_ADMIN']) && !isset($_SESSION['id'])) {
                         <div class="row">
                             <div class="col-lg-5">
                                 <fieldset>
-                                    <input name="password" type="password" id="name" placeholder="Contraseña" required="">
+                                    <input name="password" type="password" id="name" placeholder="Password" required="">
                                 </fieldset>
                             </div>
                         </div>

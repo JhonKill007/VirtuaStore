@@ -303,8 +303,8 @@ if ($conn) {
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="section-heading">
-                                    <h2>Lo mas destacado</h2>
-                                    <span>Las Ofertas de temporada</span>
+                                    <h2>Most outstanding</h2>
+                                    <span>More details in the product section.</span>
                                 </div>
                             </div>
                         </div>
@@ -399,7 +399,7 @@ if ($conn) {
                                                         <div class="modal-body">
 
                                                             <div class="right-content">
-                                                            <span id="sizeM" style="color:black; margin-bottom: 10px;font-weight: bold"> Sizes</span>
+                                                                <span id="sizeM" style="color:black; margin-bottom: 10px;font-weight: bold"> Sizes</span>
                                                                 <div class="container">
                                                                     <div class="row">
                                                                         <div class="btn-group btn-group-toggle " data-toggle="buttons">
@@ -451,7 +451,7 @@ if ($conn) {
 
                                                                                         <label style="border-radius:50%; font-size:30px; background-color:<?php echo $com['valor']; ?>;
                                                              height: 50px;width:50px;margin:auto" class="btn btn-outline-secondary active mr-1 ">
-                                                                                            <input type="radio"  class="colorM" name="color" value="<?php echo $com['valor']; ?>" required>
+                                                                                            <input type="radio" class="colorM" name="color" value="<?php echo $com['valor']; ?>" required>
                                                                                         </label>
 
 
@@ -539,7 +539,6 @@ require("footer.php");
             document.getElementById('sizeM').innerHTML = "Size: " + $(this).val();
         });
     });
-   
 </script>
 
 <script>

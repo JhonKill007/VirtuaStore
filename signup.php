@@ -12,8 +12,8 @@ require("head.php");
             </div>
             <div class="col-lg-6">
                 <div class="section-heading">
-                    <h2>Crea Una Nueva Cuenta</h2>
-                    <span>Registrate y llevate lo que te gusta.</span>
+                    <h2>Create an account</h2>
+                    <span>Register and take what you like.</span>
                 </div>
                 <form id="contact" action="keys/signup-key.php" method="post">
                     <?php
@@ -30,19 +30,19 @@ require("head.php");
                     <div class="row">
                         <div class="col-lg-6">
                             <fieldset>
-                                <input name="nombre" type="text" id="name" placeholder="Nombre" required="">
+                                <input name="nombre" type="text" id="name" placeholder="Name" required="">
                             </fieldset>
                         </div>
                         <div class="col-lg-6">
                             <fieldset>
-                                <input name="apellido" type="text" placeholder="Apellido" required="">
+                                <input name="apellido" type="text" placeholder="Last Name" required="">
                             </fieldset>
                         </div>
                         <br>
                         <br>
                         <div class="col-lg-12">
                             <fieldset>
-                                <input type="number" placeholder="Numero" name="numero">
+                                <input type="number" placeholder="Phone number" name="numero">
                             </fieldset>
                         </div>
                         <br>
@@ -56,7 +56,7 @@ require("head.php");
                         <br>
                         <div class="col-lg-12">
                             <fieldset>
-                                <input type="password" placeholder="Contraseña" name="password">
+                                <input type="password" placeholder="Password" name="password">
                             </fieldset>
                         </div>
                         <br>
@@ -99,25 +99,25 @@ require("head.php");
                             </div>
                             <div class="col-sm-4">
                                 <select class="form-control" id="month" name="month" required>
-                                    <option value="1">Enero</option>
-                                    <option value="2">Febrero</option>
-                                    <option value="3">Marzo</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Mayo</option>
-                                    <option value="6">Junio</option>
-                                    <option value="7">Julio</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Septiembre</option>
-                                    <option value="10">Octubre</option>
-                                    <option value="11">Noviembre</option>
-                                    <option value="12">Diciembre</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
                                 <select class="form-control" id="year" name="year" required>
-                                    <option value="2021" selected="1">2023</option>
-                                    <option value="2020">2022</option>
-                                    <option value="2020">2021</option>
+                                    <option value="2023" selected="1">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
                                     <option value="2018">2018</option>
@@ -240,11 +240,11 @@ require("head.php");
                         <div class="col-lg-12 fecha">
                             <div class="col-lg-4">
                                 <input class="col-lg-2" type="radio" name="genero" id="hombre" value="m" required>
-                                <label for="hombre">Hombre</label>
+                                <label for="hombre">Man</label>
                             </div>
                             <div class="col-lg-4">
                                 <input class="col-lg-2" type="radio" name="genero" id="mujer" value="f">
-                                <label for="mujer">Mujer</label>
+                                <label for="mujer">Women</label>
                             </div>
                             <div class="col-lg-4">
                                 <input class="col-lg-2" type="radio" name="genero" id="personalizado" value="p">
@@ -259,7 +259,7 @@ require("head.php");
                     </div>
                 </form>
                 <div class="section-heading">
-                    <span>Ya tienes cuenta, <a href="./login">Inicia Sesion</a>.</span>
+                    <span>Already a member? <a href="./login">Sign in</a>.</span>
                 </div>
             </div>
         </div>

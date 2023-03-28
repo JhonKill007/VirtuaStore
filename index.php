@@ -45,7 +45,7 @@ require("head.php");
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h2>Most outstanding</h2>
-                    <span>Mas detalles en la seccion de labios.</span>
+                    <span>More details in the product section.</span>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@ require("head.php");
             <div class="col-lg-12">
                 <div class="section-heading">
                     <h2>Social Media</h2>
-                    <span>Details to details is what makes Hexashop different from the other themes.</span>
+                    <span>Details to details is what makes Pretty Perfect Collection different from the other themes.</span>
                 </div>
             </div>
         </div>
