@@ -61,7 +61,7 @@ if (isset($_SESSION['ID_ADMIN'])) {
             </div>
         </div>
     </section>
-    ***** Men Area Ends *****
+   
 
 <?php
     require("footer.php");

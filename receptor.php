@@ -113,7 +113,7 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
                     $idCar = $com['id_car'];
                     
 
-                    $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0)";
+                    $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0,now())";
                     $resultado2 = mysqli_query($conn, $insertToVentas);
                     if ($resultado2) {
                        
@@ -135,7 +135,7 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
                             if ($resultUpdate) {
                                 
 
-                                $deleteFromCar = "DELETE FROM car where id_car= $idCar";
+                                $deleteFromCar = "UPDATE car set comprado =1 where id_car= $idCar";
                                 $resultDelete = mysqli_query($conn, $deleteFromCar);
                                 if ($resultDelete) {
                                     

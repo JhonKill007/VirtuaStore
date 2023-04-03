@@ -84,7 +84,7 @@ if (isset($_SESSION['id'])) {
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="section-heading">
-                            <h3>Personal Information Setting</h3>
+                            <h3>Personal Information</h3>
                             <span>You can update your personal information</span>
                         </div>
                         <form id="contact" action="keys/updateData.php" method="post">
@@ -294,13 +294,13 @@ if (isset($_SESSION['id'])) {
                                                 <div class="col-lg-6">
                                                     <fieldset>
                                                         <span>First Name</span>
-                                                        <input type="text" placeholder="First Name" name="nombre" required>
+                                                        <input type="text" placeholder="" name="nombre" required>
                                                     </fieldset>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <fieldset>
                                                         <span>Last Name</span>
-                                                        <input type="text" placeholder="Last Name" name="apellido" required>
+                                                        <input type="text" placeholder="" name="apellido" required>
                                                     </fieldset>
                                                 </div>
                                                 <br>
@@ -308,7 +308,7 @@ if (isset($_SESSION['id'])) {
                                                 <div class="col-lg-12">
                                                     <fieldset>
                                                         <span>Street</span>
-                                                        <input type="text" placeholder="Street" name="calle" required>
+                                                        <input type="text" placeholder="" name="calle" required>
                                                     </fieldset>
                                                 </div>
                                                 <br>
@@ -316,7 +316,7 @@ if (isset($_SESSION['id'])) {
                                                 <div class="col-lg-6">
                                                     <fieldset>
                                                         <span>Aparment</span>
-                                                        <input type="text" placeholder="Aparment" name="numero" required>
+                                                        <input type="text" placeholder="" name="numero" required>
                                                     </fieldset>
                                                 </div>
                                                 <br>
@@ -324,7 +324,7 @@ if (isset($_SESSION['id'])) {
                                                 <div class="col-lg-6">
                                                     <fieldset>
                                                         <span>Zip Code</span>
-                                                        <input type="text" placeholder="Zip Code" name="cp" required>
+                                                        <input type="text" placeholder="" name="cp" required>
                                                     </fieldset>
                                                 </div>
                                                 <br>
@@ -332,7 +332,7 @@ if (isset($_SESSION['id'])) {
                                                 <div class="col-lg-6">
                                                     <fieldset>
                                                         <span>City</span>
-                                                        <input name="city" type="text" placeholder="City" required>
+                                                        <input name="city" type="text" placeholder="" required>
                                                     </fieldset>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -409,7 +409,7 @@ if (isset($_SESSION['id'])) {
                                                 <div class="col-lg-12">
                                                     <fieldset>
                                                         <span>Phone</span>
-                                                        <input name="telefono" type="text" placeholder="Phone" required>
+                                                        <input name="telefono" type="text" placeholder="" required>
                                                     </fieldset>
                                                 </div>
                                                 <br>

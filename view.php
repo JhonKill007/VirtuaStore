@@ -4,6 +4,33 @@ require("head.php");
 $id_articulo = $_GET['id_articulo']
 ?>
 <style>
+    .btn-outline-secondary:not(:disabled):not(.disabled).active,
+    .btn-outline-secondary:not(:disabled):not(.disabled):active,
+    .show>.btn-outline-secondary.dropdown-toggle {
+        color: #fff;
+        background-color: #000000;
+        border-color: #000000;
+    }
+
+    .btn-outline-secondary:hover {
+        color: #fff;
+        background-color: #000000;
+        border-color: #000000;
+    }
+
+    .zoomIt {
+        display: inline-block !important;
+        -webkit-transition: -webkit-transform 1s ease-out;
+        transition: transform 0.5s ease-out;
+        margin-top: px;
+    }
+
+    .zoomIt:hover {
+
+        -webkit-transform: scale(2);
+        transform: scale(2)
+    }
+
     /* Make the image fully responsive */
     .carousel-inner img {
         width: 100%;
@@ -133,11 +160,14 @@ if ($conn) {
                                             <?php
                                             $active = "active";
                                             while ($rw_slider = mysqli_fetch_array($resultado)) {
+                                                $idFP = $rw_slider['id'];
+
                                             ?>
                                                 <div class="carousel-item carrusel-img <?php echo $active; ?>">
-                                                    <img data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="<?php echo $rw_slider['directorio']; ?>" data-holder-rendered="true">
+                                                    <img class="zoomIt" data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="<?php echo $rw_slider['directorio']; ?>" data-holder-rendered="true">
 
                                                 </div>
+
                                             <?php
                                                 $active = "";
                                             }
@@ -173,14 +203,14 @@ if ($conn) {
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-lg-7">
                             <form id="" action="keys/addToCar.php" method="post">
                                 <div class="right-content">
                                     <h4><?php echo $com['articulo']; ?></h4>
                                     <span class="price">$<?php echo $com['precio']; ?></span>
 
 
-                                    <span id="size" style="color:black; margin-bottom: 10px;font-weight: bold"> Sizes
+                                    <span id="size" style="color:black; margin-bottom: 10px;font-weight: bold; margin-top:2px"> Sizes
                                     </span>
                                     <div class="container">
                                         <div class="row">
@@ -211,7 +241,7 @@ if ($conn) {
                                         </div>
                                     </div>
                                     <hr>
-                                    <span id="color" style="color:black; margin-bottom: -20px;font-weight: bold"> Colors</span>
+                                    <span id="color" style="color:black; margin-bottom: -20px;font-weight: bold; margin-top:2px"> Colors</span>
                                     <span> </span>
 
                                     <div class="container">

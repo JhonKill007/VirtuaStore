@@ -2,6 +2,20 @@
 session_start();
 require("head.php");
 ?>
+<style>
+    .zoomIt {
+        display: inline-block !important;
+        -webkit-transition: -webkit-transform 1s ease-out;
+        transition: transform 0.5s ease-out;
+        margin-top: px;
+    }
+
+    .zoomIt:hover {
+
+        -webkit-transform: scale(2);
+        transform: scale(2)
+    }
+</style>
 
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -14,19 +28,19 @@ require("head.php");
         <div class="carousel-item carrusel-img active">
             <img class="d-block w-100" src="img/kancanP5.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-             
+
             </div>
         </div>
         <div class="carousel-item carrusel-img">
             <img class="d-block w-100" src="img/kancanP3.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
-              
+
             </div>
         </div>
         <div class="carousel-item carrusel-img">
             <img class="d-block w-100" src="img/kancanP6.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-             
+
             </div>
         </div>
     </div>
@@ -59,7 +73,7 @@ require("head.php");
                         <?php
                         require("keys/conection.php");
                         if ($conn) {
-                            $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() LIMIT 3";
+                            $SELECT = "SELECT * FROM productos  ORDER BY rand() LIMIT 3";
                             $resultado = mysqli_query($conn, $SELECT);
                             if ($resultado) {
                                 while ($com = $resultado->fetch_array()) {
@@ -77,20 +91,20 @@ require("head.php");
                                                     <li><a href="car.php?id_articulo=<?php echo $com['id_producto']; ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                 </ul>
                                             </div> -->
-                                            <div style="height: 400px;">
+                                            <div style="height: 500px;">
                                                 <a href="view.php?id_articulo=<?php echo $com['id_producto']; ?>">
-                                                    <img style="width: 100%;
+                                                    <img  style="width: 100%;
                                                             height: 100%;
-                                                            object-fit: cover;
+                                                            
                                                             object-position: center center;" src=<?php echo $com['foto']; ?> alt="">
 
                                                 </a>
 
                                             </div>
                                         </div>
-                                        <div class="down-content"  style="text-align: center">
-                                        <span style="font-size: 15px; color:black"><?php echo $com['articulo']; ?></span>
-                                    <span style="font-size: 15px;color:grey">$<?php echo $com['precio']; ?></span>
+                                        <div class="down-content" style="text-align: center">
+                                            <span style="font-size: 15px; color:black"><?php echo $com['articulo']; ?></span>
+                                            <span style="font-size: 15px;color:grey">$<?php echo $com['precio']; ?></span>
 
                                         </div>
                                     </div>
@@ -219,7 +233,7 @@ require("head.php");
                 <script async src="//www.instagram.com/embed.js"></script>
 
             </div>
-            
+
             <div class="col-ms-5">
                 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/ClYuaj_ggGC/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                     <div style="padding:16px;"> <a href="https://www.instagram.com/reel/ClYuaj_ggGC/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">

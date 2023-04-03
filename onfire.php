@@ -19,7 +19,7 @@ require("head.php");
             <?php
             require("keys/conection.php");
             if ($conn) {
-                $SELECT = "SELECT * FROM productos WHERE categoria = 'mujer' ORDER BY rand() ";
+                $SELECT = "SELECT * FROM productos ORDER BY rand() ";
                 $resultado = mysqli_query($conn, $SELECT);
                 if ($resultado) {
                     while ($com = $resultado->fetch_array()) {

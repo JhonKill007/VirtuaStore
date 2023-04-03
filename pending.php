@@ -34,8 +34,9 @@ if (isset($_SESSION['ID_ADMIN'])) {
                         <th scope="col">Email</th>
                         <th scope="col">Title</th>
                         <th scope="col">Color</th>
+                         <th scope="col">Size</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Address</th>
+                        <th scope="col">Purchase Date</th>
                         <th scope="col">Option</th>
 
                     </tr>
@@ -44,7 +45,7 @@ if (isset($_SESSION['ID_ADMIN'])) {
                     <?php
                     require("keys/conection.php");
                     if ($conn) {
-                        $SELECT = "SELECT v.id_ventas,r.nombre,r.email,p.articulo,v.color,v.cantidadSelected,v.user_id
+                        $SELECT = "SELECT v.id_ventas,r.nombre,r.email,p.articulo,v.color,v.size,v.cantidadSelected,v.user_id,v.fecha_comprado
                         from ventas v
                         inner join 
                         registro r on r.id_registro = v.user_id
@@ -57,22 +58,38 @@ if (isset($_SESSION['ID_ADMIN'])) {
                                 $idUser = $com['user_id'];
                     ?>
 
-                                <tr>
+                                <tr style="text-align: center;">
 
-                                    <td><?php echo $com['nombre']; ?></td>
+                                    <td ><?php echo $com['nombre']; ?></td>
                                     <td><?php echo $com['email']; ?></td>
                                     <td><?php echo $com['articulo']; ?></td>
                                     <td><?php echo $com['color']; ?></td>
+                                    <td><?php echo $com['size']; ?></td>
+                                    
                                     <td><?php echo $com['cantidadSelected']; ?></td>
-                                    <td>
+                                    <!-- <td>
                                         <div class="Ag_Address" data-toggle="modal" data-target="#exampleModal_<?php echo $com['user_id']; ?>" style="margin-right: 20px; cursor:pointer">
                                             <i class="fa-solid fa-eye"></i>
                                         </div>
+                                    </td> -->
+                                    <td>
+                                        <?php
+                                        $input = $com['fecha_comprado'];
+                                        $date = strtotime($input);
+                                        echo date('m/d/Y', $date);
+                                        ?>
+
                                     </td>
                                     <form action="keys/orden-sent-key.php" method="post">
                                         <input type="hidden" name="email" value="<?php echo $com['email']; ?>">
-                                        <td type="submit"><button style="background-color: transparent;border: 1px;"><i class="fa-solid fa-paper-plane"></i></button></td>
+                                        <td style="display: flex; justify-content:space-around" type="submit">
+                                            <div class="Ag_Address" data-toggle="modal" data-target="#exampleModal_<?php echo $com['user_id']; ?>" style="margin-right: 20px; cursor:pointer">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </div>
+                                            <button style="background-color: transparent;border: 1px;"><i class="fa-solid fa-paper-plane"></i></button>
+                                        </td>
                                     </form>
+
 
                                     <div class="modal fade" id="exampleModal_<?php echo $idUser ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">

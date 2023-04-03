@@ -171,7 +171,7 @@
                                             <li><a href="signup">Add Users</a></li>
                                             <li><a href="agregar">Add Products</a></li>
                                             <li><a href="users">Users</a></li>
-                                            <li><a href="address">Address</a></li>
+                                            
                                             <li><a href="pending">Pending</a></li>
                                             <li><a href="keys/logout.php">Logout</a></li>
                                         <?php
@@ -179,7 +179,7 @@
                                         if (isset($_SESSION['id'])) {
                                         ?>
                                             <li><a href="history">Purchase History</a></li>
-                                            <li><a href="settings">Settins</a></li>
+                                            <li><a href="settings">Settings</a></li>
                                             <li><a href="keys/logout.php">Logout</a></li>
                                         <?php
                                         }
