@@ -57,7 +57,7 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
     // En el siguiente enlace puedes encontrar una lista completa de Variables IPN y PDT.
     // https://developer.paypal.com/docs/api-basics/notifications/ipn/IPNandPDTVariables/
 
-    
+
 
     $mc_gross = $keyarray['mc_gross'];
     $payment_status = $keyarray['payment_status'];
@@ -100,51 +100,86 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
     if ($payment_status == "Completed") {
 
         require("keys/conection.php");
-        if ($conn) {
-            $SelectCar = "SELECT* FROM car where user_id= $Iduser and comprado=0";
-            $resultado = mysqli_query($conn, $SelectCar);
+        if (isset($_SESSION['id'])) {
+            if ($conn) {
+                $SelectCar = "SELECT* FROM car where user_id= $Iduser and comprado=0";
+                $resultado = mysqli_query($conn, $SelectCar);
 
-            if ($resultado) {
-                while ($com = $resultado->fetch_array()) {
-                    $productoId = $com['producto_id'];
-                    $size = $com['size'];
-                    $color = $com['color'];
-                    $cantidadS = $com['cantidadSelected'];
-                    $idCar = $com['id_car'];
-                    
-
-                    $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0,now())";
-                    $resultado2 = mysqli_query($conn, $insertToVentas);
-                    if ($resultado2) {
-                       
-
-                        $selectProducto = "SELECT cantidad from productos  where id_producto= $productoId";
-                        $cantidad = mysqli_query($conn, $selectProducto);
-                        $cantidadV = $cantidad->fetch_array();
-                        $cantidavenidadelabd = $cantidadV['cantidad'];
-
-                        if ($cantidad) {
-
-                           
-                            $nuevoStock = $cantidavenidadelabd - $cantidadS;
+                if ($resultado) {
+                    while ($com = $resultado->fetch_array()) {
+                        $productoId = $com['producto_id'];
+                        $size = $com['size'];
+                        $color = $com['color'];
+                        $cantidadS = $com['cantidadSelected'];
+                        $idCar = $com['id_car'];
 
 
+                        $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado,IP)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0,now(),0)";
+                        $resultado2 = mysqli_query($conn, $insertToVentas);
+                        if ($resultado2) {
 
-                            $updateProduct = "UPDATE productos set cantidad =$nuevoStock where id_producto= $productoId";
-                            $resultUpdate = mysqli_query($conn, $updateProduct);
-                            if ($resultUpdate) {
-                                
 
-                                $deleteFromCar = "UPDATE car set comprado =1 where id_car= $idCar";
-                                $resultDelete = mysqli_query($conn, $deleteFromCar);
-                                if ($resultDelete) {
-                                    
+                            $selectProducto = "SELECT cantidad from productos  where id_producto= $productoId";
+                            $cantidad = mysqli_query($conn, $selectProducto);
+                            $cantidadV = $cantidad->fetch_array();
+                            $cantidavenidadelabd = $cantidadV['cantidad'];
+
+                            if ($cantidad) {
+                                $nuevoStock = $cantidavenidadelabd - $cantidadS;
+                                $updateProduct = "UPDATE productos set cantidad =$nuevoStock where id_producto= $productoId";
+                                $resultUpdate = mysqli_query($conn, $updateProduct);
+                                if ($resultUpdate) {
+
+
+                                    $deleteFromCar = "UPDATE car set comprado =1 where id_car= $idCar";
+                                    $resultDelete = mysqli_query($conn, $deleteFromCar);
+                                    if ($resultDelete) {
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+        } else {
+            if (isset($_COOKIE['producto'])) {
+                foreach ($_COOKIE['producto'] as $name => $value) {
+                    $name = htmlspecialchars($name);
+                    $value = htmlspecialchars($value);
+
+                    $variable = explode("|", $value);
+                    function getMACAddress(){
+                        $output = exec('getmac');
+                        $matches = array();
+                        $pattern = '/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/';
+                        if (preg_match_all($pattern, $output, $matches)) {
+                            return $matches[0][0];
+                        }
+                        return null;
+                    }
+                    
+                    $IpGuest = getMACAddress();
+                    $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado,IP)values($ipGuest,$variable[0],NOW(),'$variable[2]','$variable[3]',$variable[1],0,now(),1)";
+                    $resultado2 = mysqli_query($conn, $insertToVentas);
+                    if ($resultado2) {
+        
+        
+                        $selectProducto = "SELECT cantidad from productos  where id_producto=$variable[0] ";
+                        $cantidad = mysqli_query($conn, $selectProducto);
+                        $cantidadV = $cantidad->fetch_array();
+                        $cantidavenidadelabd = $cantidadV['cantidad'];
+        
+                        if ($cantidad) {
+                            $nuevoStock = $cantidavenidadelabd - $cantidadS;
+                            $updateProduct = "UPDATE productos set cantidad =$nuevoStock where id_producto=$variable[0]";
+                            $resultUpdate = mysqli_query($conn, $updateProduct);
+                            if ($resultUpdate) {
+                            }
+                        }
+                    }
+                }
+            }
+          
         }
         header("Location: car?rtn=processed");
     } else {

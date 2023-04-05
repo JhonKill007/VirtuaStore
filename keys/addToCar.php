@@ -39,6 +39,11 @@ if (isset($_SESSION['id'])) {
         header("Location: ../products");
     }
 } else {
-    header("Location:../login");
+    setcookie("producto"."[".$_POST['product_id'].$_POST['size']."|".$_POST['color']."]",$_POST['product_id']."|".$_POST["cantidad"]."|".$_POST['size']."|".$_POST['color'],time()+360000,"/VirtuaStore");
+
+    header("Location: ../car");
+
 }
+
+
 ?>

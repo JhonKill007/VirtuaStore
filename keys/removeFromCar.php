@@ -27,5 +27,8 @@ if (isset($_SESSION['id'])) {
         header("Location: ../car");
     }
 } else {
-    header("Location:../login");
+
+    setcookie("producto"."[".$_POST['car_id'].$_POST['size']."|".$_POST['color']."]","",time()-1,"/VirtuaStore");
+
+    header("Location:../car");
 }
