@@ -10,6 +10,8 @@ $year = $_POST['year'];
 $genero = $_POST['genero'];
 $role = $_POST['role'];
 $birthday = $year . "/" . $month . "/" . $day;
+$ResultIp = getMACAddress();
+$IpGuest = str_replace('-', '', $ResultIp);
 
 // echo $nombre;
 // echo $apellido;
@@ -34,7 +36,7 @@ if (!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) ||
         if ($resultado->num_rows == 0) {
 
 
-            $INSERT = "INSERT INTO registro (nombre,apellido,numero,email,password,birthday,genero,role)values('$nombre','$apellido','$numero','$email','$script_password','$birthday','$genero','$role')";
+            $INSERT = "INSERT INTO registro (nombre,apellido,numero,email,password,birthday,genero,role,IP)values('$nombre','$apellido','$numero','$email','$script_password','$birthday','$genero','$role','$IpGuest')";
             $resultado = mysqli_query($conn, $INSERT);
             if ($resultado) {
                 echo "REGISTRADO";
@@ -119,3 +121,17 @@ if (!empty($nombre) || !empty($apellido) || !empty($numero) || !empty($email) ||
     window.location='../login';
     </script>";
 }
+
+function getMACAddress()
+{
+    $output = exec('getmac');
+    $matches = array();
+    $pattern = '/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/';
+    if (preg_match_all($pattern, $output, $matches)) {
+        return $matches[0][0];
+    }
+    return null;
+}
+$ResultIp = getMACAddress();
+$IpGuest = str_replace('-', '', $ResultIp);
+$Iduser=$IpGuest;
