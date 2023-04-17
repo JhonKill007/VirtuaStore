@@ -47,7 +47,7 @@ if (isset($_SESSION['ID_ADMIN'])) {
                     if ($conn) {
                         $SELECT = "SELECT v.id_ventas,r.nombre,r.email,p.articulo,v.color,v.size,v.cantidadSelected,v.user_id,v.fecha_comprado
                         from ventas v
-                        inner join 
+                        left join 
                         registro r on r.id_registro = v.user_id
                         inner join
                         productos p on v.producto_id = p.id_producto

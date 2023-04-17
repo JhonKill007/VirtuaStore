@@ -56,7 +56,8 @@ if (isset($_SESSION['id'])) {
         require("conection.php");
         if ($conn) {
             $INSERT = "INSERT INTO configuracion (pais,nombre,apellido,calle,numero,codigo_postal,ciudad,estado,telefono,id_registro,predeterminada)values('$pais','$nombre','$apellido','$calle','$numero','$cp','$city','$estado','$telefono','$IpGuest',1)";
-          
+            setcookie("address",$IpGuest,time()+360000,"/VirtuaStore");
+
             $resultado = mysqli_query($conn, $INSERT);
             if ($resultado) {
                 header("Location: ../car");

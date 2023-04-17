@@ -2,7 +2,23 @@
 
 
 session_start();
-$Iduser = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+    $Iduser = $_SESSION['id'];
+}else{
+    function getMACAddress()
+    {
+        $output = exec('getmac');
+        $matches = array();
+        $pattern = '/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/';
+        if (preg_match_all($pattern, $output, $matches)) {
+            return $matches[0][0];
+        }
+        return null;
+    }
+    $ResultIp = getMACAddress();
+    $IpGuest = str_replace('-', '', $ResultIp);
+    $Iduser=$IpGuest;
+}
 
 // Para cambiar al entorno de producción usar: www.paypal.com
 $paypal_hostname = 'www.sandbox.paypal.com';
@@ -89,7 +105,7 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
         shipping_cost,
         payment_status,
         id_user)
-        VALUES($mc_gross,'$mc_currency','$payer_id','$payment_date',$mc_fee,'$payer_email','$txn_id',$shipping,'$payment_status',$Iduser)";
+        VALUES($mc_gross,'$mc_currency','$payer_id','$payment_date',$mc_fee,'$payer_email','$txn_id',$shipping,'$payment_status','$Iduser')";
 
         $resultado = mysqli_query($conn, $INSERT);
     } else {
@@ -114,7 +130,7 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
                         $idCar = $com['id_car'];
 
 
-                        $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado,IP)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0,now(),0)";
+                        $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado)values($Iduser,$productoId,NOW(),'$size','$color',$cantidadS,0,now())";
                         $resultado2 = mysqli_query($conn, $insertToVentas);
                         if ($resultado2) {
 
@@ -148,38 +164,32 @@ if (strcmp($lines[0], "SUCCESS") == 0) {
                     $value = htmlspecialchars($value);
 
                     $variable = explode("|", $value);
-                    function getMACAddress(){
-                        $output = exec('getmac');
-                        $matches = array();
-                        $pattern = '/([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})/';
-                        if (preg_match_all($pattern, $output, $matches)) {
-                            return $matches[0][0];
-                        }
-                        return null;
-                    }
-                    
-                    $IpGuest = getMACAddress();
-                    $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado,IP)values($ipGuest,$variable[0],NOW(),'$variable[2]','$variable[3]',$variable[1],0,now(),1)";
+                   
+
+
+                    $insertToVentas = "INSERT INTO ventas (user_id, producto_id, createdate,size,color,cantidadSelected,enviado,fecha_comprado)values('$Iduser',$variable[0],NOW(),'$variable[2]','$variable[3]',$variable[1],0,now())";
                     $resultado2 = mysqli_query($conn, $insertToVentas);
                     if ($resultado2) {
-        
-        
+
+
                         $selectProducto = "SELECT cantidad from productos  where id_producto=$variable[0] ";
                         $cantidad = mysqli_query($conn, $selectProducto);
                         $cantidadV = $cantidad->fetch_array();
                         $cantidavenidadelabd = $cantidadV['cantidad'];
-        
+
                         if ($cantidad) {
-                            $nuevoStock = $cantidavenidadelabd - $cantidadS;
+                            $nuevoStock = $cantidavenidadelabd - $variable[1];
                             $updateProduct = "UPDATE productos set cantidad =$nuevoStock where id_producto=$variable[0]";
                             $resultUpdate = mysqli_query($conn, $updateProduct);
                             if ($resultUpdate) {
                             }
                         }
                     }
+                    setcookie("producto[".$name."]","",time()-1,);
                 }
+                
+
             }
-          
         }
         header("Location: car?rtn=processed");
     } else {
