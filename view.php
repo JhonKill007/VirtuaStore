@@ -329,8 +329,8 @@ if ($conn) {
                 <div class="container" style="margin-top: 20px;">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="section-heading">
-                                <h2>Most outstanding</h2>
+                            <div style="text-align: left !important;"class="section-heading">
+                                <h2 >Outstanding</h2>
                                 <span>More details in the product section.</span>
                             </div>
                         </div>

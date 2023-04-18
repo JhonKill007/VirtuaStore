@@ -8,7 +8,7 @@ require("head.php");
         <div class="row">
             <div class="col-lg-4">
                 <div class="section-heading">
-                    <h2>Most outstanding</h2>
+                    <h2>Outstanding</h2>
                     <label >Seasonal Offers</label>
                 </div>
             </div>

@@ -38,7 +38,7 @@ require("head.php");
             </div>
         </div>
         <div class="carousel-item carrusel-img">
-            <img class="d-block w-100" src="img/kancanP6.jpg" alt="Third slide">
+            <img class="d-block w-100" src="img/porada1.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
 
             </div>
@@ -57,9 +57,9 @@ require("head.php");
 <section class="section" id="products">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col">
                 <div class="section-heading">
-                    <h2>Most outstanding</h2>
+                    <h2>Trending</h2>
                     <span>More details in the product section.</span>
                 </div>
             </div>
@@ -136,7 +136,7 @@ require("head.php");
                         <p>You cannot miss the opportunity to see them.</p>
                     </div>
                     <div class="main-border-button">
-                        <a href="product">Discover More</a>
+                        <a href="products">Discover More</a>
                     </div>
                 </div>
             </div>

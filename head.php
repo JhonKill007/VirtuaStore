@@ -83,7 +83,7 @@
                             <?php
                             if (isset($_SESSION['id']) || !isset($_SESSION['ID_ADMIN'])) {
                             ?>
-                                <li class="scroll-to-section"><a href="onfire" class="offert">Offert</a></li>
+                                <!-- <li class="scroll-to-section"><a href="onfire" class="offert">Offert</a></li> -->
                                 <li class="submenu">
                                     <a href="javascript:;">Feature</a>
                                     <ul>
@@ -229,7 +229,7 @@
             if (path[2] == 'index' || path[2] == '') {
                 home.style = "border-bottom: 1px solid;";
 
-            } else if (path[2] == 'product') {
+            } else if (path[2] == 'products') {
                 product.style = "border-bottom: 1px solid;";
 
             } else if (path[2] == 'onfire') {
